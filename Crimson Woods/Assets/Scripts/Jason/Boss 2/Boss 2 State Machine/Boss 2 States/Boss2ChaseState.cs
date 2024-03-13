@@ -22,6 +22,16 @@ public class Boss2ChaseState : Boss2State
     {
         base.LogicalUpdate();
 
+        boss2.DetectObstacle();
+
+        boss2.ShockMotion();
+
+        if (boss2.isShocked && !boss2.hasObstacle && !boss2.ChargeState.hasCharged)
+        {
+            boss2.Rb.velocity = Vector2.zero;
+            boss2StateMachine.ChangeState(boss2.ShockState);
+        }
+
         if (boss2.boss2Movement.isDetected)
         {
             boss2.boss2Movement.NearPlayer();
