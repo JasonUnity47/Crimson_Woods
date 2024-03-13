@@ -67,7 +67,7 @@ public abstract class EnemyMovement: MonoBehaviour
 
     public virtual void NearPlayer()
     {
-        if (Vector2.Distance(rb.position, targetPos.position) < stoppingDistance)
+        if (Vector2.Distance(rb.position, targetPos.position) <= stoppingDistance)
         {
             isNearby = true;
         }
