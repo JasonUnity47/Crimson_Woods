@@ -42,9 +42,4 @@ public class Boss2 : MonoBehaviour
     {
         boss2StateMachine.CurrentState.PhysicsUpdate();
     }
-
-    void ChasePlayer()
-    {
-
-    }
 }
