@@ -356,6 +356,8 @@ GameObject:
   - component: {fileID: 529865565}
   - component: {fileID: 529865567}
   - component: {fileID: 529865568}
+  - component: {fileID: 529865569}
+  - component: {fileID: 529865570}
   m_Layer: 0
   m_Name: Shark
   m_TagString: Untagged
@@ -478,3 +480,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &529865569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529865564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e9037ef1818214192216b39a815161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &529865570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529865564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a620c0eece2fb7459c74355f202d968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
