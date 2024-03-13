@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boss2IdleState : Boss2State
@@ -11,7 +12,7 @@ public class Boss2IdleState : Boss2State
     public override void Enter()
     {
         base.Enter();
-        boss2Stats.moveSpeed = 0f;
+        boss2.Rb.velocity = Vector2.zero;
     }
 
     public override void Exit()
@@ -22,6 +23,13 @@ public class Boss2IdleState : Boss2State
     public override void LogicalUpdate()
     {
         base.LogicalUpdate();
+
+        boss2.boss2Movement.TargetInDistance();
+
+        if (boss2.boss2Movement.isDetected)
+        {
+            boss2StateMachine.ChangeState(boss2.ChaseState);
+        }
     }
 
     public override void PhysicsUpdate()

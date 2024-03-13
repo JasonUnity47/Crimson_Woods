@@ -21,10 +21,31 @@ public class Boss2ChaseState : Boss2State
     public override void LogicalUpdate()
     {
         base.LogicalUpdate();
+
+        if (boss2.boss2Movement.isDetected)
+        {
+            boss2.boss2Movement.NearPlayer();
+        }
+
+        if (boss2.boss2Movement.isNearby)
+        {
+            boss2.boss2Movement.moveSpeed = 0;
+            boss2.Rb.velocity = Vector2.zero;
+        }
+
+        else
+        {
+            boss2.boss2Movement.moveSpeed = boss2Stats.moveSpeed;
+        }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        if (boss2.boss2Movement.isDetected && !boss2.boss2Movement.isNearby)
+        {
+            boss2.boss2Movement.PathFollow();
+        }
     }
 }

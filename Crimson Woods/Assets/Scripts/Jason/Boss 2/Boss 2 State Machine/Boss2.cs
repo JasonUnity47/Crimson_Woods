@@ -8,10 +8,12 @@ public class Boss2 : MonoBehaviour
     public Rigidbody2D Rb { get; private set; }
 
     public Boss2StateMachine boss2StateMachine { get; private set; }
-    public Boss2Stats boss2Stats { get; private set; }
+    private Boss2Stats boss2Stats;
 
     public Boss2IdleState IdleState { get; private set; }
     public Boss2ChaseState ChaseState { get; private set; }
+
+    public Boss2Movement boss2Movement { get; private set; }
 
     private void Awake()
     {
@@ -25,7 +27,7 @@ public class Boss2 : MonoBehaviour
 
     private void Start()
     {
-        
+        boss2Movement = GetComponent<Boss2Movement>();
 
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
