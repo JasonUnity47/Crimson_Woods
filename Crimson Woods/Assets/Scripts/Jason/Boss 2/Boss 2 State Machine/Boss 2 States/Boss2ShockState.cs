@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Boss2ShockState : Boss2State
 {
-    public bool isCharging = false;
-
     public Boss2ShockState(Boss2 boss2, Boss2StateMachine boss2StateMachine, Boss2Stats boss2Stats, string animName) : base(boss2, boss2StateMachine, boss2Stats, animName)
     {
     }
@@ -14,9 +12,12 @@ public class Boss2ShockState : Boss2State
     {
         base.Enter();
 
-        if (!isCharging)
+        if (!boss2.isCharging)
         {
-            boss2.ChangeToChargeState();
+            // Get the target position ONCE
+            boss2.lastTargetPos = boss2.boss2Movement.targetPos.position;
+
+            boss2.PrepareCharge();
         }
     }
 
@@ -24,9 +25,10 @@ public class Boss2ShockState : Boss2State
     {
         base.Exit();
 
+        // Set all value to FALSE for next execution
+        boss2.isCharging = false;
         boss2.hasObstacle = false;
         boss2.isShocked = false;
-        isCharging = false;
     }
 
     public override void LogicalUpdate()

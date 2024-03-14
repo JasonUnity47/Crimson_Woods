@@ -12,6 +12,8 @@ public class Boss2IdleState : Boss2State
     public override void Enter()
     {
         base.Enter();
+
+        // Stop moving
         boss2.Rb.velocity = Vector2.zero;
     }
 
@@ -24,8 +26,10 @@ public class Boss2IdleState : Boss2State
     {
         base.LogicalUpdate();
 
+        // Detect player
         boss2.boss2Movement.TargetInDistance();
 
+        // IF detect player THEN change to CHASE STATE
         if (boss2.boss2Movement.isDetected)
         {
             boss2StateMachine.ChangeState(boss2.ChaseState);

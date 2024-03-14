@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public abstract class EnemyMovement: MonoBehaviour
 {
-    public Transform targetPos;
+    public Transform targetPos {  get; private set; }
 
     public float moveSpeed;
     public float stoppingDistance;

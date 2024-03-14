@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shockArea: {fileID: 21661960}
-  shockRadius: 10
+  shockRadius: 8
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -738,6 +738,10 @@ MonoBehaviour:
     m_Bits: 8
   isShocked: 0
   hasObstacle: 0
+  lastTargetPos: {x: 0, y: 0}
+  chargeSpeed: 7
+  isCharging: 0
+  hasCharged: 0
 --- !u!114 &529865570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,12 +767,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ce4ba3ec140fa418e360c9bc904119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPos: {fileID: 0}
   moveSpeed: 0
-  stoppingDistance: 0.2
+  stoppingDistance: 0
   activateDistance: 100
   isDetected: 0
   isNearby: 0
+  chargingDistance: 0.2
 --- !u!114 &529865572
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,30 +22,19 @@ public class Boss2ChaseState : Boss2State
     {
         base.LogicalUpdate();
 
+        boss2.boss2Movement.moveSpeed = boss2Stats.moveSpeed;
+
+        // Detect obstacle
         boss2.DetectObstacle();
 
+        // Detect player if no obstacle
         boss2.ShockMotion();
 
-        if (boss2.isShocked && !boss2.hasObstacle && !boss2.ChargeState.hasCharged)
+        // IF detect player AND haven't charged THEN enter SHOCK STATE
+        if (boss2.isShocked && !boss2.hasObstacle && !boss2.hasCharged)
         {
-            boss2.Rb.velocity = Vector2.zero;
+            boss2.Rb.velocity = Vector2.zero; // Stop moving
             boss2StateMachine.ChangeState(boss2.ShockState);
-        }
-
-        if (boss2.boss2Movement.isDetected)
-        {
-            boss2.boss2Movement.NearPlayer();
-        }
-
-        if (boss2.boss2Movement.isNearby)
-        {
-            boss2.boss2Movement.moveSpeed = 0;
-            boss2.Rb.velocity = Vector2.zero;
-        }
-
-        else
-        {
-            boss2.boss2Movement.moveSpeed = boss2Stats.moveSpeed;
         }
     }
 
@@ -53,7 +42,8 @@ public class Boss2ChaseState : Boss2State
     {
         base.PhysicsUpdate();
 
-        if (boss2.boss2Movement.isDetected && !boss2.boss2Movement.isNearby)
+        // IF detect player THEN chase player
+        if (boss2.boss2Movement.isDetected)
         {
             boss2.boss2Movement.PathFollow();
         }
