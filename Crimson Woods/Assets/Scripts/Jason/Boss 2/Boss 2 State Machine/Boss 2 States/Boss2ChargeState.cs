@@ -20,7 +20,6 @@ public class Boss2ChargeState : Boss2State
 
         // Finished charge player
         boss2.FinishCharge();
-
     }
 
     public override void LogicalUpdate()
@@ -28,7 +27,7 @@ public class Boss2ChargeState : Boss2State
         base.LogicalUpdate();
 
         // IF reach to the end point THEN finish charged
-        if (Vector2.Distance(boss2.transform.position, boss2.lastTargetPos) < boss2.boss2Movement.chargingDistance)
+        if (Vector2.Distance(boss2.transform.position, boss2.lastTargetPosForCharge) < boss2.boss2Movement.chargeDistance)
         {
             boss2.hasCharged = true;
         }

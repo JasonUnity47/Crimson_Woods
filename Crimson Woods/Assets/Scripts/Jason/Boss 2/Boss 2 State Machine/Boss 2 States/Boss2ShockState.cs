@@ -15,7 +15,7 @@ public class Boss2ShockState : Boss2State
         if (!boss2.isCharging)
         {
             // Get the target position ONCE
-            boss2.lastTargetPos = boss2.boss2Movement.targetPos.position;
+            boss2.lastTargetPosForCharge = boss2.boss2Movement.targetPos.position;
 
             boss2.PrepareCharge();
         }

@@ -24,6 +24,10 @@ public class Boss2ChaseState : Boss2State
 
         boss2.boss2Movement.moveSpeed = boss2Stats.moveSpeed;
 
+        boss2.FarPlayer();
+
+        boss2.PrepareMotion();
+
         // Detect obstacle
         boss2.DetectObstacle();
 
@@ -35,6 +39,13 @@ public class Boss2ChaseState : Boss2State
         {
             boss2.Rb.velocity = Vector2.zero; // Stop moving
             boss2StateMachine.ChangeState(boss2.ShockState);
+        }
+
+        // IF detect player AND far enough AND not charging AND haven't slash THEN enter PREPARE STATE
+        if (boss2.isPrepared && boss2.farEnough && !boss2.isShocked)
+        {
+            boss2.Rb.velocity = Vector2.zero; // Stop moving
+            boss2StateMachine.ChangeState(boss2.PrepareState);
         }
     }
 

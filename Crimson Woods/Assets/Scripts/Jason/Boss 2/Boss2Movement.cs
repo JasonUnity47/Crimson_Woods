@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Boss2Movement : EnemyMovement
 {
-    public float chargingDistance;
+    public float chargeDistance;
+    public float rangeDistance;
 
     public override void Start()
     {

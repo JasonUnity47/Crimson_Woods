@@ -19,10 +19,21 @@ public class Boss2 : MonoBehaviour
     public bool hasObstacle = false;
 
     [Header("Charge State")]
-    public Vector2 lastTargetPos;
+    public Vector2 lastTargetPosForCharge;
     [SerializeField] private float chargeSpeed;
     public bool isCharging = false;
     public bool hasCharged = false;
+
+    [Header("Prepare State")]
+    [SerializeField] private Transform rangeArea;
+    [SerializeField] private float rangeRadius;
+    public bool isPrepared = false;
+    public bool farEnough = false;
+
+    [Header("Range State")]
+    public Vector2 lastTargetPosForSlash;
+    [SerializeField] GameObject waterSlash;
+    public bool isSlashing = false;
 
     // Component
     public Animator Anim { get; private set; }
@@ -40,6 +51,10 @@ public class Boss2 : MonoBehaviour
 
     public Boss2ChargeState ChargeState { get; private set; }
 
+    public Boss2PrepareState PrepareState { get; private set; }
+
+    public Boss2RangeState RangeState { get; private set; }
+
     // Script Reference
     private Boss2Stats boss2Stats;
 
@@ -55,6 +70,8 @@ public class Boss2 : MonoBehaviour
         ChaseState = new Boss2ChaseState(this, boss2StateMachine, boss2Stats, "ChaseBool");
         ShockState = new Boss2ShockState(this, boss2StateMachine, boss2Stats, "ShockBool");
         ChargeState = new Boss2ChargeState(this, boss2StateMachine, boss2Stats, "ChargeBool");
+        PrepareState = new Boss2PrepareState(this, boss2StateMachine, boss2Stats, "PrepareBool");
+        RangeState = new Boss2RangeState(this, boss2StateMachine, boss2Stats, "RangeBool");
     }
 
     private void Start()
@@ -92,9 +109,33 @@ public class Boss2 : MonoBehaviour
         }
     }
 
+    public void PrepareMotion()
+    {
+        // Check whether player is not in the area
+        isPrepared = Physics2D.OverlapCircle(rangeArea.position, rangeRadius, whatIsPlayer);
+    }
+
+    public void FarPlayer()
+    {
+        if (Vector2.Distance(transform.position, boss2Movement.targetPos.position) > boss2Movement.rangeDistance)
+        {
+            farEnough = true;
+        }
+
+        else
+        {
+            farEnough = false;
+        }
+    }
+
     public void PrepareCharge()
     {
         StartCoroutine("WaitForCharge");
+    }
+
+    public void PrepareSlash()
+    {
+        StartCoroutine("WaitForSlash");
     }
 
     public void FinishCharge()
@@ -105,7 +146,12 @@ public class Boss2 : MonoBehaviour
     public void ChargePlayer()
     {
         // Move enemy to the last player position
-        transform.position = Vector2.Lerp((Vector2)transform.position, lastTargetPos, chargeSpeed * Time.deltaTime);
+        transform.position = Vector2.Lerp((Vector2)transform.position, lastTargetPosForCharge, chargeSpeed * Time.deltaTime);
+    }
+
+    public void SlashAttack()
+    {
+        Instantiate(waterSlash, transform.position, Quaternion.identity);
     }
 
     IEnumerator WaitForCharge()
@@ -126,8 +172,21 @@ public class Boss2 : MonoBehaviour
         hasCharged = false;
     }
 
+    IEnumerator WaitForSlash()
+    {
+        isSlashing = true;
+
+        yield return new WaitForSeconds(3f);
+
+        // Change to RANGE STATE
+        boss2StateMachine.ChangeState(RangeState);
+    }
+
     private void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(rangeArea.position, rangeRadius);
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(shockArea.position, shockRadius);
     }
