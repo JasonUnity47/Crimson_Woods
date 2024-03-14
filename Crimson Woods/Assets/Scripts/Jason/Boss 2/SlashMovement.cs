@@ -22,7 +22,7 @@ public class SlashMovement : MonoBehaviour
 
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
 
-        Destroy(this.gameObject, 1.5f);
+        Destroy(this.gameObject, 1f);
     }
 
     // Update is called once per frame

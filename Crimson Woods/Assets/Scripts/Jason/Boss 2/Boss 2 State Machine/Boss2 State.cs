@@ -25,7 +25,7 @@ public class Boss2State
 
     public virtual void LogicalUpdate()
     {
-
+        
     }
 
     public virtual void PhysicsUpdate()

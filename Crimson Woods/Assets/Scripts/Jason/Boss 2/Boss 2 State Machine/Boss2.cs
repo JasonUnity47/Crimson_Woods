@@ -10,6 +10,9 @@ public class Boss2 : MonoBehaviour
     // Declaration
 
     // Variable
+    [Header("Movement")]
+    public bool facingRight = true;
+
     [Header("Shock State")]
     [SerializeField] private Transform shockArea;
     [SerializeField] private float shockRadius;
@@ -34,6 +37,7 @@ public class Boss2 : MonoBehaviour
     public Vector2 lastTargetPosForSlash;
     [SerializeField] GameObject waterSlash;
     public bool isSlashing = false;
+    public bool hasSlashed = false;
 
     // Component
     public Animator Anim { get; private set; }
@@ -71,7 +75,7 @@ public class Boss2 : MonoBehaviour
         ShockState = new Boss2ShockState(this, boss2StateMachine, boss2Stats, "ShockBool");
         ChargeState = new Boss2ChargeState(this, boss2StateMachine, boss2Stats, "ChargeBool");
         PrepareState = new Boss2PrepareState(this, boss2StateMachine, boss2Stats, "PrepareBool");
-        RangeState = new Boss2RangeState(this, boss2StateMachine, boss2Stats, "RangeBool");
+        RangeState = new Boss2RangeState(this, boss2StateMachine, boss2Stats, "SlashTrigger");
     }
 
     private void Start()
@@ -86,6 +90,8 @@ public class Boss2 : MonoBehaviour
 
     private void Update()
     {
+        FlipDirection();
+
         boss2StateMachine.CurrentState.LogicalUpdate();
     }
 
@@ -111,8 +117,16 @@ public class Boss2 : MonoBehaviour
 
     public void PrepareMotion()
     {
-        // Check whether player is not in the area
-        isPrepared = Physics2D.OverlapCircle(rangeArea.position, rangeRadius, whatIsPlayer);
+        if (!hasSlashed && !isShocked)
+        {
+            // Check whether player is in the area
+            isPrepared = Physics2D.OverlapCircle(rangeArea.position, rangeRadius, whatIsPlayer);
+        }
+
+        else
+        {
+            isPrepared = false;
+        }
     }
 
     public void FarPlayer()
@@ -138,6 +152,11 @@ public class Boss2 : MonoBehaviour
         StartCoroutine("WaitForSlash");
     }
 
+    public void BeforeSlash()
+    {
+        StartCoroutine("SlashAnimation");
+    }
+
     public void FinishCharge()
     {
         StartCoroutine("ChargeCD");
@@ -151,14 +170,30 @@ public class Boss2 : MonoBehaviour
 
     public void SlashAttack()
     {
+        hasSlashed = true;
+
         Instantiate(waterSlash, transform.position, Quaternion.identity);
+    }
+
+    public void FinishSlash()
+    {
+        StartCoroutine("SlashCD");
+    }
+
+    public void FlipDirection()
+    {
+        if (Rb.velocity.x >= 0.01 && !facingRight || Rb.velocity.x <= -0.01 && facingRight)
+        {
+            facingRight = !facingRight;
+            transform.Rotate(0, 180, 0);
+        }
     }
 
     IEnumerator WaitForCharge()
     {
         isCharging = true;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         // Change to CHARGE STATE
         boss2StateMachine.ChangeState(ChargeState);
@@ -166,7 +201,7 @@ public class Boss2 : MonoBehaviour
 
     IEnumerator ChargeCD()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(2.5f);
 
         // Change charge status to FALSE for next execution
         hasCharged = false;
@@ -176,10 +211,25 @@ public class Boss2 : MonoBehaviour
     {
         isSlashing = true;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         // Change to RANGE STATE
         boss2StateMachine.ChangeState(RangeState);
+    }
+
+    IEnumerator SlashAnimation()
+    {
+        yield return new WaitForSeconds(0.4f);
+
+        SlashAttack();
+    }
+
+    IEnumerator SlashCD()
+    {
+        yield return new WaitForSeconds(10f);
+
+        // Change slash status to FALSE for next execution
+        hasSlashed = false;
     }
 
     private void OnDrawGizmosSelected()

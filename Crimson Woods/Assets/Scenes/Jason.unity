@@ -744,12 +744,13 @@ MonoBehaviour:
   isCharging: 0
   hasCharged: 0
   rangeArea: {fileID: 926163453}
-  rangeRadius: 10
+  rangeRadius: 8
   isPrepared: 0
   farEnough: 0
   lastTargetPosForSlash: {x: 0, y: 0}
   waterSlash: {fileID: 2682278926956559626, guid: bfd7cc0d4632c82498532a91f3d0c778, type: 3}
   isSlashing: 0
+  hasSlashed: 0
 --- !u!114 &529865570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,7 +781,7 @@ MonoBehaviour:
   activateDistance: 100
   isDetected: 0
   isNearby: 0
-  chargeDistance: 0
+  chargeDistance: 0.5
   rangeDistance: 5
 --- !u!114 &529865572
 MonoBehaviour:
