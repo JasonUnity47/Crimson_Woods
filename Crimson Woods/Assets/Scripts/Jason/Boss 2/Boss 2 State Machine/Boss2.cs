@@ -13,6 +13,9 @@ public class Boss2 : MonoBehaviour
     [Header("Movement")]
     public bool facingRight = true;
 
+    public bool isHurt = false;
+    public bool isDead = false;
+
     [Header("Shock State")]
     [SerializeField] private Transform shockArea;
     [SerializeField] private float shockRadius;
@@ -30,6 +33,7 @@ public class Boss2 : MonoBehaviour
     [Header("Prepare State")]
     [SerializeField] private Transform rangeArea;
     [SerializeField] private float rangeRadius;
+    [SerializeField] private GameObject prepareSlashVFX;
     public bool isPrepared = false;
     public bool farEnough = false;
 
@@ -59,6 +63,8 @@ public class Boss2 : MonoBehaviour
 
     public Boss2RangeState RangeState { get; private set; }
 
+    public Boss2DeadState DeadState { get; private set; }
+
     // Script Reference
     private Boss2Stats boss2Stats;
 
@@ -76,6 +82,7 @@ public class Boss2 : MonoBehaviour
         ChargeState = new Boss2ChargeState(this, boss2StateMachine, boss2Stats, "ChargeBool");
         PrepareState = new Boss2PrepareState(this, boss2StateMachine, boss2Stats, "PrepareBool");
         RangeState = new Boss2RangeState(this, boss2StateMachine, boss2Stats, "SlashTrigger");
+        DeadState = new Boss2DeadState(this, boss2StateMachine, boss2Stats, "DeadBool");
     }
 
     private void Start()
@@ -90,6 +97,11 @@ public class Boss2 : MonoBehaviour
 
     private void Update()
     {
+        if (!isDead)
+        {
+            CheckDead();
+        }
+
         FlipDirection();
 
         boss2StateMachine.CurrentState.LogicalUpdate();
@@ -100,6 +112,39 @@ public class Boss2 : MonoBehaviour
         boss2StateMachine.CurrentState.PhysicsUpdate();
     }
 
+    public void CheckDead()
+    {
+        if (boss2Stats.health <= 0)
+        {
+            isDead = true;
+            isHurt = true;
+            Rb.velocity = Vector2.zero;
+            boss2Stats.health = 0;
+            boss2StateMachine.ChangeState(DeadState);
+        }
+    }
+
+    public void DestroyBody()
+    {
+        Destroy(this.gameObject, 3f);
+    }
+
+    public void TakeDamage(int damageValue)
+    {
+        if (isDead)
+        {
+            return;
+        }
+
+        if (!isHurt)
+        {
+            boss2Stats.health -= damageValue;
+
+            Anim.SetTrigger("HurtTrigger");
+
+            StartCoroutine("WaitForHurt");
+        }
+    }
     public void DetectObstacle()
     {
         // Check whether there is any obstacle around the player
@@ -209,9 +254,11 @@ public class Boss2 : MonoBehaviour
 
     IEnumerator WaitForSlash()
     {
+        Instantiate(prepareSlashVFX, transform.position, Quaternion.identity, this.transform);
+
         isSlashing = true;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
         // Change to RANGE STATE
         boss2StateMachine.ChangeState(RangeState);
@@ -230,6 +277,15 @@ public class Boss2 : MonoBehaviour
 
         // Change slash status to FALSE for next execution
         hasSlashed = false;
+    }
+
+    IEnumerator WaitForHurt()
+    {
+        isHurt = true;
+
+        yield return new WaitForSeconds(0.05f);
+
+        isHurt = false;
     }
 
     private void OnDrawGizmosSelected()

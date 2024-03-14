@@ -729,6 +729,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e9037ef1818214192216b39a815161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facingRight: 1
+  isHurt: 0
+  isDead: 0
   shockArea: {fileID: 21661960}
   shockRadius: 7
   whatIsPlayer:
@@ -745,6 +748,7 @@ MonoBehaviour:
   hasCharged: 0
   rangeArea: {fileID: 926163453}
   rangeRadius: 8
+  prepareSlashVFX: {fileID: 6581040379378352590, guid: f9823f28d5837504bbb2a401e737f606, type: 3}
   isPrepared: 0
   farEnough: 0
   lastTargetPosForSlash: {x: 0, y: 0}
@@ -764,6 +768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 500
+  health: 200
 --- !u!114 &529865571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,6 +862,7 @@ GameObject:
   - component: {fileID: 669240900}
   - component: {fileID: 669240899}
   - component: {fileID: 669240901}
+  - component: {fileID: 669240902}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -976,6 +982,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &669240902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669240898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559c53e1115ca054a98f1e787984c26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &698929497
 GameObject:
   m_ObjectHideFlags: 0
