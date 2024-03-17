@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Boss2DeadState : Boss2State
 {
@@ -11,6 +12,8 @@ public class Boss2DeadState : Boss2State
     public override void Enter()
     {
         base.Enter();
+
+        boss2.lootBag.InstantiateLoot(boss2.transform.position);
 
         boss2.DestroyBody();
     }

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boss2
+  - Game Manager
+  - Food
+  - Coin
   layers:
   - Default
   - TransparentFX
