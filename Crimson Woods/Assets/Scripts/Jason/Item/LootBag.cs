@@ -8,8 +8,6 @@ public class LootBag : MonoBehaviour
     public GameObject droppedItemPrefab;
     public List<Loot> lootList = new List<Loot>();
 
-    public int rareDropRate = int.MinValue;
-
     Loot GetDroppedItem()
     {
         int randomNumber = Random.Range(1, 101); // 1 - 100
@@ -21,29 +19,32 @@ public class LootBag : MonoBehaviour
             if (randomNumber <= item.dropChance)
             {
                 possibleItems.Add(item);
-
-
-                //if (item.dropChance > rareDropRate)
-                //{
-                    rareDropRate = item.dropChance;
-                //}
             }
         }
 
         if (possibleItems.Count > 0)
         {
-            //foreach (Loot item in possibleItems)
-            //{
-                //if (rareDropRate == item.dropChance)
-                //{
-                    //Loot droppedItem = item;
+            Loot droppedItem;
 
-                    //return droppedItem;
-                //}
-            //}
+            // IF the number of loots are more than 1 THEN drop the rarest loot.
+            if (possibleItems.Count > 1)
+            {
+                foreach (Loot item in possibleItems)
+                {
+                    if (item.lootName == "Food")
+                    {
+                        droppedItem = item;
+                        return droppedItem;
+                    }
+                }
+            }
 
-            Loot droppedItem = possibleItems[Random.Range(0, possibleItems.Count)];
-            return droppedItem;
+            // ELSE drop the only loot.
+            else
+            {
+                droppedItem = possibleItems[0];
+                return droppedItem;
+            }
         }
 
         return null;
@@ -59,15 +60,15 @@ public class LootBag : MonoBehaviour
             lootGameObject.GetComponent<SpriteRenderer>().sprite = droppedItem.lootSprite;
             lootGameObject.GetComponent<SpriteRenderer>().material = droppedItem.lootMaterial;
             
-            //if (droppedItem.lootName == "Food")
-            //{
-                //lootGameObject.tag = "Food";
-            //}
+            if (droppedItem.lootName == "Food")
+            {
+                lootGameObject.tag = "Food";
+            }
 
-            //else
-            //{
-                //lootGameObject.tag = "Blood Coin";
-            //}
+            else if (droppedItem.lootName == "Blood Coin")
+            {
+                lootGameObject.tag = "Coin";
+            }
         }
     }
 }

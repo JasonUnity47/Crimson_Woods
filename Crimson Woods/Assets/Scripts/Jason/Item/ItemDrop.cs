@@ -24,7 +24,7 @@ public class ItemDrop : MonoBehaviour
 
         itemRb.AddForce(Vector2.up * dropForce, ForceMode2D.Impulse);
 
-        //DestroySelf();
+        DestroySelf();
     }
 
     private void Update()
@@ -41,7 +41,7 @@ public class ItemDrop : MonoBehaviour
         if (collision.CompareTag("Player") && this.gameObject.CompareTag("Coin"))
         {
             currencySystem.bloodCount++;
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
 
         else if (collision.CompareTag("Player") && this.gameObject.CompareTag("Food"))
