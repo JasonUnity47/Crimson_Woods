@@ -40,7 +40,8 @@ public class ItemDrop : MonoBehaviour
     {
         if (collision.CompareTag("Player") && this.gameObject.CompareTag("Coin"))
         {
-            currencySystem.bloodCount++;
+            int randomNumber = Random.Range(1, 7); // 1 - 6
+            currencySystem.bloodCount += randomNumber;
             Destroy(this.gameObject);
         }
 
