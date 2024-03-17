@@ -70,9 +70,13 @@ public class Boss2 : MonoBehaviour
 
     public Boss2Movement boss2Movement { get; private set; }
 
+    public LootBag lootBag { get; private set; }
+
     private void Awake()
     {
         boss2StateMachine = new Boss2StateMachine();
+
+        lootBag = GetComponent<LootBag>();
 
         boss2Stats = GetComponent<Boss2Stats>(); // Get reference before other states
 

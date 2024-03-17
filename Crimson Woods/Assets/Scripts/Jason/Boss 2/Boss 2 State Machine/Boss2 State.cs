@@ -20,7 +20,7 @@ public class Boss2State
     public virtual void Enter()
     {
         boss2.Anim.SetBool(animName, true);
-        Debug.Log("Enter " + animName);
+        //Debug.Log("Enter " + animName);
     }
 
     public virtual void LogicalUpdate()
@@ -36,6 +36,6 @@ public class Boss2State
     public virtual void Exit()
     {
         boss2.Anim.SetBool(animName, false);
-        Debug.Log("Exit " + animName);
+        //Debug.Log("Exit " + animName);
     }
 }

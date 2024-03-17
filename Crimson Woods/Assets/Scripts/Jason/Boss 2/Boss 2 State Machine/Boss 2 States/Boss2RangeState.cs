@@ -14,7 +14,7 @@ public class Boss2RangeState : Boss2State
     public override void Enter()
     {
         boss2.Anim.SetTrigger(animNameRange);
-        Debug.Log("Enter " + animNameRange);
+        //Debug.Log("Enter " + animNameRange);
 
         if (!boss2.hasSlashed)
         {
