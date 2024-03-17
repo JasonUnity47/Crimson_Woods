@@ -23,12 +23,14 @@ public class Boss1State
     public virtual void Enter()
     {
         DoCheck();
+        boss1.Animator.SetBool(animBoolName, true);
         startTime = Time.time;
+        Debug.Log(animBoolName);
     }
 
     public virtual void Exit()
     {
-
+        boss1.Animator.SetBool(animBoolName, false);
     }
 
     public virtual void LogicUpdate()
