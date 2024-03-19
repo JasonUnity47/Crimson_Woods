@@ -15,7 +15,6 @@ public class AutoAttack : MonoBehaviour
 
     private float distanceToEnemy;
     private float distanceToClosestEnemy;
-    private Vector2 direction;
 
     private void Start()
     {
@@ -48,13 +47,9 @@ public class AutoAttack : MonoBehaviour
                 distanceToClosestEnemy = distanceToEnemy;
                 closestEnemy = enemy;
             }
-
-            
         }
 
-        direction = closestEnemy.transform.position - this.transform.position;
-
-        Quaternion rotation = Quaternion.LookRotation(transform.position - (Vector3)direction, transform.TransformDirection(Vector3.forward));
+        Quaternion rotation = Quaternion.LookRotation(transform.position - (Vector3)closestEnemy.transform.position, transform.TransformDirection(Vector3.up));
 
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
     }
@@ -64,12 +59,19 @@ public class AutoAttack : MonoBehaviour
         if (attackCD <= 0)
         {
             attackCD = attackTime;
-            Instantiate(arrow, transform.position, Quaternion.identity);
+            fire();
         }
 
         else
         {
             attackCD -= Time.deltaTime;
         }
+    }
+
+    void fire()
+    {
+        GameObject new_bullet = Instantiate(arrow, transform.position, Quaternion.identity);
+        //rotate the bullet as the gameobject
+        new_bullet.transform.right = transform.right.normalized;
     }
 }
