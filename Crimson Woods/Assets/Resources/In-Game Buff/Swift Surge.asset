@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb21f95d8331b04c85b42ac3ba2c171, type: 3}
   m_Name: Swift Surge
   m_EditorClassIdentifier: 
-  buffId: 0
+  buffId: 3
   buffSprite: {fileID: 21300000, guid: 26726f542f9ee7a45817ad885c4cc5d6, type: 3}
   buffName: Swift Surge
   buffDescription: Dash cooldown reduced by 30%.

@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BuffContent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Declaration
+    [Header("Reference")]
+
+
+    [Header("Object")]
+
+
+    [Header("Active Buff")]
+    public List<Buff> activeBuffs = new List<Buff>();
+
+    [Header("Locker")]
+    public bool[] lockStatus;
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+
     }
 }

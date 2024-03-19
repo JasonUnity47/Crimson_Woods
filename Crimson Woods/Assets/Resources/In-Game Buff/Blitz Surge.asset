@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb21f95d8331b04c85b42ac3ba2c171, type: 3}
   m_Name: Blitz Surge
   m_EditorClassIdentifier: 
-  buffId: 6
+  buffId: 1
+  buffSprite: {fileID: 0}
   buffName: Blitz Surge
   buffDescription: Increases attack speed and movement speed by 20%.

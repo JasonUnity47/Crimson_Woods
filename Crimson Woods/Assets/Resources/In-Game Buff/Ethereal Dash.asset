@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb21f95d8331b04c85b42ac3ba2c171, type: 3}
   m_Name: Ethereal Dash
   m_EditorClassIdentifier: 
-  buffId: 11
+  buffId: 4
   buffSprite: {fileID: 21300000, guid: ba90605e9118c09458a0c0488ca2b124, type: 3}
   buffName: Ethereal Dash
   buffDescription: 25% chance for dash to not consume charges.

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb21f95d8331b04c85b42ac3ba2c171, type: 3}
   m_Name: Armored Fortitude
   m_EditorClassIdentifier: 
-  buffId: 3
+  buffId: 2
+  buffSprite: {fileID: 0}
   buffName: Armored Fortitude
   buffDescription: +5 Armor
