@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashSpeed = 4f;
     [SerializeField] private TrailRenderer myTrailRenderer;
     [SerializeField] private int maxDashes = 3;
-    [SerializeField] private float dashRestoreTime = 10f;
+    [SerializeField] public float dashCD = 10f;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(dashRestoreTime);
+            yield return new WaitForSeconds(dashCD);
             if (dashCount < maxDashes)
             {
                 dashCount++;
