@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb21f95d8331b04c85b42ac3ba2c171, type: 3}
   m_Name: Resurrection
   m_EditorClassIdentifier: 
-  buffId: 10
+  buffId: 11
+  buffSprite: {fileID: 0}
   buffName: Resurrection
   buffDescription: Grants one resurrection. When HP reaches 0, resurrects with only
     1.5 HP.

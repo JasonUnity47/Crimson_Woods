@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Evasive Maneuvers
   m_EditorClassIdentifier: 
   buffId: 8
+  buffSprite: {fileID: 0}
   buffName: Evasive Maneuvers
   buffDescription: 25% chance to evade damage when attacked by enemies.

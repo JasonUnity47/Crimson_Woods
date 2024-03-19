@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb21f95d8331b04c85b42ac3ba2c171, type: 3}
   m_Name: Vital Velocity
   m_EditorClassIdentifier: 
-  buffId: 1
+  buffId: 0
+  buffSprite: {fileID: 0}
   buffName: Vital Velocity
   buffDescription: Increases health by 2 and movement speed by 20%.

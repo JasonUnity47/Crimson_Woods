@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb21f95d8331b04c85b42ac3ba2c171, type: 3}
   m_Name: Penetrating Arrows
   m_EditorClassIdentifier: 
-  buffId: 9
+  buffId: 7
+  buffSprite: {fileID: 0}
   buffName: Penetrating Arrows
   buffDescription: Arrows penetrate through up to 3 enemies.

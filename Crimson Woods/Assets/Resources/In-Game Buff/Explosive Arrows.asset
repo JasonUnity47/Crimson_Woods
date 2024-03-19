@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfb21f95d8331b04c85b42ac3ba2c171, type: 3}
-  m_Name: Guided Projectiles
+  m_Name: Explosive Arrows
   m_EditorClassIdentifier: 
-  buffId: 4
-  buffName: Guided Projectiles
-  buffDescription: Projectiles automatically track enemies upon firing.
+  buffId: 10
+  buffSprite: {fileID: 0}
+  buffName: Explosive Arrows
+  buffDescription: Arrows create a small explosion upon hitting enemies.
