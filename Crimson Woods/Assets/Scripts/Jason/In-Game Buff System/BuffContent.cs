@@ -130,7 +130,7 @@ public class BuffContent : MonoBehaviour
     void SwiftSurge()
     {
         float reduction = 1 - (30 / 100f);
-        playerController.dashCD *= reduction;
+        //playerController.dashCD *= reduction;
 
         return;
     }

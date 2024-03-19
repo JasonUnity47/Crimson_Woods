@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SoldierArrow : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-    private Rigidbody2D rb;
+    public float velocity = 10;
+    Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(this.gameObject, 3f);
+
+        Destroy(this.gameObject, 5);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
+        rb.velocity = transform.right * velocity;
     }
 }
