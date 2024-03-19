@@ -20,8 +20,11 @@ public class BuffSystem : MonoBehaviour
     }
 
     // Declaration
-    [Header("Reference")]
+    [Header("Object Reference")]
     public GameObject buffPanel;
+
+    [Header("Script Reference")]
+    public BuffContent buffContent;
 
     [Header("Total Buff List")]
     public List<Buff> buffList;
@@ -43,6 +46,9 @@ public class BuffSystem : MonoBehaviour
     {
         // Get the initial count of the total buffs.
         initialTotalBuffCount = buffList.Count;
+
+        // Initialize the lock status of each buff.
+        buffContent.lockStatus = new bool[buffList.Count];
 
         for (int i = 0; i < buffList.Count; i++)
         {
@@ -168,44 +174,39 @@ public class BuffSystem : MonoBehaviour
             return;
         }
 
-        else
+        // Get the current upgrade id to recognize which upgrade that player chose.
+        int deletedId = int.Parse(currentBuffId.text); // Convert the id number from string to int.
+
+        // CHECK whether the chosen buff is in the buff list.
+        foreach (Buff buff in buffList.ToList())
         {
-            // Get the current upgrade id to recognize which upgrade that player chose.
-            int deletedId = int.Parse(currentBuffId.text); // Convert the id number from string to int.
-
-            Debug.Log(deletedId);
-
-            // CHECK whether the chosen buff is in the buff list.
-            foreach (Buff buff in buffList.ToList())
+            // REMOVE the chosen buff because one buff can only choose once.
+            if (buff.buffId == deletedId)
             {
-                // REMOVE the chosen buff because one buff can only choose once.
-                if (buff.buffId == deletedId)
-                {
-                    buffList.Remove(buff);
-                    // Add the chosen buff to active buff list.
-                }
+                buffList.Remove(buff);
+                buffContent.activeBuffs.Add(buff);
             }
-
-            // Check whether the chosen number (id) is in the list.
-            // IF it is not THEN return back the others (other numbers/buffs that player didn't choose) to the number list.
-            foreach (TMP_Text bId in IdList)
-            {
-                if (bId.text == "")
-                {
-                    continue;
-                }
-
-                if (bId.text != "" && deletedId != int.Parse(bId.text))
-                {
-                    numberList.Add(int.Parse(bId.text));
-                }
-            }
-
-            // Sort the list to avoid error occurs after player chose one of the buff.
-            numberList.Sort();
-
-            // Reset all buff slots.
-            ResetSlot();
         }
+
+        // Check whether the chosen number (id) is in the list.
+        // IF it is not THEN return back the others (other numbers/buffs that player didn't choose) to the number list.
+        foreach (TMP_Text bId in IdList)
+        {
+            if (bId.text == "")
+            {
+                continue;
+            }
+
+            if (bId.text != "" && deletedId != int.Parse(bId.text))
+            {
+                numberList.Add(int.Parse(bId.text));
+            }
+        }
+
+        // Sort the list to avoid error occurs after player chose one of the buff.
+        numberList.Sort();
+
+        // Reset all buff slots.
+        ResetSlot();
     }
 }
