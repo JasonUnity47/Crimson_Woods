@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Swift Dash
   m_EditorClassIdentifier: 
   buffId: 7
+  buffSprite: {fileID: 21300000, guid: 47acbb84f1aa1a84d826fbad8793ea20, type: 3}
   buffName: Swift Dash
   buffDescription: Grants an additional dash.

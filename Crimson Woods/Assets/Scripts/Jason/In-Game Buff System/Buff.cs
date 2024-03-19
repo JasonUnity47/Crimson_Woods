@@ -6,6 +6,7 @@ using UnityEngine;
 public class Buff : ScriptableObject
 {
     public int buffId;
+    public Sprite buffSprite;
     public string buffName;
     [TextArea(3,3)] public string buffDescription;
 }
