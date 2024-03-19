@@ -8,6 +8,8 @@ TagManager:
   - Game Manager
   - Food
   - Coin
+  - Enemy
+  - Soldier
   layers:
   - Default
   - TransparentFX
