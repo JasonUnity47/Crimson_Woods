@@ -11,6 +11,7 @@ public class Slime : MonoBehaviour
     private UnityEngine.Object explosionRef;
     private Material matWhite;
     private Material matDefault;
+    SpriteRenderer SR;
 
     // Variable
     [Header("Movement")]
@@ -52,14 +53,19 @@ public class Slime : MonoBehaviour
 
         slimeStats = GetComponent<SlimeStats>(); // Get reference before other states
 
-        IdleState = new SlimeIdleState(this, slimeStateMachine, slimeStats, "IdleBool");
-        ChaseState = new SlimeChaseState(this, slimeStateMachine, slimeStats, "ChaseBool");
-        DeadState = new SlimeDeadState(this, slimeStateMachine, slimeStats, "DeadBool");
+        IdleState = new SlimeIdleState(this, slimeStateMachine, slimeStats, "SlimeIdle");
+        ChaseState = new SlimeChaseState(this, slimeStateMachine, slimeStats, "SlimeChase");
+        DeadState = new SlimeDeadState(this, slimeStateMachine, slimeStats, "SlimeDead");
     }
 
     private void Start()
     {
         slimeMovement = GetComponent<SlimeMovement>();
+
+        SR = GetComponent<SpriteRenderer>();
+
+        matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        matDefault = SR.material;
 
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
@@ -116,8 +122,8 @@ public class Slime : MonoBehaviour
         {
             slimeStats.health -= damageValue;
 
-            Anim.SetTrigger("HurtTrigger");
-
+            SR.material = matWhite;
+            Invoke("ResetMaterial", 0.05f);
             StartCoroutine("WaitForHurt");
         }
     }
@@ -141,5 +147,8 @@ public class Slime : MonoBehaviour
         isHurt = false;
     }
 
-  
+    void ResetMaterial()
+    {
+        SR.material = matDefault;
+    }
 }

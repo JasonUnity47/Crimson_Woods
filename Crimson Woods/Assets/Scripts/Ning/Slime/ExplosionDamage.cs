@@ -20,11 +20,11 @@ public class ExplosionDamage : MonoBehaviour
     private void ApplyDamage(GameObject player)
     {
         // Check if the player has a health component
-        Health health = player.GetComponent<Health>();
-        if (health != null)
-        {
+        // Health health = player.GetComponent<Health>();
+        //if (health != null)
+        //{
             // Apply damage to the player's health
-            health.TakeDamage(damageAmount);
-        }
+            //health.TakeDamage(damageAmount);
+        //}
     }
 }
