@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(dashRestoreTime);
+            yield return new WaitForSeconds(dashCD);
             if (dashCount < maxDashes)
             {
                 dashCount++;
