@@ -2689,8 +2689,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBuffs: []
   lockStatus: 
+  onEtherealDash: 0
+  canCheck: 1
   reduction: 0.7
   dashIncrement: 1
+  dashChance: 25
 --- !u!1 &1331570987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,6 +2878,8 @@ MonoBehaviour:
   myTrailRenderer: {fileID: 437264074}
   maxDashes: 3
   dashRestoreTime: 10
+  dashCount: 0
+  isDashing: 0
 --- !u!61 &1438345157
 BoxCollider2D:
   m_ObjectHideFlags: 0

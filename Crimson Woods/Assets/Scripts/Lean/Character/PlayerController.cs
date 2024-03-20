@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (dashCount > 0 && !isDashing)
+        if (movement != Vector2.zero && dashCount > 0 && !isDashing)
         {
             isDashing = true;
             moveSpeed *= dashSpeed;
