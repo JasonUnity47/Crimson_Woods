@@ -19,9 +19,26 @@ public class BuffContent : MonoBehaviour
     [Header("Locker")]
     public bool[] lockStatus;
 
+    [Header("Check")]
+    public bool onEtherealDash = false;
+    public bool canCheck = true;
+
+    [Header("Stats")]
+    [SerializeField] private float reduction = 1 - (30 / 100f);
+    [SerializeField] private int dashIncrement = 1;
+    [SerializeField] private int dashChance = 25;
+
     private void Start()
     {
-        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        playerController = GameObject.FindAnyObjectByType<PlayerController>();
+    }
+
+    private void Update()
+    {
+        if (onEtherealDash)
+        {
+            CostDash();
+        }
     }
 
     public void BuffDetect()
@@ -56,7 +73,7 @@ public class BuffContent : MonoBehaviour
 
                 case 4:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = EtherealDash;
                         break;
                     }
 
@@ -129,14 +146,49 @@ public class BuffContent : MonoBehaviour
 
     void SwiftSurge()
     {
-        float reduction = 1 - (30 / 100f);
-        //playerController.dashCD *= reduction;
+        // Dash cooldown reduced by 30%.
+        playerController.dashRestoreTime *= reduction;
 
         return;
     }
 
     void SwiftDash()
     {
+        // Grants an additional dash.
+        playerController.maxDashes += dashIncrement;
+
+        return;
+    }
+
+    void EtherealDash()
+    {
+        // Turn on Ethereal Dash.
+        onEtherealDash = true;
+
+        return;
+    }
+
+    void CostDash()
+    {
+        // 25% chance for dash to not consume charges (Increase back the dash count if the dash count decrease by 1).
+
+        if (!playerController.isDashing)
+        {
+            canCheck = true;
+        }
+
+        if (playerController.isDashing && canCheck)
+        {
+            canCheck = false;
+
+            int randomNumber = Random.Range(0, 101);
+            Debug.Log(randomNumber);
+
+            if (randomNumber <= dashChance)
+            {
+                playerController.dashCount++;
+            }
+        }
 
         return;
     }

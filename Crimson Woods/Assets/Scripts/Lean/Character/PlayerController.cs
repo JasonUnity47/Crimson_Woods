@@ -11,8 +11,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float dashSpeed = 4f;
     [SerializeField] private TrailRenderer myTrailRenderer;
-    [SerializeField] private int maxDashes = 3;
-    [SerializeField] private float dashRestoreTime = 10f;
+
+    public int maxDashes = 3;
+    public float dashRestoreTime = 10f;
+    public int dashCount;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -22,8 +24,11 @@ public class PlayerController : MonoBehaviour
     private float startingMoveSpeed;
 
     private bool facingLeft = false;
-    private bool isDashing = false;
-    private int dashCount;
+    public bool isDashing = false;
+
+    // Testing
+    //public float startTime;
+    //public float timeBtwFrame;
 
     private void Awake()
     {
@@ -33,6 +38,9 @@ public class PlayerController : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
         dashCount = maxDashes;
+
+        //startTime = dashRestoreTime;
+        //timeBtwFrame = startTime;
     }
 
     private void Start()
@@ -52,6 +60,19 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         PlayerInput();
+
+        //startTime = dashRestoreTime;
+
+        //if (timeBtwFrame <= 0)
+        //{
+            //timeBtwFrame = startTime;
+        //}
+
+        //else
+        //{
+            //timeBtwFrame -= Time.deltaTime;
+            //Debug.Log(timeBtwFrame);
+        //}
     }
 
     private void FixedUpdate()
