@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss1_Walk
+  m_Name: Boss1_chase
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,18 +22,18 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 276063097, guid: e0f6a8ef84f5ed94f8fb8ab9696bdbdf, type: 3}
-    - time: 0.125
+    - time: 0.2
       value: {fileID: 1129793850, guid: e0f6a8ef84f5ed94f8fb8ab9696bdbdf, type: 3}
-    - time: 0.25
+    - time: 0.4
       value: {fileID: 1711142086, guid: e0f6a8ef84f5ed94f8fb8ab9696bdbdf, type: 3}
-    - time: 0.375
+    - time: 0.6
       value: {fileID: -1920788370, guid: e0f6a8ef84f5ed94f8fb8ab9696bdbdf, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 8
+  m_SampleRate: 5
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -59,7 +59,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

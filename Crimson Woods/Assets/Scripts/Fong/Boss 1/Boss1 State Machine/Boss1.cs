@@ -23,12 +23,18 @@ public class Boss1 : MonoBehaviour
     public bool isCharging = false;
     public bool hasCharged = false;
 
+    [Header("Meele Attack State")]
+    [SerializeField] private Transform meeleArea;
+    [SerializeField] private float meeleRadius;
+    public bool isMeeleAttack;
+
     public Boss1StateMachine StateMachine { get; private set; }
 
     public Boss1IdleState IdleState { get; private set; }
     public Boss1ChaseState ChaseState { get; private set; }
     public Boss1ShockState ShockState { get; private set; }
     public Boss1ChargeState ChargeState { get; private set; }
+    public Boss1MeeleAttackState MeeleState { get; private set; }
 
     public Animator Animator { get; private set; }
     public Rigidbody2D Rb { get; private set; }
@@ -47,6 +53,7 @@ public class Boss1 : MonoBehaviour
         ChaseState = new Boss1ChaseState(this, StateMachine, boss1Data, "chase");
         ShockState = new Boss1ShockState(this, StateMachine, boss1Data, "shock");
         ChargeState = new Boss1ChargeState(this, StateMachine, boss1Data, "charge");
+        MeeleState = new Boss1MeeleAttackState(this, StateMachine, boss1Data, "meele");
     }
 
     private void Start()
@@ -82,7 +89,7 @@ public class Boss1 : MonoBehaviour
         // IF no obstacle THEN check whether player is around the enemy
         if (!hasObstacle)
         {
-            isShocked = Physics2D.OverlapCircle(shockArea.position, shockRadius, whatIsPlayer);
+            isShocked = Physics2D.OverlapCircle(meeleArea.position, shockRadius, whatIsPlayer);
         }
     }
 
@@ -112,7 +119,11 @@ public class Boss1 : MonoBehaviour
         transform.position = Vector2.Lerp((Vector2)transform.position, lastTargetPosForCharge, chargeSpeed * Time.deltaTime);
     }
 
-
+    public void MeeleArea()
+    {
+        // Check if player is in area
+        isMeeleAttack = Physics2D.OverlapCircle(shockArea.position, meeleRadius, whatIsPlayer);
+    }
 
 
     IEnumerator WaitForCharge()
@@ -132,4 +143,5 @@ public class Boss1 : MonoBehaviour
         // Change charge status to FALSE for next execution
         hasCharged = false;
     }
+
 }

@@ -31,11 +31,20 @@ public class Boss1ChaseState : Boss1State
         // Detect player if no obstacle
         boss1.ShockMotion();
 
+        boss1.MeeleArea();
+
         // IF detect player AND no obstacles AND haven't charged THEN enter SHOCK STATE
         if (boss1.isShocked && !boss1.hasObstacle && !boss1.hasCharged)
         {
             boss1.Rb.velocity = Vector2.zero; // Stop moving
             boss1StateMachine.ChangeState(boss1.ShockState);
+        }
+
+        if (boss1.isMeeleAttack && !boss1.hasObstacle)
+        {
+            boss1.Rb.velocity = Vector2.zero; // Stop moving
+            Debug.Log("fk");
+            boss1StateMachine.ChangeState(boss1.MeeleState);
         }
     }
 
