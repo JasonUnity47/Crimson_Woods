@@ -11,22 +11,26 @@ public class Boss1MeeleAttackState : Boss1State
     public override void Enter()
     {
         base.Enter();
+
+        boss1.hasMeeleAttacked = true;
+        boss1.IsMeeleAttacking();
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        boss1.FinishMeeleAttacked();
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
     }
+
 }

@@ -40,10 +40,9 @@ public class Boss1ChaseState : Boss1State
             boss1StateMachine.ChangeState(boss1.ShockState);
         }
 
-        if (boss1.isMeeleAttack && !boss1.hasObstacle)
+        if (boss1.isMeeleAttack && !boss1.hasMeeleAttacked && !boss1.hasObstacle)
         {
             boss1.Rb.velocity = Vector2.zero; // Stop moving
-            Debug.Log("fk");
             boss1StateMachine.ChangeState(boss1.MeeleState);
         }
     }

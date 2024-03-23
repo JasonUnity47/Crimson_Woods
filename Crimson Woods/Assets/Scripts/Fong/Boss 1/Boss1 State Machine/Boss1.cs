@@ -26,7 +26,8 @@ public class Boss1 : MonoBehaviour
     [Header("Meele Attack State")]
     [SerializeField] private Transform meeleArea;
     [SerializeField] private float meeleRadius;
-    public bool isMeeleAttack;
+    public bool isMeeleAttack = false;
+    public bool hasMeeleAttacked = false;
 
     public Boss1StateMachine StateMachine { get; private set; }
 
@@ -113,6 +114,16 @@ public class Boss1 : MonoBehaviour
         StartCoroutine("ChargeCD");
     }
 
+    public void IsMeeleAttacking()
+    {
+        StartCoroutine("MeeleAttacking");
+    }
+
+    public void FinishMeeleAttacked()
+    {
+        StartCoroutine("MeeleCD");
+    }
+
     public void ChargePlayer()
     {
         // Move enemy to the last player position
@@ -144,4 +155,19 @@ public class Boss1 : MonoBehaviour
         hasCharged = false;
     }
 
+    IEnumerator MeeleAttacking()
+    {
+        Animator.SetTrigger("meele");
+        yield return new WaitForSeconds(1f);
+
+        StateMachine.ChangeState(IdleState);
+    }
+
+    IEnumerator MeeleCD()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        // Change Meele Attack status to FALSE for next execution
+        hasMeeleAttacked = false;
+    }
 }
