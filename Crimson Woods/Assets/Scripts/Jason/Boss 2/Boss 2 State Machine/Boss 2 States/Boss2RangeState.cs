@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Boss2RangeState : Boss2State
 {
-    private string animNameRange;
+    //private string animNameRange;
 
     public Boss2RangeState(Boss2 boss2, Boss2StateMachine boss2StateMachine, Boss2Stats boss2Stats, string animName) : base(boss2, boss2StateMachine, boss2Stats, animName)
     {
-        animNameRange = animName;
+        //animNameRange = animName;
     }
 
     public override void Enter()
     {
-        boss2.Anim.SetTrigger(animNameRange);
+        boss2.Anim.SetTrigger(animName);
         //Debug.Log("Enter " + animNameRange);
 
         if (!boss2.hasSlashed)
