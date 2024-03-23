@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SlimeMovement : EnemyMovement
 {
-   
     public override void Start()
     {
         base.Start();

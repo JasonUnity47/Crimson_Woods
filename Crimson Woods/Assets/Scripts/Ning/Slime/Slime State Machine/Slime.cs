@@ -49,7 +49,7 @@ public class Slime : MonoBehaviour
 
         lootBag = GetComponent<LootBag>();
 
-        explosionRef = Resources.Load("SlimeExplode");
+        explosionRef = Resources.Load("Prefab/Explode/SlimeExplode");
 
         slimeStats = GetComponent<SlimeStats>(); // Get reference before other states
 
@@ -101,7 +101,7 @@ public class Slime : MonoBehaviour
 
             GameObject explosion = (GameObject)Instantiate(explosionRef);
             explosion.transform.position = new Vector3(transform.position.x, transform.position.y + .3f, transform.position.z);
-       
+
             slimeStateMachine.ChangeState(DeadState);
         }
     }

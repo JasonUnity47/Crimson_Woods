@@ -20,7 +20,7 @@ public class SlimeState
     public virtual void Enter()
     {
         slime.Anim.SetBool(animName, true);
-        //Debug.Log("Enter " + animName);
+        Debug.Log("Enter " + animName);
     }
 
     public virtual void LogicalUpdate()
@@ -36,6 +36,6 @@ public class SlimeState
     public virtual void Exit()
     {
         slime.Anim.SetBool(animName, false);
-        //Debug.Log("Exit " + animName);
+        Debug.Log("Exit " + animName);
     }
 }

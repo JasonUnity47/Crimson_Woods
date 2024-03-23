@@ -5,8 +5,10 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class SlimeDeadState : SlimeState
 {
+
     public SlimeDeadState(Slime slime, SlimeStateMachine slimeStateMachine, SlimeStats slimeStats, string animName) : base(slime, slimeStateMachine, slimeStats, animName)
     {
+        
     }
 
     public override void Enter()
