@@ -10,6 +10,7 @@ TagManager:
   - Coin
   - Enemy
   - Soldier
+  - Wall
   layers:
   - Default
   - TransparentFX

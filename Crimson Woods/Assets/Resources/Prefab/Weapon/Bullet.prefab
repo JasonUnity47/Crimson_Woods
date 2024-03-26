@@ -101,6 +101,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 20
+  maxRange: 20
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  collisionRadius: 0.1
+  impactEffect: {fileID: 0}
 --- !u!50 &-5221114783492473243
 Rigidbody2D:
   serializedVersion: 4
