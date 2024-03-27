@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public int maxDashes = 3;
     public float dashRestoreTime = 10f;
     public int dashCount;
+    public bool isDashing = false;
+    public static event Action OnDashCountChanged;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -22,9 +25,8 @@ public class PlayerController : MonoBehaviour
     private Animator myAnimator;
     private SpriteRenderer mySpriteRender;
     private float startingMoveSpeed;
-
     private bool facingLeft = false;
-    public bool isDashing = false;
+
 
     // Testing
     //public float startTime;
@@ -65,13 +67,13 @@ public class PlayerController : MonoBehaviour
 
         //if (timeBtwFrame <= 0)
         //{
-            //timeBtwFrame = startTime;
+        //timeBtwFrame = startTime;
         //}
 
         //else
         //{
-            //timeBtwFrame -= Time.deltaTime;
-            //Debug.Log(timeBtwFrame);
+        //timeBtwFrame -= Time.deltaTime;
+        //Debug.Log(timeBtwFrame);
         //}
     }
 
@@ -118,7 +120,12 @@ public class PlayerController : MonoBehaviour
             isDashing = true;
             moveSpeed *= dashSpeed;
             myTrailRenderer.emitting = true;
+
+            // Decrease the dash count
             dashCount--;
+
+            // Invoke the event to notify subscribers (such as the DashUI script) that the dash count has changed
+            OnDashCountChanged?.Invoke();
 
             StartCoroutine(EndDashRoutine());
         }
@@ -143,6 +150,9 @@ public class PlayerController : MonoBehaviour
             if (dashCount < maxDashes)
             {
                 dashCount++;
+
+                // Invoke the event to notify subscribers (such as the DashUI script) that the dash count has changed
+                OnDashCountChanged?.Invoke();
             }
         }
     }
