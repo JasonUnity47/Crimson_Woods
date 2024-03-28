@@ -53,14 +53,15 @@ public class BulletScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        // Check if the bullet collides with an object tagged as a wall
+        if (collision.gameObject.CompareTag(wallTag))
         {
             DestroyBullet();
         }
 
+        // Check if the bullet collides with an enemy
         if (collision.gameObject.CompareTag("Enemy"))
         {
-       
             Boar boarHealth = collision.gameObject.GetComponent<Boar>();
 
             // Apply damage to the enemy
@@ -72,11 +73,6 @@ public class BulletScript : MonoBehaviour
             // Destroy the bullet
             DestroyBullet();
         }
-
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            DestroyBullet();
-        }
     }
 
     void DestroyBullet()
@@ -84,5 +80,6 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
 
 
