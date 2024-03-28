@@ -9,7 +9,10 @@ public class BulletScript : MonoBehaviour
     private Rigidbody2D rb;
     public float force;
     public float maxRange = 10f; // Maximum range the bullet can travel
+    public int damage = 1;
     private float traveledDistance = 0f;
+    private string playerTag = "Player";
+    private string wallTag = "Wall";
 
     void Start()
     {
@@ -28,6 +31,12 @@ public class BulletScript : MonoBehaviour
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+        if (player != null)
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+        }
     }
 
     void Update()
@@ -44,7 +53,26 @@ public class BulletScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the collided object has the "Wall" tag
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            DestroyBullet();
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+       
+            Boar boarHealth = collision.gameObject.GetComponent<Boar>();
+
+            // Apply damage to the enemy
+            if (boarHealth != null)
+            {
+                boarHealth.TakeDamage(damage);
+            }
+
+            // Destroy the bullet
+            DestroyBullet();
+        }
+
         if (collision.gameObject.CompareTag("Wall"))
         {
             DestroyBullet();

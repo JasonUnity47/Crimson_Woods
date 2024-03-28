@@ -102,11 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 20
   maxRange: 20
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  collisionRadius: 0.1
-  impactEffect: {fileID: 0}
+  damage: 1
 --- !u!50 &-5221114783492473243
 Rigidbody2D:
   serializedVersion: 4
@@ -163,7 +159,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -6,9 +6,16 @@ public class EnemyTesting : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<Boar>().TakeDamage(1);
+        }
     }
+
+
 }
