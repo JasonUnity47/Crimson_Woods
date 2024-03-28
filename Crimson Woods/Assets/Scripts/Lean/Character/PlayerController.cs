@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer mySpriteRender;
     private float startingMoveSpeed;
     private bool facingLeft = false;
-    private Collider2D playerCollider;
 
 
     // Testing
@@ -41,7 +40,6 @@ public class PlayerController : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
         dashCount = maxDashes;
-        playerCollider = GetComponent<Collider2D>();
 
         //startTime = dashRestoreTime;
         //timeBtwFrame = startTime;
@@ -120,10 +118,6 @@ public class PlayerController : MonoBehaviour
         if (movement != Vector2.zero && dashCount > 0 && !isDashing)
         {
             isDashing = true;
-
-            // Disable collision detection with other objects
-            playerCollider.enabled = false;
-
             moveSpeed *= dashSpeed;
             myTrailRenderer.emitting = true;
 
@@ -142,10 +136,6 @@ public class PlayerController : MonoBehaviour
         float dashTime = .2f;
         float dashCD = .25f;
         yield return new WaitForSeconds(dashTime);
-
-        // Re-enable collision detection with other objects after the dash ends
-        playerCollider.enabled = true;
-
         moveSpeed = startingMoveSpeed;
         myTrailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
