@@ -24,8 +24,6 @@ public class DireBoarChaseState : DireBoarState
 
         direBoar.direBoarMovement.moveSpeed = direBoarStats.moveSpeed;
 
-
-
         // Detect obstacle
         direBoar.DetectObstacle();
 

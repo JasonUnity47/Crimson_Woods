@@ -51,7 +51,7 @@ public class BulletScript : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the bullet collides with an object tagged as a wall
         if (collision.gameObject.CompareTag(wallTag))

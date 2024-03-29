@@ -144,6 +144,7 @@ public class DireBoar : MonoBehaviour
     {
         // Check whether there is any obstacle around the player
         hasObstacle = Physics2D.OverlapCircle(shockArea.position, shockRadius, whatIsObstacle);
+        //Debug.Log("Check");
     }
 
     public void ShockMotion()
