@@ -73,6 +73,20 @@ public class BulletScript : MonoBehaviour
             // Destroy the bullet
             DestroyBullet();
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            DireBoar direBoarHealth = collision.gameObject.GetComponent<DireBoar>();
+
+            // Apply damage to the enemy
+            if (direBoarHealth != null)
+            {
+                direBoarHealth.TakeDamage(damage);
+            }
+
+            // Destroy the bullet
+            DestroyBullet();
+        }
     }
 
     void DestroyBullet()
