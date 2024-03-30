@@ -10,6 +10,7 @@ public class BuffContent : MonoBehaviour
     [Header("Script Reference")]
     private PlayerController playerController;
     private PlayerHealth playerHealth;
+    private Shooting shooting;
 
     [Header("Object Reference")]
     private Transform playerPos;
@@ -30,12 +31,14 @@ public class BuffContent : MonoBehaviour
     [SerializeField] private int dashIncrement = 1;
     [SerializeField] private int dashChance = 25;
     [SerializeField] private int healthIncrement = 2;
-    private float movespeedIncrement;
+    private float moveSpeedIncrement;
+    private float atkSpeedIncrement;
 
     private void Start()
     {
-        playerController = GameObject.FindAnyObjectByType<PlayerController>();
-        playerHealth = GameObject.FindAnyObjectByType<PlayerHealth>();
+        playerController = GameObject.FindAnyObjectByType<PlayerController>().GetComponent<PlayerController>();
+        playerHealth = GameObject.FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
+        shooting = GameObject.FindAnyObjectByType<Shooting>().GetComponent<Shooting>();
         playerPos = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
@@ -61,7 +64,7 @@ public class BuffContent : MonoBehaviour
 
                 case 1:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = BlitzSurge;
                         break;
                     }
 
@@ -215,11 +218,23 @@ public class BuffContent : MonoBehaviour
     void VitalVelocity()
     {
         // Increases health by 2 and movement speed by 20%.
-        movespeedIncrement = playerController.moveSpeed * (20 / 100f);
+        moveSpeedIncrement = playerController.moveSpeed * (20 / 100f);
 
         playerHealth.maxHealth += healthIncrement;
-        playerController.moveSpeed += movespeedIncrement;
-        playerController.startingMoveSpeed += movespeedIncrement;
+        playerController.moveSpeed += moveSpeedIncrement;
+        playerController.startingMoveSpeed += moveSpeedIncrement;
+
+        return;
+    }
+
+    void BlitzSurge()
+    {
+        atkSpeedIncrement = shooting.timeBetweenFiring * (20 / 100f);
+        moveSpeedIncrement = playerController.moveSpeed * (20 / 100f);
+
+        shooting.timeBetweenFiring -= atkSpeedIncrement;
+        playerController.moveSpeed += moveSpeedIncrement;
+        playerController.startingMoveSpeed += moveSpeedIncrement;
 
         return;
     }
