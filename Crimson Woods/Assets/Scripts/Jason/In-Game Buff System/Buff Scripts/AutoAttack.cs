@@ -49,9 +49,12 @@ public class AutoAttack : MonoBehaviour
             }
         }
 
-        Quaternion rotation = Quaternion.LookRotation(transform.position - (Vector3)closestEnemy.transform.position, transform.TransformDirection(Vector3.up));
-
-        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+        if (closestEnemy != null)
+        {
+            Vector3 direction = closestEnemy.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 
     void AttackEnemy()

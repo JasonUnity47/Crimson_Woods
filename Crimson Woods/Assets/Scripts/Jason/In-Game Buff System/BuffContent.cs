@@ -11,7 +11,8 @@ public class BuffContent : MonoBehaviour
     private PlayerController playerController;
 
     [Header("Object Reference")]
-
+    private Transform playerPos;
+    public GameObject bowAvatar;
 
     [Header("Active Buff")]
     public List<Buff> activeBuffs;
@@ -31,6 +32,7 @@ public class BuffContent : MonoBehaviour
     private void Start()
     {
         playerController = GameObject.FindAnyObjectByType<PlayerController>();
+        playerPos = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
     private void Update()
@@ -103,7 +105,7 @@ public class BuffContent : MonoBehaviour
 
                 case 9:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = ArrowAvatars;
                         break;
                     }
 
@@ -189,6 +191,19 @@ public class BuffContent : MonoBehaviour
                 playerController.dashCount++;
             }
         }
+
+        return;
+    }
+
+    void ArrowAvatars()
+    {
+        Vector2 leftPlayer = playerPos.position + new Vector3(-2.1f, 0, 0);
+
+        Instantiate(bowAvatar, leftPlayer, Quaternion.identity, playerPos);
+
+        Vector2 rightPlayer = playerPos.position + new Vector3(2.7f, 0, 0);
+
+        Instantiate(bowAvatar, rightPlayer, Quaternion.identity, playerPos);
 
         return;
     }
