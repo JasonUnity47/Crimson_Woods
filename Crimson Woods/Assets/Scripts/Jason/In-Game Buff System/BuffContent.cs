@@ -9,6 +9,7 @@ public class BuffContent : MonoBehaviour
     // Declaration
     [Header("Script Reference")]
     private PlayerController playerController;
+    private PlayerHealth playerHealth;
 
     [Header("Object Reference")]
     private Transform playerPos;
@@ -25,13 +26,16 @@ public class BuffContent : MonoBehaviour
     public bool canCheck = true;
 
     [Header("Stats")]
-    [SerializeField] private float reduction = 1 - (30 / 100f);
+    [SerializeField] private float dashReduction = 1 - (30 / 100f);
     [SerializeField] private int dashIncrement = 1;
     [SerializeField] private int dashChance = 25;
+    [SerializeField] private int healthIncrement = 2;
+    private float movespeedIncrement;
 
     private void Start()
     {
         playerController = GameObject.FindAnyObjectByType<PlayerController>();
+        playerHealth = GameObject.FindAnyObjectByType<PlayerHealth>();
         playerPos = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
@@ -51,7 +55,7 @@ public class BuffContent : MonoBehaviour
             {
                 case 0:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = VitalVelocity;
                         break;
                     }
 
@@ -149,7 +153,7 @@ public class BuffContent : MonoBehaviour
     void SwiftSurge()
     {
         // Dash cooldown reduced by 30%.
-        playerController.dashRestoreTime *= reduction;
+        playerController.dashRestoreTime *= dashReduction;
 
         return;
     }
@@ -204,6 +208,18 @@ public class BuffContent : MonoBehaviour
         Vector2 rightPlayer = playerPos.position + new Vector3(2.7f, 0, 0);
 
         Instantiate(bowAvatar, rightPlayer, Quaternion.identity, playerPos);
+
+        return;
+    }
+
+    void VitalVelocity()
+    {
+        // Increases health by 2 and movement speed by 20%.
+        movespeedIncrement = playerController.moveSpeed * (20 / 100f);
+
+        playerHealth.maxHealth += healthIncrement;
+        playerController.moveSpeed += movespeedIncrement;
+        playerController.startingMoveSpeed += movespeedIncrement;
 
         return;
     }
