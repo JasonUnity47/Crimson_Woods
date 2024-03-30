@@ -25,12 +25,14 @@ public class BuffContent : MonoBehaviour
     [Header("Check")]
     public bool onEtherealDash = false;
     public bool onPenetratingArrows = false;
+    public bool onEvasiveManeuvers = false;
     public bool canCheck = true;
 
     [Header("Stats")]
     [SerializeField] private float dashReduction = 1 - (30 / 100f);
     [SerializeField] private int dashIncrement = 1;
     [SerializeField] private int dashChance = 25;
+    public int dodgeChance = 25;
     [SerializeField] private int healthIncrement = 2;
     private float moveSpeedIncrement;
     private float atkSpeedIncrement;
@@ -107,7 +109,7 @@ public class BuffContent : MonoBehaviour
 
                 case 8:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = EvasiveManeuvers;
                         break;
                     }
 
@@ -245,6 +247,15 @@ public class BuffContent : MonoBehaviour
         // Turn on Penetrating Arrows.
         // Arrows penetrate through up to 3 enemies.
         onPenetratingArrows = true;
+
+        return;
+    }
+
+    void EvasiveManeuvers()
+    {
+        // Turn on Evasive Maneuvers.
+        // 25% chance to evade damage when attacked by enemies.
+        onEvasiveManeuvers = true;
 
         return;
     }
