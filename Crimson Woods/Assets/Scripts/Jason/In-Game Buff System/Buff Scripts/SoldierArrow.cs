@@ -22,4 +22,52 @@ public class SoldierArrow : MonoBehaviour
     {
         rb.velocity = transform.right * velocity;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            if (collision.GetComponent<Boar>() == true)
+            {
+                Boar boar = collision.GetComponent<Boar>();
+                boar.TakeDamage(1);
+                Destroy(this.gameObject);
+            }
+
+            else if (collision.GetComponent<DireBoar>() == true)
+            {
+                DireBoar direBoar = collision.GetComponent<DireBoar>();
+                direBoar.TakeDamage(1);
+                Destroy(this.gameObject);
+            }
+
+            else if (collision.GetComponent<GoblinStats>() == true)
+            {
+                GoblinStats goblinStats = collision.GetComponent<GoblinStats>();
+                goblinStats.health--;
+                Destroy(this.gameObject);
+            }
+
+            else if (collision.GetComponent<SlimeStats>() == true)
+            {
+                SlimeStats slimeStats = collision.GetComponent<SlimeStats>();
+                slimeStats.health--;
+                Destroy(this.gameObject);
+            }
+
+            // Boss 1
+            //else if (collision.GetComponent<Boss1>() == true)
+            //{
+            //BoarStats boarStats = collision.GetComponent<BoarStats>();
+            //boarStats.health--;
+            //}
+
+            else if (collision.GetComponent<Boss2Stats>() == true)
+            {
+                Boss2Stats boss2Stats = collision.GetComponent<Boss2Stats>();
+                boss2Stats.health--;
+                Destroy(this.gameObject);
+            }
+        }
+    }
 }

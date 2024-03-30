@@ -14,9 +14,17 @@ public class BulletScript : MonoBehaviour
     private string playerTag = "Player";
     private string wallTag = "Wall";
 
+    private BuffContent buffContent;
+    private int penetrationNumber = 3;
+
+    private float startTime = 0.05f;
+    private float timeBtwFrame;
+
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+        buffContent = GameObject.FindWithTag("Game Manager").GetComponent<BuffContent>();
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -37,6 +45,8 @@ public class BulletScript : MonoBehaviour
         {
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
         }
+
+        timeBtwFrame = startTime;
     }
 
     void Update()
@@ -48,6 +58,11 @@ public class BulletScript : MonoBehaviour
         if (traveledDistance >= maxRange)
         {
             DestroyBullet();
+        }
+
+        if (buffContent.onPenetratingArrows && timeBtwFrame > 0)
+        {
+            timeBtwFrame -= Time.deltaTime;
         }
     }
 
@@ -70,8 +85,31 @@ public class BulletScript : MonoBehaviour
                 boarHealth.TakeDamage(damage);
             }
 
-            // Destroy the bullet
-            DestroyBullet();
+            if (buffContent.onPenetratingArrows)
+            {
+                if (timeBtwFrame <= 0)
+                {
+                    timeBtwFrame = startTime;
+                    penetrationNumber--;
+                }
+
+                else
+                {
+                    timeBtwFrame -= Time.deltaTime;
+                }
+
+                if (penetrationNumber <= 0)
+                {
+                    // Destroy the bullet
+                    DestroyBullet();
+                }
+            }
+
+            else
+            {
+                // Destroy the bullet
+                DestroyBullet();
+            }
         }
 
         if (collision.gameObject.CompareTag("Enemy"))
@@ -84,8 +122,26 @@ public class BulletScript : MonoBehaviour
                 direBoarHealth.TakeDamage(damage);
             }
 
-            // Destroy the bullet
-            DestroyBullet();
+            if (buffContent.onPenetratingArrows)
+            {
+                if (timeBtwFrame <= 0)
+                {
+                    timeBtwFrame = startTime;
+                    penetrationNumber--;
+                }
+
+                if (penetrationNumber <= 0)
+                {
+                    // Destroy the bullet
+                    DestroyBullet();
+                }
+            }
+
+            else
+            {
+                // Destroy the bullet
+                DestroyBullet();
+            }
         }
     }
 

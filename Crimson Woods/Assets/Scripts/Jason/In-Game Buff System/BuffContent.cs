@@ -9,9 +9,12 @@ public class BuffContent : MonoBehaviour
     // Declaration
     [Header("Script Reference")]
     private PlayerController playerController;
+    private PlayerHealth playerHealth;
+    private Shooting shooting;
 
     [Header("Object Reference")]
-
+    private Transform playerPos;
+    public GameObject bowAvatar;
 
     [Header("Active Buff")]
     public List<Buff> activeBuffs;
@@ -21,16 +24,25 @@ public class BuffContent : MonoBehaviour
 
     [Header("Check")]
     public bool onEtherealDash = false;
+    public bool onPenetratingArrows = false;
+    public bool onEvasiveManeuvers = false;
     public bool canCheck = true;
 
     [Header("Stats")]
-    [SerializeField] private float reduction = 1 - (30 / 100f);
+    [SerializeField] private float dashReduction = 1 - (30 / 100f);
     [SerializeField] private int dashIncrement = 1;
     [SerializeField] private int dashChance = 25;
+    public int dodgeChance = 25;
+    [SerializeField] private int healthIncrement = 2;
+    private float moveSpeedIncrement;
+    private float atkSpeedIncrement;
 
     private void Start()
     {
-        playerController = GameObject.FindAnyObjectByType<PlayerController>();
+        playerController = GameObject.FindAnyObjectByType<PlayerController>().GetComponent<PlayerController>();
+        playerHealth = GameObject.FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
+        shooting = GameObject.FindAnyObjectByType<Shooting>().GetComponent<Shooting>();
+        playerPos = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
     private void Update()
@@ -49,13 +61,13 @@ public class BuffContent : MonoBehaviour
             {
                 case 0:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = VitalVelocity;
                         break;
                     }
 
                 case 1:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = BlitzSurge;
                         break;
                     }
 
@@ -91,19 +103,19 @@ public class BuffContent : MonoBehaviour
 
                 case 7:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = PenetratingArrows;
                         break;
                     }
 
                 case 8:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = EvasiveManeuvers;
                         break;
                     }
 
                 case 9:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = ArrowAvatars;
                         break;
                     }
 
@@ -147,7 +159,7 @@ public class BuffContent : MonoBehaviour
     void SwiftSurge()
     {
         // Dash cooldown reduced by 30%.
-        playerController.dashRestoreTime *= reduction;
+        playerController.dashRestoreTime *= dashReduction;
 
         return;
     }
@@ -189,6 +201,61 @@ public class BuffContent : MonoBehaviour
                 playerController.dashCount++;
             }
         }
+
+        return;
+    }
+
+    void ArrowAvatars()
+    {
+        Vector2 leftPlayer = playerPos.position + new Vector3(-2.1f, 0, 0);
+
+        Instantiate(bowAvatar, leftPlayer, Quaternion.identity, playerPos);
+
+        Vector2 rightPlayer = playerPos.position + new Vector3(2.7f, 0, 0);
+
+        Instantiate(bowAvatar, rightPlayer, Quaternion.identity, playerPos);
+
+        return;
+    }
+
+    void VitalVelocity()
+    {
+        // Increases health by 2 and movement speed by 20%.
+        moveSpeedIncrement = playerController.moveSpeed * (20 / 100f);
+
+        playerHealth.maxHealth += healthIncrement;
+        playerController.moveSpeed += moveSpeedIncrement;
+        playerController.startingMoveSpeed += moveSpeedIncrement;
+
+        return;
+    }
+
+    void BlitzSurge()
+    {
+        atkSpeedIncrement = shooting.timeBetweenFiring * (20 / 100f);
+        moveSpeedIncrement = playerController.moveSpeed * (20 / 100f);
+
+        shooting.timeBetweenFiring -= atkSpeedIncrement;
+        playerController.moveSpeed += moveSpeedIncrement;
+        playerController.startingMoveSpeed += moveSpeedIncrement;
+
+        return;
+    }
+
+    void PenetratingArrows()
+    {
+        // Turn on Penetrating Arrows.
+        // Arrows penetrate through up to 3 enemies.
+        onPenetratingArrows = true;
+
+        return;
+    }
+
+    void EvasiveManeuvers()
+    {
+        // Turn on Evasive Maneuvers.
+        // 25% chance to evade damage when attacked by enemies.
+        onEvasiveManeuvers = true;
 
         return;
     }

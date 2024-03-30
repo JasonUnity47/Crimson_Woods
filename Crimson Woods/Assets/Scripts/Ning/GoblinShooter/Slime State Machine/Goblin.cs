@@ -8,7 +8,6 @@ using UnityEngine;
 public class Goblin : MonoBehaviour
 {
     // Declaration
-    
     private Material matWhite;
     private Material matDefault;
     SpriteRenderer SR;
@@ -61,7 +60,7 @@ public class Goblin : MonoBehaviour
     private void Start()
     {
         goblinMovement = GetComponent<GoblinMovement>();
-
+        
         SR = GetComponent<SpriteRenderer>();
 
         matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
@@ -78,6 +77,7 @@ public class Goblin : MonoBehaviour
         if (!isDead)
         {
             CheckDead();
+            
         }
 
         FlipDirection();
@@ -150,4 +150,7 @@ public class Goblin : MonoBehaviour
     {
         SR.material = matDefault;
     }
+
+   
 }
+

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool FacingLeft { get { return facingLeft; } }
     public static PlayerController Instance;
 
-    [SerializeField] private float moveSpeed = 1f;
+    public float moveSpeed = 1f;
     [SerializeField] private float dashSpeed = 4f;
     [SerializeField] private TrailRenderer myTrailRenderer;
 
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator myAnimator;
     private SpriteRenderer mySpriteRender;
-    private float startingMoveSpeed;
+    public float startingMoveSpeed;
     private bool facingLeft = false;
 
 
