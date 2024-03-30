@@ -24,6 +24,7 @@ public class BuffContent : MonoBehaviour
 
     [Header("Check")]
     public bool onEtherealDash = false;
+    public bool onPenetratingArrows = false;
     public bool canCheck = true;
 
     [Header("Stats")]
@@ -100,7 +101,7 @@ public class BuffContent : MonoBehaviour
 
                 case 7:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = PenetratingArrows;
                         break;
                     }
 
@@ -235,6 +236,15 @@ public class BuffContent : MonoBehaviour
         shooting.timeBetweenFiring -= atkSpeedIncrement;
         playerController.moveSpeed += moveSpeedIncrement;
         playerController.startingMoveSpeed += moveSpeedIncrement;
+
+        return;
+    }
+
+    void PenetratingArrows()
+    {
+        // Turn on Penetrating Arrows.
+        // Arrows penetrate through up to 3 enemies.
+        onPenetratingArrows = true;
 
         return;
     }
