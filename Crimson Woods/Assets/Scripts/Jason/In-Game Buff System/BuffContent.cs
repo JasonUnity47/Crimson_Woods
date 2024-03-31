@@ -26,6 +26,7 @@ public class BuffContent : MonoBehaviour
     public bool onEtherealDash = false;
     public bool onPenetratingArrows = false;
     public bool onEvasiveManeuvers = false;
+    public bool onArmoredFortitude = false;
     public bool canCheck = true;
 
     [Header("Stats")]
@@ -73,7 +74,7 @@ public class BuffContent : MonoBehaviour
 
                 case 2:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = ArmoredFortitude;
                         break;
                     }
 
@@ -256,6 +257,13 @@ public class BuffContent : MonoBehaviour
         // Turn on Evasive Maneuvers.
         // 25% chance to evade damage when attacked by enemies.
         onEvasiveManeuvers = true;
+
+        return;
+    }
+
+    void ArmoredFortitude()
+    {
+        onArmoredFortitude = true;
 
         return;
     }
