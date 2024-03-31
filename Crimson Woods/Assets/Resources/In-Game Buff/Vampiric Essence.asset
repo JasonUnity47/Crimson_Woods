@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Vampiric Essence
   m_EditorClassIdentifier: 
   buffId: 5
-  buffSprite: {fileID: 0}
+  buffSprite: {fileID: 21300000, guid: d0e1ffe941ed149428dc949421f5d335, type: 3}
   buffName: Vampiric Essence
   buffDescription: 25% chance to regain 1 HP upon killing an enemy.

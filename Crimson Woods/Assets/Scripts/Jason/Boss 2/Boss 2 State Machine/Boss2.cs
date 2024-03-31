@@ -229,6 +229,10 @@ public class Boss2 : MonoBehaviour
         StartCoroutine("SlashCD");
     }
 
+    public void LoseEssence()
+    {
+    }
+
     public void FlipDirection()
     {
         if (Rb.velocity.x >= 0.01 && !facingRight || Rb.velocity.x <= -0.01 && facingRight)

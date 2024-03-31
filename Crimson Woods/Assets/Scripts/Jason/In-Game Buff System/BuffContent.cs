@@ -27,6 +27,7 @@ public class BuffContent : MonoBehaviour
     public bool onPenetratingArrows = false;
     public bool onEvasiveManeuvers = false;
     public bool onArmoredFortitude = false;
+    public bool onVampiricEssence = false;
     public bool canCheck = true;
 
     [Header("Stats")]
@@ -37,6 +38,7 @@ public class BuffContent : MonoBehaviour
     [SerializeField] private int healthIncrement = 2;
     private float moveSpeedIncrement;
     private float atkSpeedIncrement;
+    [SerializeField] private int healChance = 25;
 
     private void Start()
     {
@@ -92,7 +94,7 @@ public class BuffContent : MonoBehaviour
 
                 case 5:
                     {
-                        //buff.ApplyBuff =
+                        buff.ApplyBuff = VampiricEssence;
                         break;
                     }
 
@@ -127,12 +129,6 @@ public class BuffContent : MonoBehaviour
                     }
 
                 case 11:
-                    {
-                        //buff.ApplyBuff =
-                        break;
-                    }
-
-                case 12:
                     {
                         //buff.ApplyBuff =
                         break;
@@ -266,5 +262,33 @@ public class BuffContent : MonoBehaviour
         onArmoredFortitude = true;
 
         return;
+    }
+
+    void VampiricEssence()
+    {
+        onVampiricEssence = true;
+
+        return;
+    }
+
+    public void DetectDead(bool checkDead)
+    {
+        if (!checkDead)
+        {
+            return;
+        }
+
+        else
+        {
+            int randomNumber = Random.Range(0, 101);
+
+            Debug.Log(randomNumber);
+
+            if (randomNumber <= healChance)
+            {
+                playerHealth.health++;
+                return;
+            }
+        }
     }
 }

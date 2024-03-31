@@ -120,6 +120,12 @@ public class BulletScript : MonoBehaviour
             if (direBoarHealth != null)
             {
                 direBoarHealth.TakeDamage(damage);
+
+                // Vampiric Essence
+                if (buffContent.onVampiricEssence)
+                {
+                    buffContent.DetectDead(direBoarHealth.isDead);
+                }
             }
 
             if (buffContent.onPenetratingArrows)
