@@ -121,18 +121,6 @@ public class BuffContent : MonoBehaviour
                         buff.ApplyBuff = ArrowAvatars;
                         break;
                     }
-
-                case 10:
-                    {
-                        //buff.ApplyBuff =
-                        break;
-                    }
-
-                case 11:
-                    {
-                        //buff.ApplyBuff =
-                        break;
-                    }
             }
         }
 
