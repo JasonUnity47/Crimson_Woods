@@ -15,6 +15,7 @@ public class BuffContent : MonoBehaviour
     [Header("Object Reference")]
     private Transform playerPos;
     public GameObject bowAvatar;
+    [SerializeField] private GameObject costVFX;
 
     [Header("Active Buff")]
     public List<Buff> activeBuffs;
@@ -183,7 +184,9 @@ public class BuffContent : MonoBehaviour
 
             if (randomNumber <= dashChance)
             {
+                GameObject costEffect = Instantiate(costVFX, playerPos.position, playerPos.rotation, playerPos);
                 playerController.dashCount++;
+                Destroy(costEffect, 0.6f);
             }
         }
 

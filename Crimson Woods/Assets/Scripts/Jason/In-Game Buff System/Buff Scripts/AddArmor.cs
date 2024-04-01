@@ -19,6 +19,8 @@ public class AddArmor : MonoBehaviour
     private BuffContent buffContent;
     private PlayerHealth playerHealth;
 
+    [SerializeField] private GameObject blockVFX;
+
     private void Start()
     {
         buffContent = GameObject.FindWithTag("Game Manager").GetComponent<BuffContent>();
@@ -71,11 +73,13 @@ public class AddArmor : MonoBehaviour
     {
         if (tempHealth != playerHealth.health && armor > 0)
         {
-            Debug.Log("Block!");
+            GameObject blockEffect = Instantiate(blockVFX, transform.position, transform.rotation, transform);
 
             armor -= tempHealth - playerHealth.health;
 
             playerHealth.health = tempHealth;
+
+            Destroy(blockEffect, 1f);
         }
 
         if (armor <= 0)
