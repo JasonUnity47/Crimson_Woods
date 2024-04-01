@@ -56,8 +56,13 @@ public class DireBoar : MonoBehaviour
 
     public LootBag lootBag { get; private set; }
 
+    // Game Manager
+    private BuffContent buffContent;
+
     private void Awake()
     {
+        buffContent = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<BuffContent>();
+
         direBoarStateMachine = new DireBoarStateMachine();
 
         lootBag = GetComponent<LootBag>();
@@ -108,8 +113,14 @@ public class DireBoar : MonoBehaviour
 
     public void CheckDead()
     {
-        if (direBoarStats.health <= 0)
+        if (direBoarStats.health <= 0 && !isDead)
         {
+            // IF Vampiric Essence is ON.
+            if (buffContent.onVampiricEssence)
+            {
+                buffContent.DetectDead();
+            }
+
             isDead = true;
             isHurt = true;
             Rb.velocity = Vector2.zero;

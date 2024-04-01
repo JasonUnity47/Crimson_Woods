@@ -17,6 +17,8 @@ public class BulletScript : MonoBehaviour
     private BuffContent buffContent;
     private int penetrationNumber = 3;
 
+    private SpriteRenderer spriteRenderer;
+
     private float startTime = 0.05f;
     private float timeBtwFrame;
 
@@ -25,6 +27,8 @@ public class BulletScript : MonoBehaviour
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         buffContent = GameObject.FindWithTag("Game Manager").GetComponent<BuffContent>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -64,6 +68,14 @@ public class BulletScript : MonoBehaviour
         {
             timeBtwFrame -= Time.deltaTime;
         }
+
+        // IF Piercing Arrows is ON and Color is not red THEN change color.
+        // Change color to red.
+        // Red piercing arrows.
+        if (buffContent.onPiercingArrows && spriteRenderer.color != Color.red)
+        {
+            spriteRenderer.color = Color.red;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -85,6 +97,7 @@ public class BulletScript : MonoBehaviour
                 boarHealth.TakeDamage(damage);
             }
 
+            // IF Piercing Arrows is ON THEN can penetrate enemy.
             if (buffContent.onPiercingArrows)
             {
                 if (timeBtwFrame <= 0)
@@ -120,12 +133,6 @@ public class BulletScript : MonoBehaviour
             if (direBoarHealth != null)
             {
                 direBoarHealth.TakeDamage(damage);
-
-                // Vampiric Essence
-                if (buffContent.onVampiricEssence)
-                {
-                    buffContent.DetectDead(direBoarHealth.isDead);
-                }
             }
 
             if (buffContent.onPiercingArrows)

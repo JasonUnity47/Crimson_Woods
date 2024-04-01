@@ -16,6 +16,8 @@ public class BuffContent : MonoBehaviour
     private Transform playerPos;
     public GameObject bowAvatar;
     [SerializeField] private GameObject costVFX;
+    public GameObject evadeVFX;
+    [SerializeField] private GameObject bloodVFX;
 
     [Header("Active Buff")]
     public List<Buff> activeBuffs;
@@ -268,24 +270,20 @@ public class BuffContent : MonoBehaviour
         return;
     }
 
-    public void DetectDead(bool checkDead)
+    public void DetectDead()
     {
-        if (!checkDead)
+        int randomNumber = Random.Range(0, 101);
+
+        if (randomNumber <= healChance)
         {
-            return;
-        }
-
-        else
-        {
-            int randomNumber = Random.Range(0, 101);
-
-            Debug.Log(randomNumber);
-
-            if (randomNumber <= healChance)
+            if (playerHealth.health < playerHealth.maxHealth)
             {
+                GameObject bloodEffect = Instantiate(bloodVFX, playerPos.position, playerPos.rotation, playerPos);
                 playerHealth.health++;
-                return;
+                Destroy(bloodEffect, 0.5f);
             }
+
+            return;
         }
     }
 }
