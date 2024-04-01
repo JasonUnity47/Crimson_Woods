@@ -24,7 +24,7 @@ public class BuffContent : MonoBehaviour
 
     [Header("Check")]
     public bool onEtherealDash = false;
-    public bool onPenetratingArrows = false;
+    public bool onPiercingArrows = false;
     public bool onEvasiveManeuvers = false;
     public bool onArmoredFortitude = false;
     public bool onVampiricEssence = false;
@@ -106,7 +106,7 @@ public class BuffContent : MonoBehaviour
 
                 case 7:
                     {
-                        buff.ApplyBuff = PenetratingArrows;
+                        buff.ApplyBuff = PiercingArrows;
                         break;
                     }
 
@@ -118,7 +118,7 @@ public class BuffContent : MonoBehaviour
 
                 case 9:
                     {
-                        buff.ApplyBuff = ArrowAvatars;
+                        buff.ApplyBuff = BowAvatars;
                         break;
                     }
             }
@@ -160,6 +160,7 @@ public class BuffContent : MonoBehaviour
     void EtherealDash()
     {
         // Turn on Ethereal Dash.
+        // 25% chance for dash to not consume charges.
         onEtherealDash = true;
 
         return;
@@ -168,7 +169,6 @@ public class BuffContent : MonoBehaviour
     void CostDash()
     {
         // 25% chance for dash to not consume charges (Increase back the dash count if the dash count decrease by 1).
-
         if (!playerController.isDashing)
         {
             canCheck = true;
@@ -190,8 +190,9 @@ public class BuffContent : MonoBehaviour
         return;
     }
 
-    void ArrowAvatars()
+    void BowAvatars()
     {
+        // Summons two bow avatars to engage enemies.
         Vector2 leftPlayer = playerPos.position + new Vector3(-2.1f, 0, 0);
 
         Instantiate(bowAvatar, leftPlayer, Quaternion.identity, playerPos);
@@ -217,6 +218,7 @@ public class BuffContent : MonoBehaviour
 
     void BlitzSurge()
     {
+        // Increases attack speed and movement speed by 20%.
         atkSpeedIncrement = shooting.timeBetweenFiring * (20 / 100f);
         moveSpeedIncrement = playerController.moveSpeed * (20 / 100f);
 
@@ -227,11 +229,11 @@ public class BuffContent : MonoBehaviour
         return;
     }
 
-    void PenetratingArrows()
+    void PiercingArrows()
     {
         // Turn on Penetrating Arrows.
         // Arrows penetrate through up to 3 enemies.
-        onPenetratingArrows = true;
+        onPiercingArrows = true;
 
         return;
     }
@@ -247,6 +249,8 @@ public class BuffContent : MonoBehaviour
 
     void ArmoredFortitude()
     {
+        // Turn on Armored Fortitude.
+        // Grants +5 Armor (+1 Armor every 8 seconds).
         onArmoredFortitude = true;
 
         return;
@@ -254,6 +258,8 @@ public class BuffContent : MonoBehaviour
 
     void VampiricEssence()
     {
+        // Turn on Vampiric Essence.
+        // 25% chance to regain 1 HP upon killing an enemy.
         onVampiricEssence = true;
 
         return;

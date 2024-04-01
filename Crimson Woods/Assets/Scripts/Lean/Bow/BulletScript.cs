@@ -60,7 +60,7 @@ public class BulletScript : MonoBehaviour
             DestroyBullet();
         }
 
-        if (buffContent.onPenetratingArrows && timeBtwFrame > 0)
+        if (buffContent.onPiercingArrows && timeBtwFrame > 0)
         {
             timeBtwFrame -= Time.deltaTime;
         }
@@ -85,7 +85,7 @@ public class BulletScript : MonoBehaviour
                 boarHealth.TakeDamage(damage);
             }
 
-            if (buffContent.onPenetratingArrows)
+            if (buffContent.onPiercingArrows)
             {
                 if (timeBtwFrame <= 0)
                 {
@@ -128,7 +128,7 @@ public class BulletScript : MonoBehaviour
                 }
             }
 
-            if (buffContent.onPenetratingArrows)
+            if (buffContent.onPiercingArrows)
             {
                 if (timeBtwFrame <= 0)
                 {

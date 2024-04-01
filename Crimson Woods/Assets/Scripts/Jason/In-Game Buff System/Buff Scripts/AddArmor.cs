@@ -5,11 +5,15 @@ using UnityEngine;
 public class AddArmor : MonoBehaviour
 {
     // Declaration
+    [Header("Armor")]
     public float armor;
     public float maxArmor;
+
+    [Header("Timer")]
     public float startTime;
     private float timeBtwFrame;
 
+    [Header("Check")]
     public float tempHealth;
 
     private BuffContent buffContent;
