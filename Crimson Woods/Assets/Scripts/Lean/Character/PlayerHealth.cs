@@ -6,11 +6,13 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public static event Action OnPlayerDamaged;
-    [SerializeField] BuffContent buffContent;
-
+    public static event Action OnPlayerDied;
     public float health, maxHealth;
+    [SerializeField] BuffContent buffContent;
+   
     private Animator myAnimator;
-    
+    private bool dead;
+
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
@@ -39,22 +41,28 @@ public class PlayerHealth : MonoBehaviour
                 return;
             }
 
-            // ELSE take damage.
-            else
+        }
+
+        if (health > 0)
+        {
+            health -= amount;
+            OnPlayerDamaged?.Invoke();
+            myAnimator.SetTrigger("HurtTrigger");
+
+        }
+        else
+        {
+            if (!dead)
             {
-                health -= amount;
-                
-                OnPlayerDamaged?.Invoke();
+                OnPlayerDied?.Invoke();
+                myAnimator.SetTrigger("DeadTrigger");
+                GetComponent<PlayerController>().enabled = false;
+                dead = true;
             }
         }
 
-        // ELSE take damage.
-        else
-        {
-            health -= amount;
-            myAnimator.SetTrigger("HurtTrigger");
-            OnPlayerDamaged?.Invoke();
-        }
-    }
 
+
+    }
 }
+    

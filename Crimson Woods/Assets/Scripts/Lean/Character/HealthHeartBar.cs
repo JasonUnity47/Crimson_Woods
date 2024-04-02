@@ -11,13 +11,21 @@ public class HealthHeartBar : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnPlayerDamaged += DrawHearts;
+        PlayerHealth.OnPlayerDied += HandlePlayerDeath;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnPlayerDamaged -= DrawHearts;
+        PlayerHealth.OnPlayerDied -= HandlePlayerDeath;
     }
 
+    private void HandlePlayerDeath()
+    {
+        // Implement logic for handling player death here
+        // For example, you might disable player movement
+        // or show a game over screen
+    }
     public void Start()
     {
         DrawHearts();

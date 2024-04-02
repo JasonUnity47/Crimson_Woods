@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 1f;
     [SerializeField] private float dashSpeed = 4f;
     [SerializeField] private TrailRenderer myTrailRenderer;
+    [SerializeField] private float iFramesDuration;
+    [SerializeField] private int numberOfFlashes;
 
     public int maxDashes = 3;
     public float dashRestoreTime = 10f;
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private Animator myAnimator;
     private SpriteRenderer mySpriteRender;   
     private bool facingLeft = false;
+    private SpriteRenderer spriteRend;
+
 
 
     // Testing
@@ -127,6 +131,7 @@ public class PlayerController : MonoBehaviour
             // Invoke the event to notify subscribers (such as the DashUI script) that the dash count has changed
             OnDashCountChanged?.Invoke();
 
+            StartCoroutine(Invulnerability());
             StartCoroutine(EndDashRoutine());
         }
     }
@@ -157,6 +162,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    private IEnumerator Invulnerability()
+    {
+        Physics2D.IgnoreLayerCollision(6, 7, true);
+        for (int i = 0; i < numberOfFlashes; i++)
+        {
+            mySpriteRender.color = new Color(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
+            mySpriteRender.color = Color.white;
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
+        }
+        Physics2D.IgnoreLayerCollision(6, 7, false);
+    }
 }
 
