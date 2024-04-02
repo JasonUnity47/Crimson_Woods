@@ -119,6 +119,7 @@ public class Boar : MonoBehaviour
         {
             boarStats.health -= damageValue;
 
+            Anim.SetTrigger("HurtTrigger");
 
             StartCoroutine("WaitForHurt");
         }

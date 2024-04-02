@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] BuffContent buffContent;
 
     public float health, maxHealth;
+    private Animator myAnimator;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
             else
             {
                 health -= amount;
+                
                 OnPlayerDamaged?.Invoke();
             }
         }
@@ -45,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             health -= amount;
+            myAnimator.SetTrigger("HurtTrigger");
             OnPlayerDamaged?.Invoke();
         }
     }

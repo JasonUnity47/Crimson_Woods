@@ -18,13 +18,13 @@ public class PlayerController : MonoBehaviour
     public int dashCount;
     public bool isDashing = false;
     public static event Action OnDashCountChanged;
+    public float startingMoveSpeed;
 
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator myAnimator;
-    private SpriteRenderer mySpriteRender;
-    public float startingMoveSpeed;
+    private SpriteRenderer mySpriteRender;   
     private bool facingLeft = false;
 
 
