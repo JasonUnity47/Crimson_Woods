@@ -10,6 +10,11 @@ public class PlayerHealth : MonoBehaviour
 
     public float health, maxHealth;
     private Animator myAnimator;
+    
+    private void Awake()
+    {
+        myAnimator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
