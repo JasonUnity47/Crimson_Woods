@@ -151,4 +151,18 @@ public class Slime : MonoBehaviour
     {
         SR.material = matDefault;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Reduce player's health here
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(1); // You can adjust the damage value as needed
+            }
+
+        }
+    }
 }
