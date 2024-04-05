@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 OnPlayerDied?.Invoke();
                 myAnimator.SetTrigger("DeadTrigger");
-                GetComponent<PlayerController>().enabled = false;
+                GetComponent<PlayerController>().enabled = false;               
                 dead = true;
             }
         }
