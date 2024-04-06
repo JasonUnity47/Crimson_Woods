@@ -31,7 +31,7 @@ public class ShopManager : MonoBehaviour
 
     public void AddCoins()
     {
-        coins+=100;
+        coins+=1000;
         coinUI.text = "Bloods: " + coins.ToString();
         CheckPurchaseable();
     }
@@ -40,7 +40,7 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < shopItemSO.Length; i++)
         {
-            if (coins >= shopItemSO[i].baseCost)
+            if (coins >= shopItemSO[i].baseCost && shopItemSO[i].progress < 5)
                 myPurchaseBtns[i].interactable = true;
             else
                 myPurchaseBtns[i].interactable = false;
@@ -49,9 +49,11 @@ public class ShopManager : MonoBehaviour
 
     public void PurchaseAbility(int btnNo)
     {
-        if (coins >= shopItemSO[btnNo].baseCost)
+        if (coins >= shopItemSO[btnNo].baseCost && shopItemSO[btnNo].progress < 5)
         {
             coins = coins - shopItemSO[btnNo].baseCost;
+            shopItemSO[btnNo].AddProgress();
+            LoadPanels();
             coinUI.text = "Bloods: " + coins.ToString();
             CheckPurchaseable();
         }
@@ -63,7 +65,10 @@ public class ShopManager : MonoBehaviour
         {
             shopPanels[i].titleTxt.text = shopItemSO[i].title;
             shopPanels[i].descriptionTxt.text = shopItemSO[i].description;
-            shopPanels[i].costTxt.text = "Bloods: " + shopItemSO[i].baseCost.ToString();
+            if (shopItemSO[i].progress < 5)
+                shopPanels[i].costTxt.text = "Bloods: " + shopItemSO[i].baseCost.ToString();
+            else
+                shopPanels[i].costTxt.text = " MAX ";
         }
     }
 }

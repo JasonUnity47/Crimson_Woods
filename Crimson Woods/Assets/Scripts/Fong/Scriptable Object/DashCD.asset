@@ -15,3 +15,4 @@ MonoBehaviour:
   title: DashCD
   description: Decrease the cold down time of player dash
   baseCost: 500
+  progress: 0
