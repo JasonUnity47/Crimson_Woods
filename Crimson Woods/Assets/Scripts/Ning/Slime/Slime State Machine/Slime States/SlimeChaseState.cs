@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SlimeChaseState : SlimeState
 {
+    // Declaration
+    private Transform playerPos;
     public SlimeChaseState(Slime slime, SlimeStateMachine slimeStateMachine, SlimeStats slimeStats, string animName) : base(slime, slimeStateMachine, slimeStats, animName)
     {
     }
@@ -11,6 +13,7 @@ public class SlimeChaseState : SlimeState
     public override void Enter()
     {
         base.Enter();
+        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     public override void Exit()
@@ -22,9 +25,9 @@ public class SlimeChaseState : SlimeState
     {
         base.LogicalUpdate();
 
-        slime.slimeMovement.moveSpeed = slimeStats.moveSpeed;
+        slime.aiPath.destination = playerPos.position;
 
-        
+
 
     }
 
@@ -32,10 +35,6 @@ public class SlimeChaseState : SlimeState
     {
         base.PhysicsUpdate();
 
-        // IF detect player THEN chase player
-        if (slime.slimeMovement.isDetected)
-        {
-            slime.slimeMovement.PathFollow();
-        }
+        
     }
 }

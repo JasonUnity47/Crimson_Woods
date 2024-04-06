@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using Pathfinding;
 
 public class Goblin : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Goblin : MonoBehaviour
     public bool isHurt = false;
     public bool isDead = false;
 
-   
+
 
     // Component
     public Animator Anim { get; private set; }
@@ -38,9 +39,15 @@ public class Goblin : MonoBehaviour
     // Script Reference
     private GoblinStats goblinStats;
 
-    public GoblinMovement goblinMovement { get; private set; }
+   
 
     public LootBag lootBag { get; private set; }
+
+    public AIPath aiPath { get; private set; }
+
+    public Transform playPos { get; private set; }
+
+
 
     private void Awake()
     {
@@ -48,7 +55,7 @@ public class Goblin : MonoBehaviour
 
         lootBag = GetComponent<LootBag>();
 
-
+        aiPath = GetComponent<AIPath>();
 
         goblinStats = GetComponent<GoblinStats>(); // Get reference before other states
 
@@ -59,12 +66,13 @@ public class Goblin : MonoBehaviour
 
     private void Start()
     {
-        goblinMovement = GetComponent<GoblinMovement>();
         
+
         SR = GetComponent<SpriteRenderer>();
 
-        matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        matWhite = Resources.Load<Material>("Material/WhiteFlash");
         matDefault = SR.material;
+
 
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
@@ -77,7 +85,7 @@ public class Goblin : MonoBehaviour
         if (!isDead)
         {
             CheckDead();
-            
+
         }
 
         FlipDirection();
@@ -122,15 +130,15 @@ public class Goblin : MonoBehaviour
             goblinStats.health -= damageValue;
 
             SR.material = matWhite;
-            Invoke("ResetMaterial", 0.05f);
+            Invoke("ResetMaterial", 0.1f);
             StartCoroutine("WaitForHurt");
         }
     }
 
-    
+
     public void FlipDirection()
     {
-        if (Rb.velocity.x >= 0.01 && !facingRight || Rb.velocity.x <= -0.01 && facingRight)
+        if (aiPath.velocity.x >= 0.01 && !facingRight || aiPath.velocity.x <= -0.01 && facingRight)
         {
             facingRight = !facingRight;
             transform.Rotate(0, 180, 0);
@@ -162,7 +170,7 @@ public class Goblin : MonoBehaviour
                 playerHealth.TakeDamage(1); // You can adjust the damage value as needed
             }
 
-            
+
         }
     }
 }

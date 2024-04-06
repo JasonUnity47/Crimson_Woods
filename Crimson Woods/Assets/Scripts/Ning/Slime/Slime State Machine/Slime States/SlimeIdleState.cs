@@ -26,14 +26,7 @@ public class SlimeIdleState : SlimeState
     {
         base.LogicalUpdate();
 
-        // Detect player
-        slime.slimeMovement.TargetInDistance();
-
-        // IF detect player THEN change to CHASE STATE
-        if (slime.slimeMovement.isDetected)
-        {
-            slimeStateMachine.ChangeState(slime.ChaseState);
-        }
+        slimeStateMachine.ChangeState(slime.ChaseState);
     }
 
     public override void PhysicsUpdate()

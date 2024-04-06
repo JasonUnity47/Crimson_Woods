@@ -26,14 +26,7 @@ public class GoblinIdleState : GoblinState
     {
         base.LogicalUpdate();
 
-        // Detect player
-        goblin.goblinMovement.TargetInDistance();
-
-        // IF detect player THEN change to CHASE STATE
-        if (goblin.goblinMovement.isDetected)
-        {
-           goblinStateMachine.ChangeState(goblin.ChaseState);
-        }
+        goblinStateMachine.ChangeState(goblin.ChaseState);
     }
 
     public override void PhysicsUpdate()

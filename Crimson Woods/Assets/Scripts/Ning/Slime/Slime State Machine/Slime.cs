@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using Pathfinding;
 
 public class Slime : MonoBehaviour
 {
@@ -39,15 +40,21 @@ public class Slime : MonoBehaviour
     // Script Reference
     private SlimeStats slimeStats;
 
-    public SlimeMovement slimeMovement { get; private set; }
+   
 
     public LootBag lootBag { get; private set; }
+
+    public AIPath aiPath { get; private set; }
+
+    public Transform playPos { get; private set; }
 
     private void Awake()
     {
         slimeStateMachine = new SlimeStateMachine();
 
         lootBag = GetComponent<LootBag>();
+
+        aiPath = GetComponent<AIPath>();
 
         explosionRef = Resources.Load("Prefab/Explode/SlimeExplode");
 
@@ -60,11 +67,11 @@ public class Slime : MonoBehaviour
 
     private void Start()
     {
-        slimeMovement = GetComponent<SlimeMovement>();
+        
 
         SR = GetComponent<SpriteRenderer>();
 
-        matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        matWhite = Resources.Load<Material>("Material/WhiteFlash");
         matDefault = SR.material;
 
         Rb = GetComponent<Rigidbody2D>();
@@ -123,7 +130,7 @@ public class Slime : MonoBehaviour
             slimeStats.health -= damageValue;
 
             SR.material = matWhite;
-            Invoke("ResetMaterial", 0.05f);
+            Invoke("ResetMaterial", 0.1f);
             StartCoroutine("WaitForHurt");
         }
     }
@@ -131,7 +138,7 @@ public class Slime : MonoBehaviour
     
     public void FlipDirection()
     {
-        if (Rb.velocity.x >= 0.01 && !facingRight || Rb.velocity.x <= -0.01 && facingRight)
+        if (aiPath.velocity.x >= 0.01 && !facingRight || aiPath.velocity.x <= -0.01 && facingRight)
         {
             facingRight = !facingRight;
             transform.Rotate(0, 180, 0);

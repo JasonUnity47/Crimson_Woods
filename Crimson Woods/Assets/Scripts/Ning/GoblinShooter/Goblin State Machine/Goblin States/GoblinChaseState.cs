@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GoblinChaseState : GoblinState
 {
+    // Declaration
+    private Transform playerPos;
     public GoblinChaseState(Goblin goblin, GoblinStateMachine goblinStateMachine, GoblinStats goblinStats, string animName) : base(goblin, goblinStateMachine, goblinStats, animName)
     {
     }
@@ -11,6 +13,7 @@ public class GoblinChaseState : GoblinState
     public override void Enter()
     {
         base.Enter();
+        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     public override void Exit()
@@ -22,9 +25,9 @@ public class GoblinChaseState : GoblinState
     {
         base.LogicalUpdate();
 
-        goblin.goblinMovement.moveSpeed = goblinStats.moveSpeed;
+       
+        goblin.aiPath.destination = playerPos.position;
 
-        
 
     }
 
@@ -32,10 +35,6 @@ public class GoblinChaseState : GoblinState
     {
         base.PhysicsUpdate();
 
-        // IF detect player THEN chase player
-        if (goblin.goblinMovement.isDetected)
-        {
-            goblin.goblinMovement.PathFollow();
-        }
+        
     }
 }
