@@ -12,13 +12,13 @@ public class Boss2PrepareState : Boss2State
     {
         base.Enter();
 
-        // Get the target position ONCE
-        boss2.lastTargetPosForSlash = boss2.boss2Movement.targetPos.position;
+        //// Get the target position ONCE
+        //boss2.lastTargetPosForSlash = boss2.boss2Movement.targetPos.position;
 
-        if (!boss2.isSlashing)
-        {
-            boss2.PrepareSlash();
-        }
+        //if (!boss2.isSlashing)
+        //{
+        //    boss2.PrepareSlash();
+        //}
     }
 
     public override void Exit()

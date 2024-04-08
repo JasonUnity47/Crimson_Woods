@@ -12,13 +12,13 @@ public class Boss2ShockState : Boss2State
     {
         base.Enter();
 
-        if (!boss2.isCharging)
-        {
-            // Get the target position ONCE
-            boss2.lastTargetPosForCharge = boss2.boss2Movement.targetPos.position;
+        //if (!boss2.isCharging)
+        //{
+        //    // Get the target position ONCE
+        //    boss2.lastTargetPosForCharge = boss2.boss2Movement.targetPos.position;
 
-            boss2.PrepareCharge();
-        }
+        //    boss2.PrepareCharge();
+        //}
     }
 
     public override void Exit()

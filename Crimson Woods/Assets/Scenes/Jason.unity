@@ -193,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8697253495269778509, guid: b43ec2eb481031d4f96b33c85cad9f48, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -556,7 +556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &422646099
 Transform:
   m_ObjectHideFlags: 0
@@ -592,7 +592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &462703118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,7 +637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &486604919
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1140,7 +1140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &772018100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1155,6 +1155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 6
   maxHealth: 6
+  buffContent: {fileID: 0}
 --- !u!114 &772018101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,10 +1171,13 @@ MonoBehaviour:
   moveSpeed: 10
   dashSpeed: 2
   myTrailRenderer: {fileID: 1445860221}
+  iFramesDuration: 0
+  numberOfFlashes: 0
   maxDashes: 3
   dashRestoreTime: 10
   dashCount: 0
   isDashing: 0
+  startingMoveSpeed: 0
 --- !u!61 &772018102
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1473,7 +1477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1286060016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1975,7 +1979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8697253495269778509, guid: b43ec2eb481031d4f96b33c85cad9f48, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2220,7 +2224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8697253495269778509, guid: b43ec2eb481031d4f96b33c85cad9f48, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -68,15 +69,23 @@ public class Boss2 : MonoBehaviour
     // Script Reference
     private Boss2Stats boss2Stats;
 
-    public Boss2Movement boss2Movement { get; private set; }
+    //public Boss2Movement boss2Movement { get; private set; }
 
     public LootBag lootBag { get; private set; }
+
+    public AIPath aiPath {  get; private set; }
+
+    public Transform playerPos { get; private set; }
 
     private void Awake()
     {
         boss2StateMachine = new Boss2StateMachine();
 
         lootBag = GetComponent<LootBag>();
+
+        aiPath = GetComponent<AIPath>();
+
+        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         boss2Stats = GetComponent<Boss2Stats>(); // Get reference before other states
 
@@ -91,7 +100,7 @@ public class Boss2 : MonoBehaviour
 
     private void Start()
     {
-        boss2Movement = GetComponent<Boss2Movement>();
+        //boss2Movement = GetComponent<Boss2Movement>();
 
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
@@ -180,15 +189,15 @@ public class Boss2 : MonoBehaviour
 
     public void FarPlayer()
     {
-        if (Vector2.Distance(transform.position, boss2Movement.targetPos.position) > boss2Movement.rangeDistance)
-        {
-            farEnough = true;
-        }
+        //if (Vector2.Distance(transform.position, boss2Movement.targetPos.position) > boss2Movement.rangeDistance)
+        //{
+        //    farEnough = true;
+        //}
 
-        else
-        {
-            farEnough = false;
-        }
+        //else
+        //{
+        //    farEnough = false;
+        //}
     }
 
     public void PrepareCharge()

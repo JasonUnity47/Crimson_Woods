@@ -26,28 +26,28 @@ public class Boss2ChargeState : Boss2State
     {
         base.LogicalUpdate();
 
-        // IF reach to the end point THEN finish charged
-        if (Vector2.Distance(boss2.transform.position, boss2.lastTargetPosForCharge) < boss2.boss2Movement.chargeDistance)
-        {
-            boss2.hasCharged = true;
-        }
+        //// IF reach to the end point THEN finish charged
+        //if (Vector2.Distance(boss2.transform.position, boss2.lastTargetPosForCharge) < boss2.boss2Movement.chargeDistance)
+        //{
+        //    boss2.hasCharged = true;
+        //}
 
-        // IF already charge player THEN change to IDLE STATE
-        if (boss2.hasCharged)
-        {
-            boss2StateMachine.ChangeState(boss2.IdleState);
-        }
+        //// IF already charge player THEN change to IDLE STATE
+        //if (boss2.hasCharged)
+        //{
+        //    boss2StateMachine.ChangeState(boss2.IdleState);
+        //}
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        // IF enemy haven't charge player before THEN charge player
-        if (!boss2.hasCharged)
-        {
-            boss2.ChargePlayer();
-        }
+        //// IF enemy haven't charge player before THEN charge player
+        //if (!boss2.hasCharged)
+        //{
+        //    boss2.ChargePlayer();
+        //}
 
     }
 }

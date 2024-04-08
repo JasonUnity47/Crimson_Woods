@@ -27,13 +27,15 @@ public class Boss2IdleState : Boss2State
         base.LogicalUpdate();
 
         // Detect player
-        boss2.boss2Movement.TargetInDistance();
+        //boss2.boss2Movement.TargetInDistance();
 
         // IF detect player THEN change to CHASE STATE
-        if (boss2.boss2Movement.isDetected)
-        {
-            boss2StateMachine.ChangeState(boss2.ChaseState);
-        }
+        //if (boss2.boss2Movement.isDetected)
+        //{
+
+        //}
+
+        boss2StateMachine.ChangeState(boss2.ChaseState);
     }
 
     public override void PhysicsUpdate()
