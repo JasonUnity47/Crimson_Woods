@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 144577572829713302}
   - component: {fileID: 3517856186010176298}
   - component: {fileID: 3811819058294983266}
+  - component: {fileID: 5819201663120647886}
   - component: {fileID: 848635981079878968}
   - component: {fileID: 7917156278911751949}
   - component: {fileID: 5836246470938476519}
   - component: {fileID: 6387057982384258878}
-  - component: {fileID: 5819201663120647886}
   m_Layer: 0
   m_Name: Shark
   m_TagString: Boss2
@@ -177,6 +177,34 @@ CapsuleCollider2D:
   m_Offset: {x: -0.01696372, y: -0.6113503}
   m_Size: {x: 2.0226598, y: 3.5825372}
   m_Direction: 0
+--- !u!114 &5819201663120647886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565559039941498371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!114 &848635981079878968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,34 +292,6 @@ MonoBehaviour:
   lootList:
   - {fileID: 11400000, guid: 8d715473786799847b8d3de9e72755cb, type: 2}
   - {fileID: 11400000, guid: 7cd7b1f90bf01054aa4820febd7834bb, type: 2}
---- !u!114 &5819201663120647886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565559039941498371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!1 &4927427817157608205
 GameObject:
   m_ObjectHideFlags: 0
