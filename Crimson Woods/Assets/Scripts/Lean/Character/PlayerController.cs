@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private Animator myAnimator;
     private SpriteRenderer mySpriteRender;   
     private bool facingLeft = false;
-    private SpriteRenderer spriteRend;
+    
 
 
 
