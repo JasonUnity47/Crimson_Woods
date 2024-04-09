@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss2ChaseState : Boss2State
 {
+    private float lastSpeed;
+
     public Boss2ChaseState(Boss2 boss2, Boss2StateMachine boss2StateMachine, Boss2Stats boss2Stats, string animName) : base(boss2, boss2StateMachine, boss2Stats, animName)
     {
     }
@@ -11,6 +13,9 @@ public class Boss2ChaseState : Boss2State
     public override void Enter()
     {
         base.Enter();
+
+        // Let the enemy can move.
+        boss2.aiPath.isStopped = false;
     }
 
     public override void Exit()
@@ -46,12 +51,18 @@ public class Boss2ChaseState : Boss2State
         // If detect player && no obstacles && haven't charged then enter Shock State.
         if (boss2.isShocked && !boss2.hasObstacle && !boss2.hasCharged)
         {
+            // The enemy should stop moving.
+            boss2.aiPath.isStopped = true;
+
             boss2StateMachine.ChangeState(boss2.ShockState);
         }
 
         // If detect player && far enough && haven't slash then enter Prepare State.
         if (boss2.isPrepared && boss2.farEnough && !boss2.hasSlashed)
         {
+            // The enemy should stop moving.
+            boss2.aiPath.isStopped = true;
+
             boss2StateMachine.ChangeState(boss2.PrepareState);
         }
     }
