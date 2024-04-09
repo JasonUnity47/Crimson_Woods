@@ -9,13 +9,17 @@ public class PlayerHealth : MonoBehaviour
     public static event Action OnPlayerDied;
     public float health, maxHealth;
     [SerializeField] BuffContent buffContent;
-   
+    [SerializeField] private int numberOfFlashes;
+    [SerializeField] private float iFramesDuration;
+
     private Animator myAnimator;
     private bool dead;
+    private SpriteRenderer mySpriteRender;
 
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
+        mySpriteRender = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -43,26 +47,31 @@ public class PlayerHealth : MonoBehaviour
 
         }
 
-        if (health > 0)
+        health -= amount;
+        OnPlayerDamaged?.Invoke();
+        myAnimator.SetTrigger("HurtTrigger");
+        StartCoroutine(Invulnerability());
+
+        if (health <= 0 && !dead)
         {
-            health -= amount;
-            OnPlayerDamaged?.Invoke();
-            myAnimator.SetTrigger("HurtTrigger");
-
+            OnPlayerDied?.Invoke();
+            myAnimator.SetTrigger("DeadTrigger");            
+            GetComponent<PlayerController>().enabled = false;
+            dead = true;
         }
-        else
+    }
+
+    private IEnumerator Invulnerability()
+    {
+        Physics2D.IgnoreLayerCollision(6, 7, true);
+        for (int i = 0; i < numberOfFlashes; i++)
         {
-            if (!dead)
-            {
-                OnPlayerDied?.Invoke();
-                myAnimator.SetTrigger("DeadTrigger");
-                GetComponent<PlayerController>().enabled = false;               
-                dead = true;
-            }
+            mySpriteRender.color = new Color(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
+            mySpriteRender.color = Color.white;
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
         }
-
-
-
+        Physics2D.IgnoreLayerCollision(6, 7, false);
     }
 }
     
