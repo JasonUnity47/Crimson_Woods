@@ -5,11 +5,6 @@ using UnityEngine;
 public class ItemDrop : MonoBehaviour
 {
     // Declaration
-    // Value
-    [SerializeField] private float dropForce;
-    private Rigidbody2D itemRb;
-    private float yLimit;
-
     // Random Splash
     [Header("Random Splash")]
     public Transform objTransfrom;
@@ -29,9 +24,17 @@ public class ItemDrop : MonoBehaviour
     // Script Reference
     private CurrencySystem currencySystem;
     private GameObject player;
+    private Rigidbody2D itemRb;
+    private SpriteRenderer spriteRenderer;
+
+    // Breathing Effect
+    [Header("Breathing Effect")]
+    private float alpha;
+    private bool isEnd = false;
 
     private void Awake()
     {
+        // Set the off variable with random value between -4 and 4.
         off = new Vector3(Random.Range(-4, 4), off.y, off.z);
         off = new Vector3(off.x, Random.Range(-4, 4), off.z);
     }
@@ -42,13 +45,19 @@ public class ItemDrop : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         itemRb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Destroy the current item.
+        // Get the current color of the alpha value of this gameobject.
+        alpha = spriteRenderer.color.a;
+
+        // Destroy the current item with a predefined time.
         Destroy(this.gameObject, 60f);
     }
 
     private void Update()
     {
+        // Not sure how to implement yet... Need time to learn.
+        // Allows the loot will move to a predefined area around the enemy.
         if (when >= delay)
         {
             pastTime = Time.deltaTime;
@@ -56,16 +65,16 @@ public class ItemDrop : MonoBehaviour
             delay += pastTime;
         }
 
-        MagnetFunction();
+        // Breathing Effect to show the animation of the loots.
+        // The alpha value of the color of the current gameobject will keep changing between 0.5 and 1.
+        BreathingEffect();
 
-        if (once)
-        {
-            Vector3 playerPos = Vector3.MoveTowards(transform.position, player.transform.position + new Vector3(0, -0.3f, 0), 6 * Time.deltaTime);
-            itemRb.MovePosition(playerPos);
-        }
+        // The current gameobject will move toward slowly to the player to allow player to collect the gameobject easily.
+        // Demonstrate magnetic game mechanics.
+        CollectLoot();
     }
 
-    void MagnetFunction()
+    void CollectLoot()
     {
         isNearby = Physics2D.OverlapCircle(collectArea.position, collectRadius, whatIsPlayer);
 
@@ -73,12 +82,43 @@ public class ItemDrop : MonoBehaviour
         {
             once = true;
         }
+
+        if (once)
+        {
+            Vector3 playerPos = Vector3.MoveTowards(transform.position, player.transform.position + new Vector3(0, -0.3f, 0), 6 * Time.deltaTime);
+            itemRb.MovePosition(playerPos);
+        }
+
+        return;
     }
 
-    private void OnDrawGizmosSelected()
+    void BreathingEffect()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(collectArea.position, collectRadius);
+        if (alpha <= 0.5f)
+        {
+            alpha = 0.5f;
+            isEnd = true;
+        }
+
+        if (alpha >= 1)
+        {
+            alpha = 1;
+            isEnd = false;
+        }
+
+        if (!isEnd)
+        {
+            alpha -= Time.deltaTime;
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, alpha);
+        }
+
+        else
+        {
+            alpha += Time.deltaTime;
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, alpha);
+        }
+
+        return;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -86,6 +126,7 @@ public class ItemDrop : MonoBehaviour
         // If the item collides with the player and the item is a coin then increase the currency by 1 and destroy the item.
         if (collision.CompareTag("Player") && this.gameObject.CompareTag("Coin"))
         {
+            // Increase certain amount of currency.
             int randomNumber = Random.Range(1, 7); // 1 - 6
             currencySystem.bloodCount += randomNumber;
             Destroy(this.gameObject);

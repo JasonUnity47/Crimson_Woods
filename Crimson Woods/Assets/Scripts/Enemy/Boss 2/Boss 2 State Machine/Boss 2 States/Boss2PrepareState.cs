@@ -15,6 +15,9 @@ public class Boss2PrepareState : Boss2State
         // Get the target position once when enter this state.
         boss2.lastTargetPosForSlash = boss2.playerPos.position;
 
+        // Freeze the player.
+        boss2.FreezePlayer();
+
         // If the enemy didn't prepare to slash the player before then start slashing.
         if (!boss2.isSlashing)
         {

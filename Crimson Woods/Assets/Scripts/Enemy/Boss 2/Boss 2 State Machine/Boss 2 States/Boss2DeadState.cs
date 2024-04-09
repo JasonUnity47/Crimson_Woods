@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss2DeadState : Boss2State
 {
+    // Declaration
     private float dropTime;
     private int count = 0;
     private bool isFinished = false;
@@ -25,13 +26,17 @@ public class Boss2DeadState : Boss2State
     {
         base.LogicalUpdate();
 
+        // If the loop count does not reach the desired count then keep dropping loot until meets the desired count.
         if (count != boss2.lootCount)
         {
             if (dropTime > 0.05f)
             {
+                // Reset the drop time to continue dropping loots.
                 dropTime = 0;
-                // Drop items if the enemy is dead.
+
+                // Drop items
                 boss2.lootBag.InstantiateLoot(boss2.transform.position);
+
                 count++;
             }
 
@@ -41,11 +46,13 @@ public class Boss2DeadState : Boss2State
             }
         }
 
+        // If the loot count reached the desired count then means the process is finished.
         if (count == boss2.lootCount)
         {
             isFinished = true;
         }
 
+        // If the process is finsihed then the enemy will started to destroy the body.
         if (isFinished)
         {
             // Destroy the enemy after dead.

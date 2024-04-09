@@ -26,6 +26,9 @@ public class Boss2RangeState : Boss2State
 
         // Enemy was finished slash the player.
         boss2.FinishSlash();
+
+        boss2.playerController.moveSpeed = boss2.originalMovespeed;
+        boss2.playerSprite.color = Color.white;
     }
 
     public override void LogicalUpdate()

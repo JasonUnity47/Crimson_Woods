@@ -30,4 +30,14 @@ public class SlashMovement : MonoBehaviour
     {
         rb.position = Vector2.Lerp((Vector2)rb.position, boss2.lastTargetPosForSlash, slashSpeed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+
+            playerHealth.TakeDamage(1f);
+        }
+    }
 }

@@ -53,8 +53,10 @@ public class Boss2 : MonoBehaviour
     [Header("Range State")]
     public float slashCD;
     public float rangeToSlash;
+    public float originalMovespeed;
     public Vector2 lastTargetPosForSlash;
     [SerializeField] GameObject waterSlash;
+    [SerializeField] GameObject freezeEffect;
     public bool isSlashing = false;
     public bool hasSlashed = false;
 
@@ -69,6 +71,8 @@ public class Boss2 : MonoBehaviour
 
     // Component
     public Animator Anim { get; private set; }
+
+    public Rigidbody2D Rb { get; private set; }
 
     // State Machine
     public Boss2StateMachine boss2StateMachine { get; private set; }
@@ -96,15 +100,22 @@ public class Boss2 : MonoBehaviour
 
     public Transform playerPos { get; private set; }
 
+    public PlayerController playerController { get; private set; }
+
+    public SpriteRenderer playerSprite {  get; private set; }
+
     private void Awake()
     {
         boss2StateMachine = new Boss2StateMachine();
 
         Anim = GetComponent<Animator>();
+        Rb = GetComponent<Rigidbody2D>();
         boss2Stats = GetComponent<Boss2Stats>();
         lootBag = GetComponent<LootBag>();
         aiPath = GetComponent<AIPath>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerSprite = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
 
         IdleState = new Boss2IdleState(this, boss2StateMachine, boss2Stats, "IdleBool");
         ChaseState = new Boss2ChaseState(this, boss2StateMachine, boss2Stats, "ChaseBool");
@@ -280,10 +291,17 @@ public class Boss2 : MonoBehaviour
         if (!hasSlashed)
         {
             hasSlashed = true;
+
+            // Slash the player.
             Instantiate(waterSlash, transform.position, Quaternion.identity); // Water slash.
         }
 
         return;
+    }
+
+    public void FreezePlayer()
+    {
+        StartCoroutine(FreezeTime());
     }
 
     public void SlashPlayer()
@@ -297,6 +315,31 @@ public class Boss2 : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
 
         SlashAttack();
+    }
+
+    IEnumerator FreezeTime()
+    {
+        GameObject freeze = Instantiate(freezeEffect, playerPos.position, Quaternion.identity, playerPos); // Freeze effect.
+
+        float moveSpeedDecrement = playerController.moveSpeed * (50 / 100f);
+        originalMovespeed = playerController.moveSpeed;
+
+        playerController.moveSpeed -= moveSpeedDecrement;
+        playerSprite.color = Color.blue;
+
+
+        if (freeze.GetComponent<Animator>() != null)
+        {
+            Animator freezeAnim = freeze.GetComponent<Animator>();
+
+            yield return new WaitForSeconds(0.3f);
+            freezeAnim.SetBool("Start", true);
+
+            yield return new WaitForSeconds(0.3f);
+            freezeAnim.SetBool("Active", true);
+
+            Destroy(freeze, 0.5f);
+        }
     }
 
     IEnumerator WaitForHurt()
@@ -392,5 +435,15 @@ public class Boss2 : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(shockArea.position, shockRadius);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+
+            playerHealth.TakeDamage(1f);
+        }
     }
 }

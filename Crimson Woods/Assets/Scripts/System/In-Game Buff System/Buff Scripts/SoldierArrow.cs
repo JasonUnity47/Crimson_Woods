@@ -56,11 +56,11 @@ public class SoldierArrow : MonoBehaviour
             }
 
             // Boss 1
-            //else if (collision.GetComponent<Boss1>() == true)
-            //{
-            //BoarStats boarStats = collision.GetComponent<BoarStats>();
-            //boarStats.health--;
-            //}
+            else if (collision.GetComponent<Boss1>() == true)
+            {
+                Boss1Data boss1Stats = collision.GetComponent<Boss1Data>();
+                boss1Stats.health--;
+            }
 
             else if (collision.GetComponent<Boss2Stats>() == true)
             {
