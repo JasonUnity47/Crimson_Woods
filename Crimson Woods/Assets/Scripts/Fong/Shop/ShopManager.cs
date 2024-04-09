@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour
     public int coins;
     public TMP_Text coinUI;
     public ShopItemSO[] shopItemSO;
+    public Slider[] slider;
     public GameObject[] shopPanelsGO;
     public ShopTemplate[] shopPanels;
     public Button[] myPurchaseBtns;
@@ -17,10 +18,19 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         for (int i = 0; i < shopItemSO.Length; i++)
+        {
             shopPanelsGO[i].SetActive(true);
+        }
+        
         coinUI.text = "Bloods: " + coins.ToString();
         LoadPanels();
         CheckPurchaseable();
+
+        // Check the data of Shop Ability is saved or not
+        //if (shopItemSO[1].progress == 1)
+        //{
+        //    Debug.Log("k");
+        //}
     }
 
     // Update is called once per frame
@@ -52,7 +62,12 @@ public class ShopManager : MonoBehaviour
         if (coins >= shopItemSO[btnNo].baseCost && shopItemSO[btnNo].progress < 5)
         {
             coins = coins - shopItemSO[btnNo].baseCost;
-            shopItemSO[btnNo].AddProgress();
+            if (shopItemSO[btnNo].progress < 5)
+            {
+                shopItemSO[btnNo].progress++;
+                shopItemSO[btnNo].baseCost += 1000;
+                slider[btnNo].value = shopItemSO[btnNo].progress;
+            }
             LoadPanels();
             coinUI.text = "Bloods: " + coins.ToString();
             CheckPurchaseable();
@@ -69,6 +84,8 @@ public class ShopManager : MonoBehaviour
                 shopPanels[i].costTxt.text = "Bloods: " + shopItemSO[i].baseCost.ToString();
             else
                 shopPanels[i].costTxt.text = " MAX ";
+
+            slider[i].value = shopItemSO[i].progress;
         }
     }
 }

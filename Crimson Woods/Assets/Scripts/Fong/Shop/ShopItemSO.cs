@@ -12,15 +12,15 @@ public class ShopItemSO : ScriptableObject
 
     void Start()
     {
-
+        
     }
 
-    public void AddProgress()
-    {
-        if (progress < 5)
-        {
-            progress++;
-            baseCost += 1000;
-        }
-    }
+    //public void AddProgress()
+    //{
+    //    if (progress < 5)
+    //    {
+    //        progress++;
+    //        baseCost += 1000;
+    //    }
+    //}
 }
