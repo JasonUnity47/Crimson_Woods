@@ -63,6 +63,10 @@ public class Boss2 : MonoBehaviour
     public float checkTime;
     private float timeBtwEachCheck;
 
+    // Loot
+    [Header("Loot")]
+    public int lootCount;
+
     // Component
     public Animator Anim { get; private set; }
 
