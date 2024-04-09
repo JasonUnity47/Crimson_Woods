@@ -15,11 +15,13 @@ public class PlayerHealth : MonoBehaviour
     private Animator myAnimator;
     private bool dead;
     private SpriteRenderer mySpriteRender;
+    private Collider2D myCollider;
 
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
+        myCollider = GetComponent<Collider2D>();
     }
 
     private void Start()
@@ -48,15 +50,17 @@ public class PlayerHealth : MonoBehaviour
         }
 
         health -= amount;
+        health = Mathf.Max(0, health);
         OnPlayerDamaged?.Invoke();
         myAnimator.SetTrigger("HurtTrigger");
         StartCoroutine(Invulnerability());
 
-        if (health <= 0 && !dead)
+        if (health == 0 && !dead)
         {
             OnPlayerDied?.Invoke();
             myAnimator.SetTrigger("DeadTrigger");            
             GetComponent<PlayerController>().enabled = false;
+            myCollider.enabled = false;
             dead = true;
         }
     }
@@ -74,4 +78,3 @@ public class PlayerHealth : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6, 7, false);
     }
 }
-    

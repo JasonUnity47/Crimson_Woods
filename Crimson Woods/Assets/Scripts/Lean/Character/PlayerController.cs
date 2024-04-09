@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator myAnimator;
-    private SpriteRenderer mySpriteRender;   
+    private SpriteRenderer mySpriteRender;
+    private Collider2D myCollider;
     private bool facingLeft = false;
     
 
