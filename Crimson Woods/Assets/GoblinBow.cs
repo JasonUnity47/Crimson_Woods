@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoblinBow : MonoBehaviour
 {
+    private Goblin goblin;
     public GameObject arrowPrefab; // Reference to the arrow prefab
     public Transform arrowSpawnPoint; // Point where the arrow spawns when shooting
     public float shootForce = 10f; // Force with which the arrow is shot
@@ -21,15 +22,14 @@ public class GoblinBow : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Assuming the player has the tag "Player"
+        goblin = GetComponentInParent<Goblin>();
     }
 
     private void Update()
     {
-        if (player != null && canShoot && IsPlayerInRange())
+        if (player != null && canShoot && IsPlayerInRange() && !goblin.isDead)
         {
-            
 
-            
             Shoot();
         }
     }
