@@ -27,7 +27,12 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
-    }    
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        TakeDamage(1);
+    }
 
     public void TakeDamage(float amount)
     {
