@@ -26,6 +26,7 @@ public class ItemDrop : MonoBehaviour
     private GameObject player;
     private Rigidbody2D itemRb;
     private SpriteRenderer spriteRenderer;
+    public HealthHeartBar healthHeartBar;
 
     // Breathing Effect
     [Header("Breathing Effect")]
@@ -138,6 +139,7 @@ public class ItemDrop : MonoBehaviour
             //Increase 1 hp for player health.
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             playerHealth.health++;
+            //healthHeartBar.DrawHearts();
             Destroy(this.gameObject);
         }
     }

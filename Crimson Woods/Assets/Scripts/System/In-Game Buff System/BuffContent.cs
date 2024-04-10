@@ -12,6 +12,7 @@ public class BuffContent : MonoBehaviour
     private PlayerHealth playerHealth;
     private Shooting shooting;
     public HealthHeartBar healthHeartBar;
+    public DashBar dashBar;
 
     [Header("Object Reference")]
     private Transform playerPos;
@@ -148,7 +149,7 @@ public class BuffContent : MonoBehaviour
     void SwiftSurge()
     {
         // Dash cooldown reduced by 30%.
-        playerController.dashRestoreTime *= dashReduction;
+        playerController.dashRestoreTime *= dashReduction;       
 
         return;
     }
@@ -157,6 +158,7 @@ public class BuffContent : MonoBehaviour
     {
         // Grants an additional dash.
         playerController.maxDashes += dashIncrement;
+        dashBar.DrawDashUI();
 
         return;
     }
