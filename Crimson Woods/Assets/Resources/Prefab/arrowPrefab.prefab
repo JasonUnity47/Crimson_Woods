@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3650689004153572539}
   - component: {fileID: 7617043220872346837}
   - component: {fileID: 8833907316032119424}
-  m_Layer: 7
+  - component: {fileID: 71705841834238636}
+  m_Layer: 8
   m_Name: arrowPrefab
-  m_TagString: Enemy
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2142350805
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c5ff10f4b65843449b9ccccf145968b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -158,3 +159,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &71705841834238636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434828222357450032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db5250f0cdce07478a67080b0decc4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
