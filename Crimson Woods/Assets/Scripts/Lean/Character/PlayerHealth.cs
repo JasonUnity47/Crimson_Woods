@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public static event Action OnPlayerDamaged;
-    public static event Action OnPlayerDied;
-    //public static event Action OnMaxHealthChanged;
+    public static event Action OnPlayerDied;  
     public float health, maxHealth;
     [SerializeField] BuffContent buffContent;
     [SerializeField] private int numberOfFlashes;
@@ -28,13 +27,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
-    }
-
-    //public void IncreaseMaxHealth(float amount)
-    //{
-    //    maxHealth += amount;
-    //    OnMaxHealthChanged?.Invoke(); // Invoke the event when max health changes
-    //}
+    }    
 
     public void TakeDamage(float amount)
     {
