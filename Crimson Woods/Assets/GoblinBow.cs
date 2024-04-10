@@ -78,7 +78,7 @@ public class GoblinBow : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Arrow Prefab or Arrow Spawn Point is not assigned in the Bow script.");
+            Debug.Log("Arrow Prefab or Arrow Spawn Point is not assigned in the Bow script.");
         }
     }
 
@@ -89,20 +89,18 @@ public class GoblinBow : MonoBehaviour
         canShoot = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             // Reduce player's health here
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(1); // You can adjust the damage value as needed
-            }
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            
+            playerHealth.TakeDamage(1); // You can adjust the damage value as needed
+            
 
             Destroy(gameObject); // Destroy the arrow on collision with the player
         }
     }
-
 
 }
