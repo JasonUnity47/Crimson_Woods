@@ -42,7 +42,7 @@ Transform:
   - {fileID: 4547045218279243157}
   - {fileID: 1922256324083759155}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2606492515133807508
 SpriteRenderer:
@@ -276,8 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3287764ddb4abe442b6f04e8cd71a3c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingRight: 1
-  health: 10
+  facingRight: 0
+  health: 0
   maxHealth: 5
   hurtTime: 0.1
   isHurt: 0
@@ -458,7 +458,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3195091199662446932}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -525,7 +525,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4908288878716122326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

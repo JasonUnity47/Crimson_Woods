@@ -95,6 +95,9 @@ public class Boss1 : MonoBehaviour
     {
         // Initialize the first state.
         StateMachine.Initialize(IdleState);
+
+        // Initialize the enemy health.
+        health = maxHealth;
     }
 
     private void Update()
@@ -296,5 +299,25 @@ public class Boss1 : MonoBehaviour
 
         // Change Meele Attack status to FALSE for next execution
         hasMeeleAttacked = false;
+    }
+
+    IEnumerator WaitForHurt()
+    {
+        // Given the enemy a short period to prevent continuous damage.
+        isHurt = true;
+
+        yield return new WaitForSeconds(hurtTime);
+
+        isHurt = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+
+            playerHealth.TakeDamage(1f);
+        }
     }
 }
