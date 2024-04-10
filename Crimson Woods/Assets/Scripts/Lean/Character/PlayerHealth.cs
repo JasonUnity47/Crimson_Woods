@@ -17,13 +17,12 @@ public class PlayerHealth : MonoBehaviour
     private Animator myAnimator;
     private bool dead;
     private SpriteRenderer mySpriteRender;
-    private Collider2D myCollider;
+    public Collider2D[] myCollider;
 
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
-        myCollider = GetComponent<Collider2D>();
     }
 
     private void Start()
@@ -67,7 +66,15 @@ public class PlayerHealth : MonoBehaviour
             OnPlayerDied?.Invoke();
             myAnimator.SetTrigger("DeadTrigger");            
             GetComponent<PlayerController>().enabled = false;
-            myCollider.enabled = false;
+            
+            for (int i = 0; i < myCollider.Length; i++)
+            {
+                if (myCollider[i] != null)
+                {
+                    myCollider[i].enabled = false;
+                }
+            }
+
             dead = true;
             bow.SetActive(false);
         }
