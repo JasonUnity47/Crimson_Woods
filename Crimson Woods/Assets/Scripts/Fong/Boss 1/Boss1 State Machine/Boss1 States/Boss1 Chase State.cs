@@ -12,6 +12,9 @@ public class Boss1ChaseState : Boss1State
     public override void Enter()
     {
         base.Enter();
+
+        // Let the enemy can move.
+        boss1.aiPath.isStopped = false;
     }
 
     public override void Exit()
@@ -23,26 +26,34 @@ public class Boss1ChaseState : Boss1State
     {
         base.LogicUpdate();
 
-        boss1.boss1Movement.moveSpeed = boss1Data.moveSpeed;
+        // Chase the player.
+        boss1.aiPath.destination = boss1.playerPos.position;
 
         // Detect obstacle
         boss1.DetectObstacle();
 
-        // Detect player if no obstacle
-        boss1.ShockMotion();
-
         boss1.MeeleArea();
+
+        // If no obstacles around the enemy then check whether the player is around the enemy.
+        if (!boss1.hasObstacle)
+        {
+            boss1.DetectPlayer();
+        }
 
         // IF detect player AND no obstacles AND haven't charged THEN enter SHOCK STATE
         if (boss1.isShocked && !boss1.hasObstacle && !boss1.hasCharged)
         {
-            boss1.Rb.velocity = Vector2.zero; // Stop moving
+            // The enemy should stop moving.
+            boss1.aiPath.isStopped = true;
+
             boss1StateMachine.ChangeState(boss1.ShockState);
         }
 
         if (boss1.isMeeleAttack && !boss1.hasMeeleAttacked && !boss1.hasObstacle)
         {
-            boss1.Rb.velocity = Vector2.zero; // Stop moving
+            // The enemy should stop moving.
+            boss1.aiPath.isStopped = true;
+
             boss1StateMachine.ChangeState(boss1.MeeleState);
         }
     }
@@ -50,11 +61,5 @@ public class Boss1ChaseState : Boss1State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-
-        // IF detect player THEN chase player
-        if (boss1.boss1Movement.isDetected)
-        {
-            boss1.boss1Movement.PathFollow();
-        }
     }
 }

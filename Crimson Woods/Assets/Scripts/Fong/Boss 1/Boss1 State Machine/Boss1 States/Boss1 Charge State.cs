@@ -27,7 +27,7 @@ public class Boss1ChargeState : Boss1State
         base.LogicUpdate();
 
         // IF reach to the end point THEN finish charged
-        if (Vector2.Distance(boss1.transform.position, boss1.lastTargetPosForCharge) < boss1.boss1Movement.chargeDistance)
+        if (Vector2.Distance(boss1.transform.position, boss1.lastTargetPosForCharge) < boss1.chargeDistance)
         {
             boss1.hasCharged = true;
         }

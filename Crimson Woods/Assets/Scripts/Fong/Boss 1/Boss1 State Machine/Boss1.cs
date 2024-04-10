@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,9 @@ public class Boss1 : MonoBehaviour
     public bool hasObstacle = false;
 
     [Header("Charge State")]
+    public float chargeCD;
+    public float enterChargeTime;
+    public float chargeDistance;
     public Vector2 lastTargetPosForCharge;
     [SerializeField] private float chargeSpeed;
     public bool isCharging = false;
@@ -40,6 +44,9 @@ public class Boss1 : MonoBehaviour
     public Animator Animator { get; private set; }
     public Rigidbody2D Rb { get; private set; }
 
+    public AIPath aiPath { get; private set; }
+
+    public Transform playerPos { get; private set; }
     private Boss1Data boss1Data;
 
     public Boss1Movement boss1Movement { get; private set; }
@@ -60,6 +67,8 @@ public class Boss1 : MonoBehaviour
     private void Start()
     {
         boss1Movement = GetComponent<Boss1Movement>();
+        aiPath = GetComponent<AIPath>();
+        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         Rb = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
@@ -85,13 +94,12 @@ public class Boss1 : MonoBehaviour
         hasObstacle = Physics2D.OverlapCircle(shockArea.position, shockRadius, whatIsObstacle);
     }
 
-    public void ShockMotion()
+    public void DetectPlayer()
     {
-        // IF no obstacle THEN check whether player is around the enemy
-        if (!hasObstacle)
-        {
-            isShocked = Physics2D.OverlapCircle(meeleArea.position, shockRadius, whatIsPlayer);
-        }
+        // Check whether player is around the enemy.
+        isShocked = Physics2D.OverlapCircle(shockArea.position, shockRadius, whatIsPlayer);
+
+        return;
     }
 
     public void FlipDirection()
@@ -101,33 +109,45 @@ public class Boss1 : MonoBehaviour
             facingRight = !facingRight;
             transform.Rotate(0, 180, 0);
         }
+
+        return;
     }
 
 
     public void PrepareCharge()
     {
-        StartCoroutine("WaitForCharge");
+        StartCoroutine(WaitForCharge());
+
+        return;
     }
 
     public void FinishCharge()
     {
-        StartCoroutine("ChargeCD");
+        StartCoroutine(ChargeCD());
+
+        return;
     }
 
     public void IsMeeleAttacking()
     {
-        StartCoroutine("MeeleAttacking");
+        StartCoroutine(MeeleAttacking());
+
+        return;
     }
 
     public void FinishMeeleAttacked()
     {
-        StartCoroutine("MeeleCD");
+        StartCoroutine(MeeleCD());
+
+        return;
     }
 
     public void ChargePlayer()
     {
         // Move enemy to the last player position
         transform.position = Vector2.Lerp((Vector2)transform.position, lastTargetPosForCharge, chargeSpeed * Time.deltaTime);
+
+        return;
     }
 
     public void MeeleArea()
@@ -141,7 +161,7 @@ public class Boss1 : MonoBehaviour
     {
         isCharging = true;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(enterChargeTime);
 
         // Change to CHARGE STATE
         StateMachine.ChangeState(ChargeState);
@@ -149,7 +169,7 @@ public class Boss1 : MonoBehaviour
 
     IEnumerator ChargeCD()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(chargeCD);
 
         // Change charge status to FALSE for next execution
         hasCharged = false;

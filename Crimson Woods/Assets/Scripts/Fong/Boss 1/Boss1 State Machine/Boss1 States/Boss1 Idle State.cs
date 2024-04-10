@@ -12,9 +12,6 @@ public class Boss1IdleState : Boss1State
     public override void Enter()
     {
         base.Enter();
-
-        // Stop moving
-        boss1.Rb.velocity = Vector2.zero;
     }
 
     public override void Exit()
@@ -26,14 +23,8 @@ public class Boss1IdleState : Boss1State
     {
         base.LogicUpdate();
 
-        // Detect player
-        boss1.boss1Movement.TargetInDistance();
-
-        // IF detect player THEN change to CHASE STATE
-        if (boss1.boss1Movement.isDetected)
-        {
-            boss1StateMachine.ChangeState(boss1.ChaseState);
-        }
+        // When an enemy appears in the game, it will immediately detect the player and start chasing the player.
+        boss1StateMachine.ChangeState(boss1.ChaseState);
     }
 
     public override void PhysicsUpdate()
