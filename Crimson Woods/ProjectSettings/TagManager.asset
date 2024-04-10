@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Soldier
   - Wall
+  - Arrow
   layers:
   - Default
   - TransparentFX

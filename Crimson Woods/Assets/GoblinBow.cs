@@ -67,8 +67,8 @@ public class GoblinBow : MonoBehaviour
 
             // Configure arrow's collision settings
             Collider2D arrowCollider = arrow.GetComponent<Collider2D>();
-            arrowCollider.isTrigger = true; // Set collider as trigger
-            arrowCollider.gameObject.layer = LayerMask.NameToLayer("Arrow"); // Assign arrow to a separate layer
+            
+            
 
             // Start cooldown
             StartCoroutine(ShootCooldown());
@@ -89,18 +89,6 @@ public class GoblinBow : MonoBehaviour
         canShoot = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Reduce player's health here
-            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-            
-            playerHealth.TakeDamage(1); // You can adjust the damage value as needed
-            
-
-            Destroy(gameObject); // Destroy the arrow on collision with the player
-        }
-    }
+    
 
 }
