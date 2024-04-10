@@ -33,6 +33,9 @@ public class WaveSpawner : MonoBehaviour
 
     private SpawnState state = SpawnState.COUNTING;
 
+    // Script Reference
+    private BuffSystem buffSystem;
+
     private void Start()
     {
         // Error Check
@@ -40,6 +43,9 @@ public class WaveSpawner : MonoBehaviour
         {
             Debug.LogError("NO SPAWN POINT AVAILABLE.");
         }
+
+        // Get References
+        buffSystem = GetComponent<BuffSystem>();
 
         // Initialize the wave timer.
         waveCountDown = timeBtwWaves;
@@ -108,6 +114,12 @@ public class WaveSpawner : MonoBehaviour
 
         state = SpawnState.COUNTING;
         waveCountDown = timeBtwWaves;
+
+        // If the current wave is not a boss wave then allows the player to choose a buff after finished the current wave.
+        if (nextWave != 4 && nextWave != 5 && nextWave != 10 && nextWave != 11)
+        {
+            buffSystem.buffPanel.SetActive(true);
+        }
 
         if (nextWave + 1 > waves.Length - 1)
         {

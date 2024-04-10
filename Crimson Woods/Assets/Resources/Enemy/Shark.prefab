@@ -363,7 +363,7 @@ MonoBehaviour:
   isPrepared: 0
   farEnough: 0
   slashCD: 5
-  rangeToSlash: 6
+  rangeToSlash: 9
   originalMovespeed: 0
   lastTargetPosForSlash: {x: 0, y: 0}
   waterSlash: {fileID: 2682278926956559626, guid: bfd7cc0d4632c82498532a91f3d0c778, type: 3}

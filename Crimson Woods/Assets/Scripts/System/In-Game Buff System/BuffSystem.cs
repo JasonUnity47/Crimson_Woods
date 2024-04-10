@@ -58,7 +58,7 @@ public class BuffSystem : MonoBehaviour
 
     private void Update()
     {
-        ActivatePanel();
+        //ActivatePanel();
 
         if (buffPanel.activeSelf && buffCount != 3)
         {
