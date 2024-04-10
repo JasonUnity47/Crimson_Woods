@@ -12,12 +12,14 @@ public class HealthHeartBar : MonoBehaviour
     {
         PlayerHealth.OnPlayerDamaged += DrawHearts;
         PlayerHealth.OnPlayerDied += HandlePlayerDeath;
+        //PlayerHealth.OnMaxHealthChanged += DrawHearts;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnPlayerDamaged -= DrawHearts;
         PlayerHealth.OnPlayerDied -= HandlePlayerDeath;
+        //PlayerHealth.OnMaxHealthChanged -= DrawHearts;
     }
 
     private void HandlePlayerDeath()
