@@ -177,10 +177,7 @@ public class Slime : MonoBehaviour
         {
             // Reduce player's health here
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-
-            playerHealth.TakeDamage(1);         
-            
-
+            playerHealth.TakeDamage(1f);
         }
     }
 }

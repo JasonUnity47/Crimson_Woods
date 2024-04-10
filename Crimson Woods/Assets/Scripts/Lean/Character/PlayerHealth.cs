@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int numberOfFlashes;
     [SerializeField] private float iFramesDuration;
 
+    public GameObject bow;
+
     private Animator myAnimator;
     private bool dead;
     private SpriteRenderer mySpriteRender;
@@ -67,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
             GetComponent<PlayerController>().enabled = false;
             myCollider.enabled = false;
             dead = true;
+            bow.SetActive(false);
         }
     }
 

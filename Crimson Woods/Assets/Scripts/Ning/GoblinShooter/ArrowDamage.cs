@@ -8,7 +8,7 @@ public class ArrowDamage : MonoBehaviour
     {
         if (collision != null && collision.gameObject.CompareTag("Player"))
         {
-            PlayerHealth playerHealth = collision.GetComponentInParent<PlayerHealth>();
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(1);
