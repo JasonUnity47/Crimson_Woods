@@ -385,7 +385,9 @@ public class Boss2 : MonoBehaviour
         // Set a predefined time to allow the enemy change to the next state.
 
         // VFX to show the enemy is ready to slash the player with water slash.
-        Instantiate(prepareSlashVFX, transform.position, Quaternion.identity, this.transform);
+        GameObject prepapreEffect = Instantiate(prepareSlashVFX, transform.position, Quaternion.identity, this.transform);
+
+        Destroy(prepapreEffect, 1.1f);
 
         isSlashing = true;
 
