@@ -42,7 +42,7 @@ Transform:
   - {fileID: 4547045218279243157}
   - {fileID: 1922256324083759155}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2606492515133807508
 SpriteRenderer:
@@ -277,6 +277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
+  health: 10
+  maxHealth: 5
+  hurtTime: 0.1
   isHurt: 0
   isDead: 0
   shockArea: {fileID: 2427934730727897734}
@@ -300,6 +303,8 @@ MonoBehaviour:
   meeleRadius: 4
   isMeeleAttack: 0
   hasMeeleAttacked: 0
+  checkTime: 1
+  lootCount: 30
 --- !u!114 &8941853668934732984
 MonoBehaviour:
   m_ObjectHideFlags: 0

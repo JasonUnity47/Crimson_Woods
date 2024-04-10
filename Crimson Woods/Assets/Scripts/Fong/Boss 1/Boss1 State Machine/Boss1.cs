@@ -1,12 +1,19 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 public class Boss1 : MonoBehaviour
 {
     [Header("Movement")]
     public bool facingRight = true;
+
+    // Health
+    [Header("Health")]
+    public float health;
+    public float maxHealth;
+    public float hurtTime;
     public bool isHurt = false;
     public bool isDead = false;
 
@@ -33,6 +40,15 @@ public class Boss1 : MonoBehaviour
     public bool isMeeleAttack = false;
     public bool hasMeeleAttacked = false;
 
+    // Check
+    [Header("Check")]
+    public float checkTime;
+    private float timeBtwEachCheck;
+
+    // Loot
+    [Header("Loot")]
+    public int lootCount;
+
     public Boss1StateMachine StateMachine { get; private set; }
 
     public Boss1IdleState IdleState { get; private set; }
@@ -40,52 +56,143 @@ public class Boss1 : MonoBehaviour
     public Boss1ShockState ShockState { get; private set; }
     public Boss1ChargeState ChargeState { get; private set; }
     public Boss1MeeleAttackState MeeleState { get; private set; }
+    public Boss1DeadState DeadState { get; private set; }
+
+    private Boss1Data boss1Data;
 
     public Animator Animator { get; private set; }
     public Rigidbody2D Rb { get; private set; }
 
+    // Script Reference
+    public LootBag lootBag { get; private set; }
     public AIPath aiPath { get; private set; }
-
     public Transform playerPos { get; private set; }
-    private Boss1Data boss1Data;
-
-    public Boss1Movement boss1Movement { get; private set; }
+    public BuffContent buffContent { get; private set; }
 
     private void Awake()
     {
         StateMachine = new Boss1StateMachine();
 
+        Rb = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
+
         boss1Data = GetComponent<Boss1Data>();
+
+        lootBag = GetComponent<LootBag>();
+        aiPath = GetComponent<AIPath>();
+        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        buffContent = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<BuffContent>();
 
         IdleState = new Boss1IdleState(this, StateMachine, boss1Data, "idle");
         ChaseState = new Boss1ChaseState(this, StateMachine, boss1Data, "chase");
         ShockState = new Boss1ShockState(this, StateMachine, boss1Data, "shock");
         ChargeState = new Boss1ChargeState(this, StateMachine, boss1Data, "charge");
         MeeleState = new Boss1MeeleAttackState(this, StateMachine, boss1Data, "meele");
+        DeadState = new Boss1DeadState(this, StateMachine, boss1Data, "dead");
     }
 
     private void Start()
     {
-        boss1Movement = GetComponent<Boss1Movement>();
-        aiPath = GetComponent<AIPath>();
-        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
-        Rb = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
-
+        // Initialize the first state.
         StateMachine.Initialize(IdleState);
     }
 
     private void Update()
     {
+        StateMachine.CurrentState.LogicUpdate();
+
+        // Keep checking the player position in the game with a certain amount of time.
+        TrackPlayer();
+
+        // Check whether the enemy is dead.
+        CheckDead();
+
+        // Check whether the enemy should flip to the correct facing direction.
         FlipDirection();
 
-        StateMachine.CurrentState.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
         StateMachine.CurrentState.PhysicsUpdate();
+    }
+
+    public void TrackPlayer()
+    {
+        // Keep checking the player position in the game with a certain amount of time.
+        if (timeBtwEachCheck <= 0)
+        {
+            timeBtwEachCheck = checkTime;
+
+            playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        }
+
+        else
+        {
+            timeBtwEachCheck -= Time.deltaTime;
+        }
+
+        return;
+    }
+
+    public void CheckDead()
+    {
+        if (health <= 0 && !isDead)
+        {
+            // If the Vampiric Essence buff is activated then player can have a chance to restore health.
+            if (buffContent.onVampiricEssence)
+            {
+                buffContent.DetectDead();
+            }
+
+            // Change the "Enemy" tag to "Untagged" tag to disable all the scripts that need "Enemy" tag to prevent after-dead issues.
+            tag = "Untagged";
+            Physics2D.IgnoreLayerCollision(6, 7);
+            isDead = true;
+            isHurt = true; // Prevent continuous damage from the player.
+            health = 0;
+            aiPath.isStopped = true;
+            aiPath.maxSpeed = 0;
+
+            // If the enemy is dead then change to Dead State.
+            StateMachine.ChangeState(DeadState);
+        }
+
+        if (isDead && StateMachine.CurrentState != DeadState)
+        {
+            // If the enemy is dead then change to Dead State.
+            StateMachine.ChangeState(DeadState);
+        }
+
+        return;
+    }
+
+    public void DestroyBody()
+    {
+        Destroy(this.gameObject, 3f);
+
+        return;
+    }
+
+    public void TakeDamage(int damageValue)
+    {
+        // If the enemy is dead then do nothing.
+        if (isDead)
+        {
+            return;
+        }
+
+        // If the enemy has not damaged before then take the damage.
+        if (!isHurt)
+        {
+            health -= damageValue;
+
+            Animator.SetTrigger("hurt");
+
+            StartCoroutine("WaitForHurt");
+        }
+
+        return;
     }
 
     public void DetectObstacle()
@@ -104,7 +211,7 @@ public class Boss1 : MonoBehaviour
 
     public void FlipDirection()
     {
-        if (Rb.velocity.x >= 0.01 && !facingRight || Rb.velocity.x <= -0.01 && facingRight)
+        if (aiPath.velocity.x >= 0.01 && !facingRight || aiPath.velocity.x <= -0.01 && facingRight)
         {
             facingRight = !facingRight;
             transform.Rotate(0, 180, 0);
