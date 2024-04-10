@@ -48,6 +48,8 @@ public class Slime : MonoBehaviour
 
     public Transform playPos { get; private set; }
 
+    public BuffContent buffContent { get; private set; }
+
     private void Awake()
     {
         slimeStateMachine = new SlimeStateMachine();
@@ -59,6 +61,8 @@ public class Slime : MonoBehaviour
         explosionRef = Resources.Load("Prefab/Explode/SlimeExplode");
 
         slimeStats = GetComponent<SlimeStats>(); // Get reference before other states
+
+        buffContent = GameObject.FindWithTag("Game Manager").GetComponent<BuffContent>();
 
         IdleState = new SlimeIdleState(this, slimeStateMachine, slimeStats, "SlimeIdle");
         ChaseState = new SlimeChaseState(this, slimeStateMachine, slimeStats, "SlimeChase");
@@ -101,6 +105,12 @@ public class Slime : MonoBehaviour
     {
         if (slimeStats.health <= 0)
         {
+            // If the Vampiric Essence buff is activated then player can have a chance to restore health.
+            if (buffContent.onVampiricEssence)
+            {
+                buffContent.DetectDead();
+            }
+
             isDead = true;
             isHurt = true;
             Rb.velocity = Vector2.zero;

@@ -47,7 +47,7 @@ public class Goblin : MonoBehaviour
 
     public Transform playPos { get; private set; }
 
-
+    public BuffContent buffContent { get; private set; }
 
     private void Awake()
     {
@@ -58,6 +58,8 @@ public class Goblin : MonoBehaviour
         aiPath = GetComponent<AIPath>();
 
         goblinStats = GetComponent<GoblinStats>(); // Get reference before other states
+
+        buffContent = GameObject.FindWithTag("Game Manager").GetComponent<BuffContent>();
 
         IdleState = new GoblinIdleState(this, goblinStateMachine, goblinStats, "GoblinIdle");
         ChaseState = new GoblinChaseState(this, goblinStateMachine, goblinStats, "GoblinChase");
@@ -102,12 +104,16 @@ public class Goblin : MonoBehaviour
     {
         if (goblinStats.health <= 0)
         {
+            // If the Vampiric Essence buff is activated then player can have a chance to restore health.
+            if (buffContent.onVampiricEssence)
+            {
+                buffContent.DetectDead();
+            }
+
             isDead = true;
             isHurt = true;
             Rb.velocity = Vector2.zero;
             goblinStats.health = 0;
-
-
 
             goblinStateMachine.ChangeState(DeadState);
         }

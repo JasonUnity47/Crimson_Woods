@@ -115,7 +115,7 @@ public class DireBoar : MonoBehaviour
     {
         if (direBoarStats.health <= 0 && !isDead)
         {
-            // IF Vampiric Essence is ON.
+            // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)
             {
                 buffContent.DetectDead();

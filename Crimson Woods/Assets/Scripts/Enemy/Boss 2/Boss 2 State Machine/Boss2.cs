@@ -104,6 +104,8 @@ public class Boss2 : MonoBehaviour
 
     public SpriteRenderer playerSprite {  get; private set; }
 
+    public BuffContent buffContent { get; private set; }
+
     private void Awake()
     {
         boss2StateMachine = new Boss2StateMachine();
@@ -116,6 +118,7 @@ public class Boss2 : MonoBehaviour
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         playerSprite = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
+        buffContent = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<BuffContent>();
 
         IdleState = new Boss2IdleState(this, boss2StateMachine, boss2Stats, "IdleBool");
         ChaseState = new Boss2ChaseState(this, boss2StateMachine, boss2Stats, "ChaseBool");
@@ -176,6 +179,12 @@ public class Boss2 : MonoBehaviour
     {
         if (health <= 0 && !isDead)
         {
+            // If the Vampiric Essence buff is activated then player can have a chance to restore health.
+            if (buffContent.onVampiricEssence)
+            {
+                buffContent.DetectDead();
+            }
+
             isDead = true;
             isHurt = true; // Prevent continuous damage from the player.
             health = 0;

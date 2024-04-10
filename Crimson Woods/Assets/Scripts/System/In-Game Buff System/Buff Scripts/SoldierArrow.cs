@@ -27,6 +27,7 @@ public class SoldierArrow : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
+            // Boar
             if (collision.GetComponent<Boar>() == true)
             {
                 Boar boar = collision.GetComponent<Boar>();
@@ -34,38 +35,42 @@ public class SoldierArrow : MonoBehaviour
                 Destroy(this.gameObject);
             }
 
+            // Dire Boar
             else if (collision.GetComponent<DireBoar>() == true)
             {
                 DireBoar direBoar = collision.GetComponent<DireBoar>();
                 direBoar.TakeDamage(1);
                 Destroy(this.gameObject);
             }
-
-            else if (collision.GetComponent<GoblinStats>() == true)
+            
+            // Goblin
+            else if (collision.GetComponent<Goblin>() == true)
             {
-                GoblinStats goblinStats = collision.GetComponent<GoblinStats>();
-                goblinStats.health--;
+                Goblin goblin = collision.GetComponent<Goblin>();
+                goblin.TakeDamage(1);
                 Destroy(this.gameObject);
             }
 
-            else if (collision.GetComponent<SlimeStats>() == true)
+            // Slime
+            else if (collision.GetComponent<Slime>() == true)
             {
-                SlimeStats slimeStats = collision.GetComponent<SlimeStats>();
-                slimeStats.health--;
+                Slime slime = collision.GetComponent<Slime>();
+                slime.TakeDamage(1);
                 Destroy(this.gameObject);
             }
 
             // Boss 1
-            else if (collision.GetComponent<Boss1>() == true)
+            else if (collision.GetComponent<Boss1Data>() == true)
             {
                 Boss1Data boss1Stats = collision.GetComponent<Boss1Data>();
                 boss1Stats.health--;
             }
 
-            else if (collision.GetComponent<Boss2Stats>() == true)
+            // Boss 2
+            else if (collision.GetComponent<Boss2>() == true)
             {
-                Boss2Stats boss2Stats = collision.GetComponent<Boss2Stats>();
-                boss2Stats.health--;
+                Boss2 boss2 = collision.GetComponent<Boss2>();
+                boss2.TakeDamage(1);
                 Destroy(this.gameObject);
             }
         }

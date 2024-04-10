@@ -89,12 +89,70 @@ public class BulletScript : MonoBehaviour
         // Check if the bullet collides with an enemy
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Boar boarHealth = collision.gameObject.GetComponent<Boar>();
-
-            // Apply damage to the enemy
-            if (boarHealth != null)
+            if (collision.GetComponent<Boar>() != null)
             {
-                boarHealth.TakeDamage(damage);
+                Boar boarHealth = collision.gameObject.GetComponent<Boar>();
+
+                // Apply damage to the enemy
+                if (boarHealth != null)
+                {
+                    boarHealth.TakeDamage(damage);
+                }
+            }
+
+            else if (collision.GetComponent<DireBoar>() != null)
+            {
+                DireBoar direBoarHealth = collision.gameObject.GetComponent<DireBoar>();
+
+                // Apply damage to the enemy
+                if (direBoarHealth != null)
+                {
+                    direBoarHealth.TakeDamage(damage);
+                }
+            }
+
+            else if (collision.GetComponent<Goblin>() != null)
+            {
+                Goblin goblinHealth = collision.gameObject.GetComponent<Goblin>();
+
+                // Apply damage to the enemy
+                if (goblinHealth != null)
+                {
+                    goblinHealth.TakeDamage(damage);
+                }
+            }
+
+            else if (collision.GetComponent<Slime>() != null)
+            {
+                Slime slimeHealth = collision.gameObject.GetComponent<Slime>();
+
+                // Apply damage to the enemy
+                if (slimeHealth != null)
+                {
+                    slimeHealth.TakeDamage(damage);
+                }
+            }
+
+            else if (collision.GetComponent<Boss1Data>() != null)
+            {
+                Boss1Data boss1Health = collision.gameObject.GetComponent<Boss1Data>();
+
+                // Apply damage to the enemy
+                if (boss1Health != null)
+                {
+                    boss1Health.health--;
+                }
+            }
+
+            else if (collision.GetComponent<Boss2>() != null)
+            {
+                Boss2 boss2Health = collision.gameObject.GetComponent<Boss2>();
+
+                // Apply damage to the enemy
+                if (boss2Health != null)
+                {
+                    boss2Health.TakeDamage(damage);
+                }
             }
 
             // IF Piercing Arrows is ON THEN can penetrate enemy.
@@ -109,38 +167,6 @@ public class BulletScript : MonoBehaviour
                 else
                 {
                     timeBtwFrame -= Time.deltaTime;
-                }
-
-                if (penetrationNumber <= 0)
-                {
-                    // Destroy the bullet
-                    DestroyBullet();
-                }
-            }
-
-            else
-            {
-                // Destroy the bullet
-                DestroyBullet();
-            }
-        }
-
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            DireBoar direBoarHealth = collision.gameObject.GetComponent<DireBoar>();
-
-            // Apply damage to the enemy
-            if (direBoarHealth != null)
-            {
-                direBoarHealth.TakeDamage(damage);
-            }
-
-            if (buffContent.onPiercingArrows)
-            {
-                if (timeBtwFrame <= 0)
-                {
-                    timeBtwFrame = startTime;
-                    penetrationNumber--;
                 }
 
                 if (penetrationNumber <= 0)
