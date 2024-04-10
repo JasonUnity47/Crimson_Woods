@@ -9,7 +9,7 @@ public class Boss2DeadState : Boss2State
     private int count = 0;
     private bool isFinished = false;
 
-    public Boss2DeadState(Boss2 boss2, Boss2StateMachine boss2StateMachine, Boss2Stats boss2Stats, string animName) : base(boss2, boss2StateMachine, boss2Stats, animName)
+    public Boss2DeadState(Boss2 boss2, Boss2StateMachine boss2StateMachine, string animName) : base(boss2, boss2StateMachine, animName)
     {
     }
 

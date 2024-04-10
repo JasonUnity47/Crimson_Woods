@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Boss2ChaseState : Boss2State
 {
-    private float lastSpeed;
-
-    public Boss2ChaseState(Boss2 boss2, Boss2StateMachine boss2StateMachine, Boss2Stats boss2Stats, string animName) : base(boss2, boss2StateMachine, boss2Stats, animName)
+    public Boss2ChaseState(Boss2 boss2, Boss2StateMachine boss2StateMachine, string animName) : base(boss2, boss2StateMachine, animName)
     {
     }
 

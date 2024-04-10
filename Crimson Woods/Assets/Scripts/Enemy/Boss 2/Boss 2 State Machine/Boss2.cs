@@ -92,8 +92,6 @@ public class Boss2 : MonoBehaviour
     public Boss2DeadState DeadState { get; private set; }
 
     // Script Reference
-    public Boss2Stats boss2Stats { get; private set; }
-
     public LootBag lootBag { get; private set; }
 
     public AIPath aiPath {  get; private set; }
@@ -112,7 +110,6 @@ public class Boss2 : MonoBehaviour
 
         Anim = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody2D>();
-        boss2Stats = GetComponent<Boss2Stats>();
         lootBag = GetComponent<LootBag>();
         aiPath = GetComponent<AIPath>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -120,13 +117,13 @@ public class Boss2 : MonoBehaviour
         playerSprite = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
         buffContent = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<BuffContent>();
 
-        IdleState = new Boss2IdleState(this, boss2StateMachine, boss2Stats, "IdleBool");
-        ChaseState = new Boss2ChaseState(this, boss2StateMachine, boss2Stats, "ChaseBool");
-        ShockState = new Boss2ShockState(this, boss2StateMachine, boss2Stats, "ShockBool");
-        ChargeState = new Boss2ChargeState(this, boss2StateMachine, boss2Stats, "ChargeBool");
-        PrepareState = new Boss2PrepareState(this, boss2StateMachine, boss2Stats, "PrepareBool");
-        RangeState = new Boss2RangeState(this, boss2StateMachine, boss2Stats, "SlashTrigger");
-        DeadState = new Boss2DeadState(this, boss2StateMachine, boss2Stats, "DeadBool");
+        IdleState = new Boss2IdleState(this, boss2StateMachine, "IdleBool");
+        ChaseState = new Boss2ChaseState(this, boss2StateMachine, "ChaseBool");
+        ShockState = new Boss2ShockState(this, boss2StateMachine, "ShockBool");
+        ChargeState = new Boss2ChargeState(this, boss2StateMachine, "ChargeBool");
+        PrepareState = new Boss2PrepareState(this, boss2StateMachine, "PrepareBool");
+        RangeState = new Boss2RangeState(this, boss2StateMachine, "SlashTrigger");
+        DeadState = new Boss2DeadState(this, boss2StateMachine, "DeadBool");
     }
 
     private void Start()
@@ -185,13 +182,24 @@ public class Boss2 : MonoBehaviour
                 buffContent.DetectDead();
             }
 
+            // Change the "Enemy" tag to "Untagged" tag to disable all the scripts that need "Enemy" tag to prevent after-dead issues.
+            tag = "Untagged";
+            Physics2D.IgnoreLayerCollision(6, 7);
             isDead = true;
             isHurt = true; // Prevent continuous damage from the player.
             health = 0;
+            aiPath.isStopped = true;
+            aiPath.maxSpeed = 0;
 
             // If the enemy is dead then change to Dead State.
             boss2StateMachine.ChangeState(DeadState);
         }
+
+        if (isDead && boss2StateMachine.CurrentState != DeadState)
+        {
+            // If the enemy is dead then change to Dead State.
+            boss2StateMachine.ChangeState(DeadState);
+        }    
 
         return;
     }
@@ -214,7 +222,7 @@ public class Boss2 : MonoBehaviour
         // If the enemy has not damaged before then take the damage.
         if (!isHurt)
         {
-            boss2Stats.health -= damageValue;
+            health -= damageValue;
 
             Anim.SetTrigger("HurtTrigger");
 

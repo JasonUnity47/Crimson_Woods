@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss2ChargeState : Boss2State
 {
-    public Boss2ChargeState(Boss2 boss2, Boss2StateMachine boss2StateMachine, Boss2Stats boss2Stats, string animName) : base(boss2, boss2StateMachine, boss2Stats, animName)
+    public Boss2ChargeState(Boss2 boss2, Boss2StateMachine boss2StateMachine, string animName) : base(boss2, boss2StateMachine, animName)
     {
     }
 

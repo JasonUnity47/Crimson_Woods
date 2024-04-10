@@ -9,26 +9,22 @@ public class SlashMovement : MonoBehaviour
 
     private Boss2 boss2;
 
-    private Rigidbody2D rb;
-
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-
         boss2 = GameObject.FindAnyObjectByType<Boss2>();
 
         Quaternion rotation = Quaternion.LookRotation(transform.position - (Vector3)boss2.lastTargetPosForSlash, transform.TransformDirection(Vector3.forward));
 
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
 
-        Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject, 0.8f);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        rb.position = Vector2.Lerp((Vector2)rb.position, boss2.lastTargetPosForSlash, slashSpeed * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, boss2.lastTargetPosForSlash, slashSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +33,7 @@ public class SlashMovement : MonoBehaviour
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(1f);
+            playerHealth.TakeDamage(1);
         }
     }
 }
