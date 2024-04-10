@@ -11,6 +11,7 @@ public class BuffContent : MonoBehaviour
     private PlayerController playerController;
     private PlayerHealth playerHealth;
     private Shooting shooting;
+    public HealthHeartBar healthHeartBar;
 
     [Header("Object Reference")]
     private Transform playerPos;
@@ -218,6 +219,7 @@ public class BuffContent : MonoBehaviour
         playerController.moveSpeed += moveSpeedIncrement;
         playerController.startingMoveSpeed += moveSpeedIncrement;
 
+        healthHeartBar.DrawHearts();
         return;
     }
 
