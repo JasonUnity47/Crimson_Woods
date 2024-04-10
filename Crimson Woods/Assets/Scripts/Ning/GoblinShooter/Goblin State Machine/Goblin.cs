@@ -112,9 +112,12 @@ public class Goblin : MonoBehaviour
                 buffContent.DetectDead();
             }
 
+            tag = "Untagged";
+            Physics2D.IgnoreLayerCollision(6, 7);
             isDead = true;
             isHurt = true;
-            Rb.velocity = Vector2.zero;
+            aiPath.isStopped = true;
+            aiPath.maxSpeed = 0;
             goblinStats.health = 0;
 
             goblinStateMachine.ChangeState(DeadState);

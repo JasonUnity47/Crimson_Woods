@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2821094068883481062}
   - component: {fileID: 6680841169509856484}
   - component: {fileID: 4000534567297262296}
+  - component: {fileID: 3739388269088220415}
   m_Layer: 0
   m_Name: 'GoblinShooter '
   m_TagString: Enemy
@@ -41,7 +42,7 @@ Transform:
   m_Children:
   - {fileID: 5160812934808316600}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7349399754535314485
 SpriteRenderer:
@@ -331,6 +332,41 @@ MonoBehaviour:
   bezierTangentLength: 0.4
   offset: 0.2
   factor: 1
+--- !u!70 &3739388269088220415
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254507577964125753}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.024516106, y: -0.24165523}
+  m_Size: {x: 1.0543919, y: 1.5166895}
+  m_Direction: 0
 --- !u!1 &5545778081085576868
 GameObject:
   m_ObjectHideFlags: 0

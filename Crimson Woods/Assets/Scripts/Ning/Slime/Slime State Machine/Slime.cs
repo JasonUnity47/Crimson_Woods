@@ -112,11 +112,14 @@ public class Slime : MonoBehaviour
             {
                 buffContent.DetectDead();
             }
-
+            tag = "Untagged";
+            Physics2D.IgnoreLayerCollision(6, 7);
             isDead = true;
             isHurt = true;
-            Rb.velocity = Vector2.zero;
+
             slimeStats.health = 0;
+            aiPath.isStopped = true;
+            aiPath.maxSpeed = 0;
 
             GameObject explosion = (GameObject)Instantiate(explosionRef);
             explosion.transform.position = new Vector3(transform.position.x, transform.position.y + .3f, transform.position.z);
