@@ -42,7 +42,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1777322402262262233
 SpriteRenderer:
@@ -156,7 +156,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 0.8125}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!114 &4969165243963322990
 MonoBehaviour:
@@ -358,7 +358,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 4753258141237861932}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8e5220055dbec2f428b3bbddb134d9b6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -381,6 +381,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 0.8125}
+  m_Offset: {x: 0.09489107, y: -0.15482187}
+  m_Size: {x: 0.69035625, y: 0.69035625}
   m_Direction: 0
