@@ -30,6 +30,9 @@ public class DireBoar : MonoBehaviour
     public bool isCharging = false;
     public bool hasCharged = false;
 
+    // Loot
+    [Header("Loot")]
+    public int lootCount;
 
     // Component
     public Animator Anim { get; private set; }

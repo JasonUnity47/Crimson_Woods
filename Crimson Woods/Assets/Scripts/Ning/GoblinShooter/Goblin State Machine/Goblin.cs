@@ -20,7 +20,9 @@ public class Goblin : MonoBehaviour
     public bool isHurt = false;
     public bool isDead = false;
 
-
+    // Loot
+    [Header("Loot")]
+    public int lootCount;
 
     // Component
     public Animator Anim { get; private set; }

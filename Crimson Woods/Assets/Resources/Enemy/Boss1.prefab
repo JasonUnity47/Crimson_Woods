@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1367481639711212481}
   - component: {fileID: 1669323418558149099}
   - component: {fileID: 8941853668934732984}
+  - component: {fileID: 8516126503080652354}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Untagged
@@ -313,6 +314,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 500
   health: 200
+--- !u!114 &8516126503080652354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79851471140332342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be6c45904321e74ebb5e83f470683c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 2687141181979654912, guid: 8effdf27467f68f44af9fd6c198ea687, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 8d715473786799847b8d3de9e72755cb, type: 2}
+  - {fileID: 11400000, guid: 7cd7b1f90bf01054aa4820febd7834bb, type: 2}
 --- !u!1 &271275622173820696
 GameObject:
   m_ObjectHideFlags: 0

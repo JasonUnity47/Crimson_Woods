@@ -131,6 +131,7 @@ MonoBehaviour:
   facingRight: 1
   isHurt: 0
   isDead: 0
+  lootCount: 1
 --- !u!114 &561961459315001795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppedItemPrefab: {fileID: 2687141181979654912, guid: 8effdf27467f68f44af9fd6c198ea687, type: 3}
-  lootList: []
+  lootList:
+  - {fileID: 11400000, guid: 8d715473786799847b8d3de9e72755cb, type: 2}
+  - {fileID: 11400000, guid: 7cd7b1f90bf01054aa4820febd7834bb, type: 2}
 --- !u!70 &2561673464966806480
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

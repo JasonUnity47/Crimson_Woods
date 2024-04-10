@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 5819201663120647886}
   - component: {fileID: 7976607875529847917}
   - component: {fileID: 4625915271269297877}
-  - component: {fileID: 848635981079878968}
   - component: {fileID: 7139218334062403692}
+  - component: {fileID: 848635981079878968}
   - component: {fileID: 6387057982384258878}
   m_Layer: 7
   m_Name: Shark
@@ -153,7 +153,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 2565559039941498371}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8e5220055dbec2f428b3bbddb134d9b6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -176,8 +176,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030861855, y: -0.6490459}
-  m_Size: {x: 0.7026882, y: 1.0952018}
+  m_Offset: {x: 0.030861855, y: -0.8453027}
+  m_Size: {x: 0.7026882, y: 0.7026882}
   m_Direction: 0
 --- !u!70 &5969783797965639522
 CapsuleCollider2D:
@@ -194,8 +194,8 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 447
-  m_LayerOverridePriority: 0
+    m_Bits: 0
+  m_LayerOverridePriority: 10
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -211,8 +211,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03086185, y: -0.6490459}
-  m_Size: {x: 0.7026882, y: 1.095202}
+  m_Offset: {x: 0.030861855, y: -0.30512142}
+  m_Size: {x: 1.0684242, y: 1.783051}
   m_Direction: 0
 --- !u!114 &5819201663120647886
 MonoBehaviour:
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.5
+  radius: 1.2
   height: 1
   canMove: 1
   maxSpeed: 5
@@ -278,8 +278,8 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0
-  pickNextWaypointDist: 0.4
-  endReachedDistance: 0.1
+  pickNextWaypointDist: 0.65
+  endReachedDistance: 0
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
@@ -299,6 +299,28 @@ MonoBehaviour:
   version: 1
   unwrap: 1
   splitAtEveryPortal: 0
+--- !u!114 &7139218334062403692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565559039941498371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  smoothType: 3
+  subdivisions: 2
+  iterations: 2
+  strength: 0.5
+  uniformLength: 1
+  maxSegmentLength: 0.005
+  bezierTangentLength: 0.4
+  offset: 0.2
+  factor: 1
 --- !u!114 &848635981079878968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,11 +336,11 @@ MonoBehaviour:
   facingRight: 1
   health: 0
   maxHealth: 5
-  hurtTime: 0.4
+  hurtTime: 0.1
   isHurt: 0
   isDead: 0
   shockArea: {fileID: 2452861435981958053}
-  shockRadius: 8
+  shockRadius: 10
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -350,28 +372,6 @@ MonoBehaviour:
   hasSlashed: 0
   checkTime: 1
   lootCount: 30
---- !u!114 &7139218334062403692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565559039941498371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  smoothType: 3
-  subdivisions: 2
-  iterations: 2
-  strength: 0.5
-  uniformLength: 1
-  maxSegmentLength: 0.005
-  bezierTangentLength: 0.4
-  offset: 0.2
-  factor: 1
 --- !u!114 &6387057982384258878
 MonoBehaviour:
   m_ObjectHideFlags: 0
