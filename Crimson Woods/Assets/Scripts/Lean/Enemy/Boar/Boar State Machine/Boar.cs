@@ -94,15 +94,6 @@ public class Boar : MonoBehaviour
     }
 
 
-    //Attack Damage
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
-        }
-    }
-
     public void CheckDead()
     {
         if (boarStats.health <= 0)
@@ -155,6 +146,15 @@ public class Boar : MonoBehaviour
         {
             facingRight = !facingRight;
             transform.Rotate(0, 180, 0);
+        }
+    }
+
+    //Attack Damage
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
         }
     }
 
