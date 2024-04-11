@@ -133,9 +133,9 @@ public class BulletScript : MonoBehaviour
                 }
             }
 
-            else if (collision.GetComponent<Boss1Data>() != null)
+            else if (collision.GetComponent<Boss1>() != null)
             {
-                Boss1Data boss1Health = collision.gameObject.GetComponent<Boss1Data>();
+                Boss1 boss1Health = collision.gameObject.GetComponent<Boss1>();
 
                 // Apply damage to the enemy
                 if (boss1Health != null)
