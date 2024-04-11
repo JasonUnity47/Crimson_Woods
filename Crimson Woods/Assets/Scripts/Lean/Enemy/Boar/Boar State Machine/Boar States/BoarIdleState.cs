@@ -12,9 +12,7 @@ public class BoarIdleState : BoarState
     public override void Enter()
     {
         base.Enter();
-
-        // Stop moving
-        boar.Rb.velocity = Vector2.zero;
+       
     }
 
     public override void Exit()
@@ -26,14 +24,7 @@ public class BoarIdleState : BoarState
     {
         base.LogicalUpdate();
 
-        // Detect player
-        boar.boarMovement.TargetInDistance();
-
-        // IF detect player THEN change to CHASE STATE
-        if (boar.boarMovement.isDetected)
-        {
-            boarStateMachine.ChangeState(boar.ChaseState);
-        }
+        boarStateMachine.ChangeState(boar.ChaseState);
     }
 
     public override void PhysicsUpdate()

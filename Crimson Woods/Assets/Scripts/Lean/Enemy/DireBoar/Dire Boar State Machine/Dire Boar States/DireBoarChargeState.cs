@@ -26,8 +26,13 @@ public class DireBoarChargeState : DireBoarState
     {
         base.LogicalUpdate();
 
+        if (!direBoar.hasCharged)
+        {
+            direBoar.ChargeAttack();
+        }
+
         // IF reach to the end point THEN finish charged
-        if (Vector2.Distance(direBoar.transform.position, direBoar.lastTargetPosForCharge) < direBoar.direBoarMovement.chargeDistance)
+        if (Vector2.Distance(direBoar.transform.position, direBoar.lastTargetPosForCharge) < direBoar.chargeDistance)
         {
             direBoar.hasCharged = true;
         }
@@ -41,13 +46,6 @@ public class DireBoarChargeState : DireBoarState
 
     public override void PhysicsUpdate()
     {
-        base.PhysicsUpdate();
-
-        // IF enemy haven't charge player before THEN charge player
-        if (!direBoar.hasCharged)
-        {
-            direBoar.ChargePlayer();
-        }
-
+        base.PhysicsUpdate();        
     }
 }

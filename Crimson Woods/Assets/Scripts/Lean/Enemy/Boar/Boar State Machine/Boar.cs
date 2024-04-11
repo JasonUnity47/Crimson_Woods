@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -37,9 +38,12 @@ public class Boar : MonoBehaviour
     // Script Reference
     private BoarStats boarStats;
 
-    public BoarMovement boarMovement { get; private set; }
 
     public LootBag lootBag { get; private set; }
+
+    public AIPath aiPath { get; private set; }
+
+    public Transform playPos { get; private set; }
 
     public BuffContent buffContent { get; private set; }
 
@@ -48,6 +52,8 @@ public class Boar : MonoBehaviour
         boarStateMachine = new BoarStateMachine();
 
         lootBag = GetComponent<LootBag>();
+
+        aiPath = GetComponent<AIPath>();
 
         boarStats = GetComponent<BoarStats>(); // Get reference before other states
 
@@ -59,8 +65,7 @@ public class Boar : MonoBehaviour
     }
 
     private void Start()
-    {
-        boarMovement = GetComponent<BoarMovement>();
+    {        
 
         SR = GetComponent<SpriteRenderer>();
 
@@ -108,10 +113,14 @@ public class Boar : MonoBehaviour
                 buffContent.DetectDead();
             }
 
+            tag = "Untagged";
+            Physics2D.IgnoreLayerCollision(6, 7);
             isDead = true;
             isHurt = true;
-            Rb.velocity = Vector2.zero;
+
             boarStats.health = 0;
+            aiPath.isStopped = true;
+            aiPath.maxSpeed = 0;
 
             boarStateMachine.ChangeState(DeadState);
         }
@@ -142,7 +151,7 @@ public class Boar : MonoBehaviour
 
     public void FlipDirection()
     {
-        if (Rb.velocity.x >= 0.01 && !facingRight || Rb.velocity.x <= -0.01 && facingRight)
+        if (aiPath.velocity.x >= 0.01 && !facingRight || aiPath.velocity.x <= -0.01 && facingRight)
         {
             facingRight = !facingRight;
             transform.Rotate(0, 180, 0);

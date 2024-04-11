@@ -26,14 +26,8 @@ public class DireBoarIdleState : DireBoarState
     {
         base.LogicalUpdate();
 
-        // Detect player
-        direBoar.direBoarMovement.TargetInDistance();
-
-        // IF detect player THEN change to CHASE STATE
-        if (direBoar.direBoarMovement.isDetected)
-        {
-            direBoarStateMachine.ChangeState(direBoar.ChaseState);
-        }
+        direBoarStateMachine.ChangeState(direBoar.ChaseState);
+        
     }
 
     public override void PhysicsUpdate()

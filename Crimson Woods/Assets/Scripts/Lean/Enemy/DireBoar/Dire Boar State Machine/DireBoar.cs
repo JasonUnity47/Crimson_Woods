@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -25,6 +26,9 @@ public class DireBoar : MonoBehaviour
     public bool hasObstacle = false;
 
     [Header("Charge State")]
+    public float chargeCD;
+    public float enterChargeTime;
+    public float chargeDistance;
     public Vector2 lastTargetPosForCharge;
     [SerializeField] private float chargeSpeed;
     public bool isCharging = false;
@@ -55,9 +59,12 @@ public class DireBoar : MonoBehaviour
     // Script Reference
     private DireBoarStats direBoarStats;
 
-    public DireBoarMovement direBoarMovement { get; private set; }
 
     public LootBag lootBag { get; private set; }
+
+    public AIPath aiPath { get; private set; }
+
+    public Transform playPos { get; private set; }
 
     // Game Manager
     private BuffContent buffContent;
@@ -70,6 +77,10 @@ public class DireBoar : MonoBehaviour
 
         lootBag = GetComponent<LootBag>();
 
+        aiPath = GetComponent<AIPath>();
+
+        playPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
         direBoarStats = GetComponent<DireBoarStats>(); // Get reference before other states
 
         IdleState = new DireBoarIdleState(this, direBoarStateMachine, direBoarStats, "IdleBool");
@@ -80,9 +91,7 @@ public class DireBoar : MonoBehaviour
     }
 
     private void Start()
-    {
-        direBoarMovement = GetComponent<DireBoarMovement>();
-
+    {        
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
 
@@ -126,8 +135,10 @@ public class DireBoar : MonoBehaviour
 
             isDead = true;
             isHurt = true;
-            Rb.velocity = Vector2.zero;
+
             direBoarStats.health = 0;
+            aiPath.isStopped = true;
+            aiPath.maxSpeed = 0;
             direBoarStateMachine.ChangeState(DeadState);
         }
     }
@@ -161,6 +172,13 @@ public class DireBoar : MonoBehaviour
         //Debug.Log("Check");
     }
 
+    public void DetectPlayer()
+    {
+        // Check whether player is around the enemy.
+        isShocked = Physics2D.OverlapCircle(shockArea.position, shockRadius, whatIsPlayer);
+
+        return;
+    }
     public void ShockMotion()
     {
         // IF no obstacle THEN check whether player is around the enemy
@@ -192,11 +210,19 @@ public class DireBoar : MonoBehaviour
 
     public void FlipDirection()
     {
-        if (Rb.velocity.x >= 0.01 && !facingRight || Rb.velocity.x <= -0.01 && facingRight)
+        if (aiPath.velocity.x >= 0.01 && !facingRight || aiPath.velocity.x <= -0.01 && facingRight)
         {
             facingRight = !facingRight;
             transform.Rotate(0, 180, 0);
         }
+    }
+
+    public void ChargeAttack()
+    {
+        // Move enemy to the last player position.
+        transform.position = Vector2.Lerp((Vector2)transform.position, lastTargetPosForCharge, chargeSpeed * Time.deltaTime);
+
+        return;
     }
 
     IEnumerator WaitForCharge()

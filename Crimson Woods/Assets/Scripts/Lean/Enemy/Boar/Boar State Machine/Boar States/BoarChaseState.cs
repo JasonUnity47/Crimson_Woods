@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoarChaseState : BoarState
 {
+    private Transform playerPos;
     public BoarChaseState(Boar boar, BoarStateMachine boarStateMachine, BoarStats boarStats, string animName) : base(boar, boarStateMachine, boarStats, animName)
     {
     }
@@ -11,6 +12,7 @@ public class BoarChaseState : BoarState
     public override void Enter()
     {
         base.Enter();
+        playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     public override void Exit()
@@ -22,20 +24,11 @@ public class BoarChaseState : BoarState
     {
         base.LogicalUpdate();
 
-        boar.boarMovement.moveSpeed = boarStats.moveSpeed;
-
-
-
+        boar.aiPath.destination = playerPos.position;
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-
-        // IF detect player THEN chase player
-        if (boar.boarMovement.isDetected)
-        {
-            boar.boarMovement.PathFollow();
-        }
     }
 }

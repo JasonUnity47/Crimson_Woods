@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DireBoarChaseState : DireBoarState
 {
+    private Transform playerPos;
     public DireBoarChaseState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, DireBoarStats direBoarStats, string animName) : base(direBoar, direBoarStateMachine, direBoarStats, animName)
     {
     }
@@ -11,6 +12,7 @@ public class DireBoarChaseState : DireBoarState
     public override void Enter()
     {
         base.Enter();
+        direBoar.aiPath.isStopped = false;
     }
 
     public override void Exit()
@@ -22,7 +24,7 @@ public class DireBoarChaseState : DireBoarState
     {
         base.LogicalUpdate();
 
-        direBoar.direBoarMovement.moveSpeed = direBoarStats.moveSpeed;
+        direBoar.aiPath.destination = direBoar.playPos.position;
 
         // Detect obstacle
         direBoar.DetectObstacle();
@@ -30,10 +32,16 @@ public class DireBoarChaseState : DireBoarState
         // Detect player if no obstacle
         direBoar.ShockMotion();
 
+        if (!direBoar.hasObstacle)
+        {
+            direBoar.DetectPlayer();
+        }
+
+
         // IF detect player AND no obstacles AND haven't charged THEN enter SHOCK STATE
         if (direBoar.isShocked && !direBoar.hasObstacle && !direBoar.hasCharged)
         {
-            direBoar.Rb.velocity = Vector2.zero; // Stop moving
+            direBoar.aiPath.isStopped = true;
             direBoarStateMachine.ChangeState(direBoar.ShockState);
         }
 
@@ -43,12 +51,6 @@ public class DireBoarChaseState : DireBoarState
 
     public override void PhysicsUpdate()
     {
-        base.PhysicsUpdate();
-
-        // IF detect player THEN chase player
-        if (direBoar.direBoarMovement.isDetected)
-        {
-            direBoar.direBoarMovement.PathFollow();
-        }
+        base.PhysicsUpdate();  
     }
 }

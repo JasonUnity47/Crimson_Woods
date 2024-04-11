@@ -15,7 +15,7 @@ public class DireBoarShockState : DireBoarState
         if (!direBoar.isCharging)
         {
             // Get the target position ONCE
-            direBoar.lastTargetPosForCharge = direBoar.direBoarMovement.targetPos.position;
+            direBoar.lastTargetPosForCharge = direBoar.playPos.position;
 
             direBoar.PrepareCharge();
         }
