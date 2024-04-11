@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DireBoarShockState : DireBoarState
 {
-    public DireBoarShockState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, DireBoarStats direBoarStats, string animName) : base(direBoar, direBoarStateMachine, direBoarStats, animName)
+    public DireBoarShockState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, string animName) : base(direBoar, direBoarStateMachine,  animName)
     {
     }
 
@@ -12,10 +12,11 @@ public class DireBoarShockState : DireBoarState
     {
         base.Enter();
 
+        // If the enemy didn't prepare to charge the player before then start charging.
         if (!direBoar.isCharging)
         {
-            // Get the target position ONCE
-            direBoar.lastTargetPosForCharge = direBoar.playPos.position;
+            // Get the target position once when enter this state.
+            direBoar.lastTargetPosForCharge = direBoar.playerPos.position;
 
             direBoar.PrepareCharge();
         }

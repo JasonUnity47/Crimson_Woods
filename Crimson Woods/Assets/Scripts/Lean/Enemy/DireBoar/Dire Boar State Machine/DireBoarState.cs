@@ -6,14 +6,12 @@ public class DireBoarState
 {
     protected DireBoar direBoar;
     protected DireBoarStateMachine direBoarStateMachine;
-    protected DireBoarStats direBoarStats;
     protected string animName;
 
-    public DireBoarState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, DireBoarStats direBoarStats, string animName)
+    public DireBoarState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, string animName)
     {
         this.direBoar = direBoar;
         this.direBoarStateMachine = direBoarStateMachine;
-        this.direBoarStats = direBoarStats;
         this.animName = animName;
     }
 

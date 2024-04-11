@@ -5,16 +5,13 @@ using UnityEngine;
 
 public class DireBoarIdleState : DireBoarState
 {
-    public DireBoarIdleState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, DireBoarStats direBoarStats, string animName) : base(direBoar, direBoarStateMachine, direBoarStats, animName)
+    public DireBoarIdleState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, string animName) : base(direBoar, direBoarStateMachine, animName)
     {       
     }
 
     public override void Enter()
     {
         base.Enter();
-
-        // Stop moving
-        direBoar.Rb.velocity = Vector2.zero;
     }
 
     public override void Exit()
@@ -26,6 +23,7 @@ public class DireBoarIdleState : DireBoarState
     {
         base.LogicalUpdate();
 
+        // When an enemy appears in the game, it will immediately detect the player and start chasing the player.
         direBoarStateMachine.ChangeState(direBoar.ChaseState);
         
     }

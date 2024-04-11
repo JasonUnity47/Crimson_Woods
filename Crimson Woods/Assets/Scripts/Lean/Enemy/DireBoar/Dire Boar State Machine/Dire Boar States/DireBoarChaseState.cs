@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DireBoarChaseState : DireBoarState
-{
-    private Transform playerPos;
-    public DireBoarChaseState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, DireBoarStats direBoarStats, string animName) : base(direBoar, direBoarStateMachine, direBoarStats, animName)
+{  
+    public DireBoarChaseState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, string animName) : base(direBoar, direBoarStateMachine, animName)
     {
     }
 
     public override void Enter()
     {
         base.Enter();
+
+        // Let the enemy can move.
         direBoar.aiPath.isStopped = false;
     }
 
@@ -24,14 +25,13 @@ public class DireBoarChaseState : DireBoarState
     {
         base.LogicalUpdate();
 
-        direBoar.aiPath.destination = direBoar.playPos.position;
+        // Chase the player.
+        direBoar.aiPath.destination = direBoar.playerPos.position;
 
         // Detect obstacle
         direBoar.DetectObstacle();
 
-        // Detect player if no obstacle
-        direBoar.ShockMotion();
-
+        // If no obstacles around the enemy then check whether the player is around the enemy.
         if (!direBoar.hasObstacle)
         {
             direBoar.DetectPlayer();
@@ -41,12 +41,11 @@ public class DireBoarChaseState : DireBoarState
         // IF detect player AND no obstacles AND haven't charged THEN enter SHOCK STATE
         if (direBoar.isShocked && !direBoar.hasObstacle && !direBoar.hasCharged)
         {
+            // The enemy should stop moving.
             direBoar.aiPath.isStopped = true;
+
             direBoarStateMachine.ChangeState(direBoar.ShockState);
         }
-
-        
-       
     }
 
     public override void PhysicsUpdate()

@@ -10,7 +10,7 @@ public class DireBoarDeadState : DireBoarState
     private int count = 0;
     private bool isFinished = false;
 
-    public DireBoarDeadState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, DireBoarStats direBoarStats, string animName) : base(direBoar, direBoarStateMachine, direBoarStats, animName)
+    public DireBoarDeadState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, string animName) : base(direBoar, direBoarStateMachine, animName)
     {
     }
 
@@ -37,6 +37,7 @@ public class DireBoarDeadState : DireBoarState
 
                 // Drop items
                 direBoar.lootBag.InstantiateLoot(direBoar.transform.position);
+
                 count++;
             }
 

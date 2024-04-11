@@ -5,7 +5,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class DireBoarChargeState : DireBoarState
 {
-    public DireBoarChargeState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, DireBoarStats direBoarStats, string animName) : base(direBoar, direBoarStateMachine, direBoarStats, animName)
+    public DireBoarChargeState(DireBoar direBoar, DireBoarStateMachine direBoarStateMachine, string animName) : base(direBoar, direBoarStateMachine, animName)
     {
     }
 
@@ -18,7 +18,7 @@ public class DireBoarChargeState : DireBoarState
     {
         base.Exit();
 
-        // Finished charge player
+        // Enemy was finished charge the player.
         direBoar.FinishCharge();
     }
 
@@ -26,6 +26,7 @@ public class DireBoarChargeState : DireBoarState
     {
         base.LogicalUpdate();
 
+        // If the enemy haven't charged the player before then charge the player.
         if (!direBoar.hasCharged)
         {
             direBoar.ChargeAttack();
