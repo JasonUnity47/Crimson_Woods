@@ -209,7 +209,6 @@ public class Boss1 : MonoBehaviour
         // Check whether player is around the enemy.
         isShocked = Physics2D.OverlapCircle(shockArea.position, shockRadius, whatIsPlayer);
 
-        return;
     }
 
     public void FlipDirection()
