@@ -139,7 +139,7 @@ public class ItemDrop : MonoBehaviour
             //Increase 1 hp for player health.
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             playerHealth.health++;
-            //healthHeartBar.DrawHearts();
+            healthHeartBar.DrawHearts();
             Destroy(this.gameObject);
         }
     }

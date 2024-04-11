@@ -11,6 +11,7 @@ public class BuffContent : MonoBehaviour
     private PlayerController playerController;
     private PlayerHealth playerHealth;
     private Shooting shooting;
+
     public HealthHeartBar healthHeartBar;
     public DashBar dashBar;
 
@@ -284,6 +285,7 @@ public class BuffContent : MonoBehaviour
             {
                 GameObject bloodEffect = Instantiate(bloodVFX, playerPos.position, playerPos.rotation, playerPos);
                 playerHealth.health++;
+                healthHeartBar.DrawHearts();
                 Destroy(bloodEffect, 0.5f);
             }
 
