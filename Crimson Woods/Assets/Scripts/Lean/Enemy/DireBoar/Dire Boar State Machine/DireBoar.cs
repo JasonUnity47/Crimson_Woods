@@ -56,6 +56,8 @@ public class DireBoar : MonoBehaviour
 
     public Rigidbody2D Rb { get; private set; }
 
+    public Collider2D[] col;
+
     // State Machine
     public DireBoarStateMachine direBoarStateMachine { get; private set; }
 
@@ -152,9 +154,20 @@ public class DireBoar : MonoBehaviour
 
             // Change the "Enemy" tag to "Untagged" tag to disable all the scripts that need "Enemy" tag to prevent after-dead issues.
             tag = "Untagged";
-            Physics2D.IgnoreLayerCollision(6, 7);          
+
+            //Physics2D.IgnoreLayerCollision(6, 7);
+
+            for (int i = 0; i < col.Length; i++)
+            {
+                if (col[i].enabled == true)
+                {
+                    col[i].enabled = false;
+                }
+            }
+
             isDead = true;
             isHurt = true;
+
             health = 0;            
             aiPath.isStopped = true;
             aiPath.maxSpeed = 0;
