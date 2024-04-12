@@ -133,6 +133,9 @@ MonoBehaviour:
   isHurt: 0
   isDead: 0
   lootCount: 1
+  col:
+  - {fileID: 3320695882543092389}
+  - {fileID: 2568290235424790920}
 --- !u!114 &1815020924357879675
 MonoBehaviour:
   m_ObjectHideFlags: 0

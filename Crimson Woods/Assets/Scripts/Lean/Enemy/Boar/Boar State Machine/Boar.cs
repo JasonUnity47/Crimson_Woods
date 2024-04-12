@@ -26,6 +26,8 @@ public class Boar : MonoBehaviour
 
     public Rigidbody2D Rb { get; private set; }
 
+    public Collider2D[] col;
+
     // State Machine
     public BoarStateMachine boarStateMachine { get; private set; }
 
@@ -105,7 +107,16 @@ public class Boar : MonoBehaviour
             }
 
             tag = "Untagged";
-            Physics2D.IgnoreLayerCollision(6, 7);
+            //Physics2D.IgnoreLayerCollision(6, 7);
+            
+            for (int i = 0; i < col.Length; i++)
+            {
+                if (col[i].enabled == true)
+                {
+                    col[i].enabled = false;
+                }
+            }
+
             isDead = true;
             isHurt = true;
 

@@ -29,6 +29,8 @@ public class Goblin : MonoBehaviour
 
     public Rigidbody2D Rb { get; private set; }
 
+    public Collider2D[] col;
+
     // State Machine
     public GoblinStateMachine goblinStateMachine { get; private set; }
 
@@ -113,7 +115,16 @@ public class Goblin : MonoBehaviour
             }
 
             tag = "Untagged";
-            Physics2D.IgnoreLayerCollision(6, 7);
+            //Physics2D.IgnoreLayerCollision(6, 7);
+
+            for (int i = 0; i < col.Length; i++)
+            {
+                if (col[i].enabled == true)
+                {
+                    col[i].enabled = false;
+                }
+            }
+
             isDead = true;
             isHurt = true;
             aiPath.isStopped = true;

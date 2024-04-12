@@ -30,6 +30,8 @@ public class Slime : MonoBehaviour
 
     public Rigidbody2D Rb { get; private set; }
 
+    public Collider2D[] col;
+
     // State Machine
     public SlimeStateMachine slimeStateMachine { get; private set; }
 
@@ -113,7 +115,16 @@ public class Slime : MonoBehaviour
                 buffContent.DetectDead();
             }
             tag = "Untagged";
-            Physics2D.IgnoreLayerCollision(6, 7);
+            //Physics2D.IgnoreLayerCollision(6, 7);
+
+            for (int i = 0; i < col.Length; i++)
+            {
+                if (col[i].enabled == true)
+                {
+                    col[i].enabled = false;
+                }
+            }
+
             isDead = true;
             isHurt = true;
 
