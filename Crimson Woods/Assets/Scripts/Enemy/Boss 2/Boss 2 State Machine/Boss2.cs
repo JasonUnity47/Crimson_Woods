@@ -37,6 +37,7 @@ public class Boss2 : MonoBehaviour
     public float chargeDistance;
     public Vector2 lastTargetPosForCharge;
     [SerializeField] private float chargeSpeed;
+    [SerializeField] private ParticleSystem dust;
     public bool isCharging = false;
     public bool hasCharged = false;
 
@@ -335,6 +336,11 @@ public class Boss2 : MonoBehaviour
     public void SlashPlayer()
     {
         StartCoroutine(SlashTime());
+    }
+
+    public void CreateDust()
+    {
+        dust.Play();
     }
 
     IEnumerator SlashTime()
