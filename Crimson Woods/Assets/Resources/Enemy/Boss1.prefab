@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 1669323418558149099}
   - component: {fileID: 8941853668934732984}
   - component: {fileID: 8516126503080652354}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1922256324083759155}
   - component: {fileID: 1913461476322797236}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
