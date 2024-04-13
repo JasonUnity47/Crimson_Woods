@@ -295,6 +295,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: In-Game UI_6
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 135
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9522e7e5d2770774389700534c4918d3
+      internalID: 714498950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: In-Game UI_8
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 147
+        width: 40
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05a58edac1ff28740945072ae22964de
+      internalID: -512629838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: In-Game UI_9
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 135
+        width: 40
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d849cec1fe820ab459bde84e3fcff1a3
+      internalID: 767187500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: In-Game UI_10
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 135
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531f8c9d5fb58634896023e4272725f1
+      internalID: -1650497010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -308,12 +392,15 @@ TextureImporter:
     nameFileIdTable:
       In-Game UI_0: -1114073887
       In-Game UI_1: 355665028
+      In-Game UI_10: -1650497010
       In-Game UI_2: -1665412770
       In-Game UI_3: -1337497273
       In-Game UI_4: 884132911
       In-Game UI_5: 892124920
       In-Game UI_6: 714498950
       In-Game UI_7: -1893448617
+      In-Game UI_8: -512629838
+      In-Game UI_9: 767187500
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

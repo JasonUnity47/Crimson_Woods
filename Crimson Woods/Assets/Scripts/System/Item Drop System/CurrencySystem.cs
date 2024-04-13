@@ -13,4 +13,6 @@ public class CurrencySystem : MonoBehaviour
     {
         bloodCount = 0;
     }
+
+
 }
