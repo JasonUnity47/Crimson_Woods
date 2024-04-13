@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuffContent : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class BuffContent : MonoBehaviour
 
     [Header("Active Buff")]
     public List<Buff> activeBuffs;
+    public Dictionary<int, Buff> buffDictionary = new Dictionary<int, Buff>();
+    public GameObject[] buffSlots;
 
     [Header("Locker")]
     public bool[] lockStatus;
@@ -60,6 +63,40 @@ public class BuffContent : MonoBehaviour
         {
             CostDash();
         }
+    }
+
+    public void DisplayBuff()
+    {
+        List<int> keys = new List<int>(buffDictionary.Keys);
+
+        if (buffDictionary.Count > 0)
+        {
+            foreach (int key in keys)
+            {
+                if (buffDictionary[key] != null)
+                {
+                    foreach (GameObject buffSlot in buffSlots)
+                    {
+                        if (!buffSlot.activeSelf)
+                        {
+                            buffSlot.SetActive(true);
+                            Image buffImage = buffSlot.GetComponent<Image>();
+                            
+                            if (buffImage != null)
+                            {
+                                buffImage.sprite = buffDictionary[key].buffSprite;
+                            }
+
+                            buffDictionary.Remove(key);
+
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return;
     }
 
     public void BuffDetect()

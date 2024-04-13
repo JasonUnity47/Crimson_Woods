@@ -185,6 +185,9 @@ public class BuffSystem : MonoBehaviour
             {
                 buffList.Remove(buff);
                 buffContent.activeBuffs.Add(buff);
+
+                // Display Buffs
+                buffContent.buffDictionary.Add(0, buff);
             }
         }
 
