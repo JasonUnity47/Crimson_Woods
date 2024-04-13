@@ -192,7 +192,7 @@ public class Boss1 : MonoBehaviour
             health -= damageValue;
 
             Animator.SetTrigger("hurt");
-
+            Debug.Log("hurt");
             StartCoroutine("WaitForHurt");
         }
 

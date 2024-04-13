@@ -236,6 +236,7 @@ public class Boss2 : MonoBehaviour
         {
             health -= damageValue;
 
+
             Anim.SetTrigger("HurtTrigger");
 
             StartCoroutine("WaitForHurt");
