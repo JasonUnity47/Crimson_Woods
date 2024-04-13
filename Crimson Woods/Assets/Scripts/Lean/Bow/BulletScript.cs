@@ -140,7 +140,7 @@ public class BulletScript : MonoBehaviour
                 // Apply damage to the enemy
                 if (boss1Health != null)
                 {
-                    boss1Health.health--;
+                    boss1Health.TakeDamage(damage);
                 }
             }
 

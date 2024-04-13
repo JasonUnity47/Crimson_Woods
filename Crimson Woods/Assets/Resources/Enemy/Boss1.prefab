@@ -44,7 +44,7 @@ Transform:
   - {fileID: 4547045218279243157}
   - {fileID: 1922256324083759155}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2606492515133807508
 SpriteRenderer:
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 0
   health: 0
-  maxHealth: 30
+  maxHealth: 10
   hurtTime: 0.1
   isHurt: 0
   isDead: 0
@@ -378,6 +378,7 @@ MonoBehaviour:
   hasMeeleAttacked: 0
   checkTime: 1
   lootCount: 30
+  weaponSpriteRender: {fileID: 1913461476322797236}
 --- !u!114 &8941853668934732984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,7 +481,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2142350805
   m_SortingLayer: 1
-  m_SortingOrder: -1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: cb29d8a60cc0bfd4abd0185879275556, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
