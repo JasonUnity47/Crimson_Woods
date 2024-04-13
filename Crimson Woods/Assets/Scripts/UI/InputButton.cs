@@ -32,17 +32,6 @@ public class InputButton : MonoBehaviour
     // Registration
     public void ShowRegistration(GameObject reg)
     {
-        GameObject loginPanel = GameObject.Find("Login Panel");
-
-        // If press button from login panel then close the login panel.
-        if (loginPanel != null)
-        {
-            if (loginPanel.activeSelf)
-            {
-                loginPanel.SetActive(false);
-            }
-        }
-
         if (!reg.activeSelf)
         {
             reg.SetActive(true);
@@ -97,6 +86,37 @@ public class InputButton : MonoBehaviour
             TimeStop();
         }
 
+        return;
+    }
+
+    // In-Game Settings
+    public void ShowInGame(GameObject inGame)
+    {
+        if (!inGame.activeSelf)
+        {
+            inGame.SetActive(true);
+            TimeStop();
+        }
+
+        return;
+    }
+
+    // Resume Game
+    public void ResumeGame(GameObject inGame)
+    {
+        if (inGame.activeSelf)
+        {
+            inGame.SetActive(false);
+            TimeResume();
+        }
+
+        return;
+    }
+
+    // Back to Main
+    public void BackMain()
+    {
+        SceneManager.LoadScene(0);
         return;
     }
 
