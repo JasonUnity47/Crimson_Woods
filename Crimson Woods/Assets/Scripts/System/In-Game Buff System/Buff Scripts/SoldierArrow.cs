@@ -14,7 +14,7 @@ public class SoldierArrow : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        Destroy(this.gameObject, 5);
+        Destroy(this.gameObject, 3);
     }
 
     // Update is called once per frame
@@ -25,6 +25,12 @@ public class SoldierArrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Check if the bullet collides with an object tagged as a wall
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
+
         if (collision.CompareTag("Enemy"))
         {
             // Boar

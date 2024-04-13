@@ -27,6 +27,8 @@ public class BuffContent : MonoBehaviour
     public List<Buff> activeBuffs;
     public Dictionary<int, Buff> buffDictionary = new Dictionary<int, Buff>();
     public GameObject[] buffSlots;
+    public GameObject[] frameSlots;
+    private int frameCount = 0;
 
     [Header("Locker")]
     public bool[] lockStatus;
@@ -80,6 +82,8 @@ public class BuffContent : MonoBehaviour
                         if (!buffSlot.activeSelf)
                         {
                             buffSlot.SetActive(true);
+                            frameSlots[frameCount].SetActive(true);
+
                             Image buffImage = buffSlot.GetComponent<Image>();
                             
                             if (buffImage != null)
@@ -88,6 +92,7 @@ public class BuffContent : MonoBehaviour
                             }
 
                             buffDictionary.Remove(key);
+                            frameCount++;
 
                             break;
                         }

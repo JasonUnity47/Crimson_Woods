@@ -6,7 +6,7 @@ using UnityEngine;
 public class AutoAttack : MonoBehaviour
 {
     public GameObject closestEnemy;
-    public GameObject[] enemies;
+    //public GameObject[] enemies;
 
     public GameObject arrow;
 
@@ -15,6 +15,11 @@ public class AutoAttack : MonoBehaviour
 
     private float distanceToEnemy;
     private float distanceToClosestEnemy;
+
+    [SerializeField] private Transform attackArea;
+    [SerializeField] private float attackRadius;
+    [SerializeField] private LayerMask whatIsPlayer;
+    private Collider2D[] enemies;
 
     private void Start()
     {
@@ -33,11 +38,13 @@ public class AutoAttack : MonoBehaviour
 
     void DetectEnemy()
     {
-        distanceToClosestEnemy = Mathf.Infinity; // Definitely will replace by any distance.
-        closestEnemy = null;
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = Physics2D.OverlapCircleAll(attackArea.position, attackRadius, whatIsPlayer);
 
-        foreach (GameObject enemy in enemies)
+        distanceToClosestEnemy = Mathf.Infinity; // Definitely will replace by any distance.
+
+        closestEnemy = null;
+
+        foreach (Collider2D enemy in enemies)
         {
             // Use sqrMagnitude is for performance issue.
             distanceToEnemy = (enemy.transform.position - this.transform.position).sqrMagnitude; // Calculate the distance between this object and each enemy to find the closest enemy.
@@ -45,7 +52,7 @@ public class AutoAttack : MonoBehaviour
             if (distanceToEnemy < distanceToClosestEnemy)
             {
                 distanceToClosestEnemy = distanceToEnemy;
-                closestEnemy = enemy;
+                closestEnemy = enemy.gameObject;
             }
         }
 

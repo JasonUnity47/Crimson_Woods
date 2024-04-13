@@ -71,7 +71,7 @@ public class AddArmor : MonoBehaviour
 
     void BlockDamage()
     {
-        if (tempHealth != playerHealth.health && armor > 0)
+        if (tempHealth != playerHealth.health && tempHealth > playerHealth.health && armor > 0)
         {
             GameObject blockEffect = Instantiate(blockVFX, transform.position, transform.rotation, transform);
 
