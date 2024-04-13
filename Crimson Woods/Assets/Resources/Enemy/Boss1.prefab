@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3470770066507415693}
   - component: {fileID: 15223572812444409}
   - component: {fileID: 9048714910695025431}
+  - component: {fileID: 878014407232077849}
   - component: {fileID: 6627775160039500234}
   - component: {fileID: 201418723360972108}
   - component: {fileID: 1367481639711212481}
@@ -215,6 +216,41 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.28}
   m_Size: {x: 1.09, y: 0.0001}
   m_Direction: 0
+--- !u!58 &878014407232077849
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79851471140332342}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4
 --- !u!114 &6627775160039500234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +373,7 @@ MonoBehaviour:
   hasCharged: 0
   meeleArea: {fileID: 4547045218279243157}
   meeleRadius: 4
+  MeleeAreaAttackVFX: {fileID: 175256435230179410, guid: 6d8eef82bd343f942abf0efc797c5af5, type: 3}
   isMeeleAttack: 0
   hasMeeleAttacked: 0
   checkTime: 1

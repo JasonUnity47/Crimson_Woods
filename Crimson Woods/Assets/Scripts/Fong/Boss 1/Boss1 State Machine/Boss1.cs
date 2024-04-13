@@ -37,6 +37,7 @@ public class Boss1 : MonoBehaviour
     [Header("Meele Attack State")]
     [SerializeField] private Transform meeleArea;
     [SerializeField] private float meeleRadius;
+    [SerializeField] private GameObject MeleeAreaAttackVFX;
     public bool isMeeleAttack = false;
     public bool hasMeeleAttacked = false;
 
@@ -265,7 +266,6 @@ public class Boss1 : MonoBehaviour
         isMeeleAttack = Physics2D.OverlapCircle(shockArea.position, meeleRadius, whatIsPlayer);
     }
 
-
     IEnumerator WaitForCharge()
     {
         isCharging = true;
@@ -288,6 +288,8 @@ public class Boss1 : MonoBehaviour
     {
         Animator.SetTrigger("meele");
         yield return new WaitForSeconds(1f);
+        GameObject MeeleAreaAttack = Instantiate(MeleeAreaAttackVFX, transform.position, Quaternion.identity);
+        Destroy(MeeleAreaAttack, 5f);
 
         StateMachine.ChangeState(IdleState);
     }

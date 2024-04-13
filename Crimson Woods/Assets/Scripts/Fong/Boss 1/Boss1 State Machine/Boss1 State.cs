@@ -31,6 +31,7 @@ public class Boss1State
     public virtual void Exit()
     {
         boss1.Animator.SetBool(animBoolName, false);
+        Debug.Log("Exit " + animBoolName);
     }
 
     public virtual void LogicUpdate()

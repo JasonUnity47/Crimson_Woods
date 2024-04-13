@@ -41,7 +41,7 @@ public class Boss1ChaseState : Boss1State
         }
 
         // IF detect player AND no obstacles AND haven't charged THEN enter SHOCK STATE
-        if (boss1.isShocked && !boss1.hasObstacle && !boss1.hasCharged)
+        if (boss1.isShocked && !boss1.hasCharged)
         {
             // The enemy should stop moving.
             boss1.aiPath.isStopped = true;
@@ -49,7 +49,7 @@ public class Boss1ChaseState : Boss1State
             boss1StateMachine.ChangeState(boss1.ShockState);
         }
 
-        if (boss1.isMeeleAttack && !boss1.hasMeeleAttacked && !boss1.hasObstacle)
+        if (boss1.isMeeleAttack && !boss1.hasMeeleAttacked)
         {
             // The enemy should stop moving.
             boss1.aiPath.isStopped = true;
