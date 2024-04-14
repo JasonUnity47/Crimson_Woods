@@ -110,7 +110,7 @@ Transform:
   m_Children:
   - {fileID: 8637186215049457496}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &267546279308485062
 SpriteRenderer:
@@ -204,7 +204,7 @@ MonoBehaviour:
   isHurt: 0
   isDead: 0
   shockArea: {fileID: 8637186215049457496}
-  shockRadius: 10
+  shockRadius: 6.5
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -214,10 +214,10 @@ MonoBehaviour:
   isShocked: 0
   hasObstacle: 0
   chargeCD: 3
-  enterChargeTime: 1
+  enterChargeTime: 0.5
   chargeDistance: 0.1
   lastTargetPosForCharge: {x: 0, y: 0}
-  chargeSpeed: 10
+  chargeSpeed: 30
   isCharging: 0
   hasCharged: 0
   checkTime: 0

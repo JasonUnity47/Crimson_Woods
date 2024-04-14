@@ -294,7 +294,7 @@ public class Boss1 : MonoBehaviour
     IEnumerator MeeleAttacking()
     {
         Animator.SetTrigger("meele");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         GameObject MeeleAreaAttack = Instantiate(MeleeAreaAttackVFX, transform.position, Quaternion.identity);
         Destroy(MeeleAreaAttack, 5f);
 
@@ -325,7 +325,7 @@ public class Boss1 : MonoBehaviour
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(1f);
+            playerHealth.TakeDamage(2f);
         }
     }
 }

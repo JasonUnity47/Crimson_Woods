@@ -350,7 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 0
   health: 0
-  maxHealth: 10
+  maxHealth: 50
   hurtTime: 0.1
   isHurt: 0
   isDead: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
   enterChargeTime: 0.5
   chargeDistance: 0.1
   lastTargetPosForCharge: {x: 0, y: 0}
-  chargeSpeed: 12
+  chargeSpeed: 30
   isCharging: 0
   hasCharged: 0
   meeleArea: {fileID: 4547045218279243157}

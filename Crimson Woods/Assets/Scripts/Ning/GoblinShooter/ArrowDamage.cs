@@ -11,7 +11,7 @@ public class ArrowDamage : MonoBehaviour
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(1);
+                playerHealth.TakeDamage(2);
 
                 Destroy(gameObject);
             }
