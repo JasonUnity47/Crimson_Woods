@@ -13,23 +13,15 @@ public class AddArmor : MonoBehaviour
     public float startTime;
     private float timeBtwFrame;
 
-    [Header("Check")]
-    public float tempHealth;
-
     private BuffContent buffContent;
-    private PlayerHealth playerHealth;
 
-    [SerializeField] private GameObject blockVFX;
+    public GameObject blockVFX;
 
     private void Start()
     {
         buffContent = GameObject.FindWithTag("Game Manager").GetComponent<BuffContent>();
 
-        playerHealth = GetComponent<PlayerHealth>();
-
         armor = maxArmor;
-
-        tempHealth = playerHealth.maxHealth;
 
         timeBtwFrame = startTime;
     }
@@ -38,11 +30,7 @@ public class AddArmor : MonoBehaviour
     {
         if (buffContent.onArmoredFortitude)
         {
-            BlockDamage();
-
-            // Check whether player's health have changed.
-            tempHealth = playerHealth.health;
-
+            // Restore armor over time.
             RestoreArmor();
         }
     }
@@ -55,6 +43,11 @@ public class AddArmor : MonoBehaviour
             return;
         }
 
+        if (armor <= 0)
+        {
+            armor = 0;
+        }
+
         if (timeBtwFrame <= 0)
         {
             armor++;
@@ -64,27 +57,6 @@ public class AddArmor : MonoBehaviour
         else
         {
             timeBtwFrame -= Time.deltaTime;
-        }
-
-        return;
-    }
-
-    void BlockDamage()
-    {
-        if (tempHealth != playerHealth.health && tempHealth > playerHealth.health && armor > 0)
-        {
-            GameObject blockEffect = Instantiate(blockVFX, transform.position, transform.rotation, transform);
-
-            armor -= tempHealth - playerHealth.health;
-
-            playerHealth.health = tempHealth;
-
-            Destroy(blockEffect, 1f);
-        }
-
-        if (armor <= 0)
-        {
-            armor = 0;
         }
 
         return;

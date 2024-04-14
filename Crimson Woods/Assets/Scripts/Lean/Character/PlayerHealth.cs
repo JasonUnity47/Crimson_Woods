@@ -19,10 +19,13 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer mySpriteRender;
     public Collider2D[] myCollider;
 
+    private AddArmor addArmor;
+
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
+        addArmor = GetComponent<AddArmor>();
     }
 
     private void Start()
@@ -37,14 +40,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        // IF Evasive Maneuvers Buff is ON THEN can dodge damage.
+        // If Evasive Maneuvers Buff is on then can dodge damage.
         if (buffContent.onEvasiveManeuvers)
         {
             int randomNumber = UnityEngine.Random.Range(0, 101);
 
-            Debug.Log(randomNumber);
-
-            // IF meet 25% chance THEN dodge damage.
+            // If meet 25% chance then dodge damage.
             if (randomNumber <= buffContent.dodgeChance)
             {
                 // Dodge Effect.
@@ -52,7 +53,18 @@ public class PlayerHealth : MonoBehaviour
                 Destroy(evadeEffect, 0.5f);
                 return;
             }
+        }
 
+        // If Armored Fortitude Buff is on and armor is more than 0 then can block damage.
+        if (buffContent.onArmoredFortitude && addArmor.armor > 0)
+        {
+            // Reduce armor value by 1.
+            addArmor.armor--;
+
+            // Block Effect.
+            GameObject blockEffect = Instantiate(addArmor.blockVFX, transform.position, transform.rotation, transform);
+            Destroy(blockEffect, 1f);
+            return;
         }
 
         health -= amount;
