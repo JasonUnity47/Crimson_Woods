@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject bow;
 
     private Animator myAnimator;
-    private bool dead;
+    public bool dead;
     private SpriteRenderer mySpriteRender;
     public Collider2D[] myCollider;
 

@@ -273,12 +273,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closestEnemy: {fileID: 0}
-  enemies: []
   arrow: {fileID: 3142437830835800393, guid: 9325d17286e5b71458e654e4f7dd19af, type: 3}
   attackTime: 2
   attackCD: 0
   attackArea: {fileID: 970083327613477256}
   attackRadius: 10
-  whatIsPlayer:
+  whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128

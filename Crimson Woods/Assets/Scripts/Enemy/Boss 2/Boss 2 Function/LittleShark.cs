@@ -16,18 +16,25 @@ public class LittleShark : MonoBehaviour
 
     private Vector2 directionToPlayer;
 
+    private Boss2 boss2;
+
     private void Start()
     {
+        boss2 = GetComponentInParent<Boss2>();
+
         attackCD = attackTime;
     }
 
     private void Update()
     {
-        DetectEnemy();
-
-        if (player != null)
+        if (!boss2.isDead)
         {
-            AttackEnemy();
+            DetectEnemy();
+
+            if (player != null)
+            {
+                AttackEnemy();
+            }
         }
     }
 

@@ -6,8 +6,6 @@ using UnityEngine;
 public class AutoAttack : MonoBehaviour
 {
     public GameObject closestEnemy;
-    //public GameObject[] enemies;
-
     public GameObject arrow;
 
     public float attackTime;
@@ -18,27 +16,33 @@ public class AutoAttack : MonoBehaviour
 
     [SerializeField] private Transform attackArea;
     [SerializeField] private float attackRadius;
-    [SerializeField] private LayerMask whatIsPlayer;
+    [SerializeField] private LayerMask whatIsEnemy;
     private Collider2D[] enemies;
+
+    private PlayerHealth playerHealth;
 
     private void Start()
     {
         attackCD = attackTime;
+        playerHealth = GetComponentInParent<PlayerHealth>();
     }
 
     private void Update()
     {
-        DetectEnemy();
-
-        if (enemies.Length > 0)
+        if (!playerHealth.dead)
         {
-            AttackEnemy();
+            DetectEnemy();
+
+            if (enemies.Length > 0)
+            {
+                AttackEnemy();
+            }
         }
     }
 
     void DetectEnemy()
     {
-        enemies = Physics2D.OverlapCircleAll(attackArea.position, attackRadius, whatIsPlayer);
+        enemies = Physics2D.OverlapCircleAll(attackArea.position, attackRadius, whatIsEnemy);
 
         distanceToClosestEnemy = Mathf.Infinity; // Definitely will replace by any distance.
 

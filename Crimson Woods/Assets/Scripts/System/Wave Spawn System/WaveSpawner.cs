@@ -119,6 +119,9 @@ public class WaveSpawner : MonoBehaviour
         if (nextWave != 4 && nextWave != 5 && nextWave != 10 && nextWave != 11)
         {
             buffSystem.buffPanel.SetActive(true);
+
+            // Freeze the time of the game when the buff panel shows up.
+            Time.timeScale = 0;
         }
 
         if (nextWave + 1 > waves.Length - 1)

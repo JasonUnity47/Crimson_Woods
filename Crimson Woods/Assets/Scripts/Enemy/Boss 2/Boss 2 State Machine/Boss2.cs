@@ -187,7 +187,6 @@ public class Boss2 : MonoBehaviour
 
             // Change the "Enemy" tag to "Untagged" tag to disable all the scripts that need "Enemy" tag to prevent after-dead issues.
             tag = "Untagged";
-            //Physics2D.IgnoreLayerCollision(6, 7);
 
             for (int i = 0; i < col.Length; i++)
             {

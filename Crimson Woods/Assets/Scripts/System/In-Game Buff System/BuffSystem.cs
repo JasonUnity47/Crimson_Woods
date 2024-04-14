@@ -86,14 +86,14 @@ public class BuffSystem : MonoBehaviour
         // Generate a random number
         randomNumber = UnityEngine.Random.Range(0, initialTotalBuffCount); // 0 - (Total buff count - 1)
 
-        // CHECK whether the random number is in the number list OR random number is same as last number.
-        // CHECK whether the number appears before.
+        // Check whether the random number is in the number list or random number is same as last number.
+        // Check whether the number appears before.
         if (numberList.Contains(randomNumber) == false)
         {
             return;
         }
 
-        // IF the three buff slot are not full.
+        // If the three buff slot are not full.
         if (buffCount != 3 && buffList.Count >= 3)
         {
             foreach (Buff buff in buffList)
@@ -168,7 +168,7 @@ public class BuffSystem : MonoBehaviour
     // Button Function
     public void ChooseBuff(TMP_Text currentBuffId)
     {
-        // IF current buff slot is empty THEN do nothing.
+        // If current buff slot is empty then do nothing.
         if (currentBuffId.text == "")
         {
             return;
@@ -177,14 +177,17 @@ public class BuffSystem : MonoBehaviour
         // Get the current upgrade id to recognize which upgrade that player chose.
         int deletedId = int.Parse(currentBuffId.text); // Convert the id number from string to int.
 
-        // CHECK whether the chosen buff is in the buff list.
+        // Check whether the chosen buff is in the buff list.
         foreach (Buff buff in buffList.ToList())
         {
-            // REMOVE the chosen buff because one buff can only choose once.
+            // Remove the chosen buff because one buff can only choose once.
             if (buff.buffId == deletedId)
             {
                 buffList.Remove(buff);
                 buffContent.activeBuffs.Add(buff);
+
+                // Unfreeze the time of the game after the player chose a buff.
+                Time.timeScale = 1f;
 
                 // Display Buffs
                 buffContent.buffDictionary.Add(0, buff);
@@ -192,7 +195,7 @@ public class BuffSystem : MonoBehaviour
         }
 
         // Check whether the chosen number (id) is in the list.
-        // IF it is not THEN return back the others (other numbers/buffs that player didn't choose) to the number list.
+        // If it is not then return back the others (other numbers/buffs that player didn't choose) to the number list.
         foreach (TMP_Text bId in IdList)
         {
             if (bId.text == "")
