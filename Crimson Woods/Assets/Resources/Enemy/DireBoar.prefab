@@ -110,7 +110,7 @@ Transform:
   m_Children:
   - {fileID: 8637186215049457496}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &267546279308485062
 SpriteRenderer:
@@ -222,6 +222,9 @@ MonoBehaviour:
   hasCharged: 0
   checkTime: 0
   lootCount: 1
+  col:
+  - {fileID: 1048305890282051546}
+  - {fileID: 7425762112295415853}
 --- !u!114 &1087431558814835176
 MonoBehaviour:
   m_ObjectHideFlags: 0
