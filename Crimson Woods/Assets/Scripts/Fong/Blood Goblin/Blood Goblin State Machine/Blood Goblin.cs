@@ -64,6 +64,7 @@ public class BloodGoblin : MonoBehaviour
     [SerializeField] private Transform meeleArea;
     [SerializeField] private float meeleRadius;
     [SerializeField] private GameObject MeleeAreaAttackVFX;
+    [SerializeField] private GameObject explosionRef;
     public bool isMeeleAttack = false;
     public bool hasMeeleAttacked = false;
 
@@ -266,6 +267,12 @@ public class BloodGoblin : MonoBehaviour
         return;
     }
 
+    public void MeeleArea()
+    {
+        // Check if player is in area
+        isMeeleAttack = Physics2D.OverlapCircle(meeleArea.position, meeleRadius, whatIsPlayer);
+    }
+
     public void DetectThrow()
     {
         // If the enemy didn't throw the player before and the player is not within the shock area
@@ -303,7 +310,7 @@ public class BloodGoblin : MonoBehaviour
     public void FlipDirection()
     {
         // Check whether the enemy should flip to the correct facing direction.
-        if (aiPath.velocity.x >= 0.01 && !facingRight || aiPath.velocity.x <= -0.01 && facingRight)
+        if ((aiPath.velocity.x >= 0.01 && !facingRight) || (aiPath.velocity.x <= -0.01 && facingRight))
         {
             facingRight = !facingRight;
             transform.Rotate(0, 180, 0);
@@ -459,6 +466,7 @@ public class BloodGoblin : MonoBehaviour
         Anim.SetTrigger("meele");
         yield return new WaitForSeconds(0.8f);
         GameObject MeeleAreaAttack = Instantiate(MeleeAreaAttackVFX, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(explosionRef, transform.position, Quaternion.identity);
         Destroy(MeeleAreaAttack, 5f);
 
         bloodGoblinStateMachine.ChangeState(IdleState);

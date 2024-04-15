@@ -33,6 +33,6 @@ public class BloodGoblinState
     public virtual void Exit()
     {
         bloodGoblin.Anim.SetBool(animName, false);
-        Debug.Log("Exit " + animName);
+        //Debug.Log("Exit " + animName);
     }
 }

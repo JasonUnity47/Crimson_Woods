@@ -40,6 +40,10 @@ public class BloodGoblinChaseState : BloodGoblinState
         // Check whether there is any obstacle around the enemy.
         bloodGoblin.DetectObstacle();
 
+
+        // Check whether player is in meele range.
+        bloodGoblin.MeeleArea();
+
         // If no obstacles around the enemy then check whether the player is around the enemy.
         if (!bloodGoblin.hasObstacle)
         {
@@ -63,6 +67,14 @@ public class BloodGoblinChaseState : BloodGoblinState
             bloodGoblin.aiPath.isStopped = true;
 
             bloodGoblinStateMachine.ChangeState(bloodGoblin.PrepareState);
+        }
+
+        if (bloodGoblin.isMeeleAttack && !bloodGoblin.hasMeeleAttacked)
+        {
+            // The enemy should stop moving.
+            bloodGoblin.aiPath.isStopped = true;
+
+            bloodGoblinStateMachine.ChangeState(bloodGoblin.MeeleState);
         }
     }
 

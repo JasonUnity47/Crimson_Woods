@@ -270,7 +270,7 @@ public class Boss1 : MonoBehaviour
     public void MeeleArea()
     {
         // Check if player is in area
-        isMeeleAttack = Physics2D.OverlapCircle(shockArea.position, meeleRadius, whatIsPlayer);
+        isMeeleAttack = Physics2D.OverlapCircle(meeleArea.position, meeleRadius, whatIsPlayer);
     }
 
     IEnumerator WaitForCharge()
