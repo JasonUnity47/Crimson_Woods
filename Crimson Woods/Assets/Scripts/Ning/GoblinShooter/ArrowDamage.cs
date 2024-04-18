@@ -6,6 +6,12 @@ public class ArrowDamage : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Check if the bullet collides with an object tagged as a wall
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
+
         if (collision != null && collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
