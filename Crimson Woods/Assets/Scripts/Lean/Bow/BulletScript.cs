@@ -122,6 +122,17 @@ public class BulletScript : MonoBehaviour
                 }
             }
 
+            else if (collision.GetComponent<Goblin1>() != null)
+            {
+                Goblin1 goblin1Health = collision.gameObject.GetComponent<Goblin1>();
+
+                // Apply damage to the enemy
+                if (goblin1Health != null)
+                {
+                    goblin1Health.TakeDamage(damage);
+                }
+            }
+
             else if (collision.GetComponent<Slime>() != null)
             {
                 Slime slimeHealth = collision.gameObject.GetComponent<Slime>();
@@ -130,6 +141,17 @@ public class BulletScript : MonoBehaviour
                 if (slimeHealth != null)
                 {
                     slimeHealth.TakeDamage(damage);
+                }
+            }
+
+            else if (collision.GetComponent<Slime1>() != null)
+            {
+                Slime1 slime1Health = collision.gameObject.GetComponent<Slime1>();
+
+                // Apply damage to the enemy
+                if (slime1Health != null)
+                {
+                    slime1Health.TakeDamage(damage);
                 }
             }
 
