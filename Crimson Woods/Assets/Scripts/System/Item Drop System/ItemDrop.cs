@@ -137,10 +137,13 @@ public class ItemDrop : MonoBehaviour
         // Else if the item collides with the player and the item is a food then increase the health by 1 and destroy the item.
         else if (collision.CompareTag("Player") && this.gameObject.CompareTag("Food"))
         {
-            //Increase 1 hp for player health.
+            //Increase 1 hp for player health if not at maxHealth.
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-            playerHealth.health++;
-            healthHeartBar.DrawHearts();
+            if (playerHealth.health < playerHealth.maxHealth)
+            {
+                playerHealth.health++;
+                healthHeartBar.DrawHearts();
+            }
             Destroy(this.gameObject);
         }
     }

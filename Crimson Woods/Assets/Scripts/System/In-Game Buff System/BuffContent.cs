@@ -326,8 +326,11 @@ public class BuffContent : MonoBehaviour
             if (playerHealth.health < playerHealth.maxHealth)
             {
                 GameObject bloodEffect = Instantiate(bloodVFX, playerPos.position, playerPos.rotation, playerPos);
-                playerHealth.health++;
-                healthHeartBar.DrawHearts();
+                if (playerHealth.health < playerHealth.maxHealth)
+                {
+                    playerHealth.health++;
+                    healthHeartBar.DrawHearts();
+                }
                 Destroy(bloodEffect, 0.5f);
             }
 
