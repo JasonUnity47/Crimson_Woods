@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     // Declaration
+    private global::Wave waveUI;
 
     // Class (What is Wave?)
     [System.Serializable] // In order to see and acess the class member in the Inspector.
@@ -46,6 +47,7 @@ public class WaveSpawner : MonoBehaviour
 
         // Get References
         buffSystem = GetComponent<BuffSystem>();
+        waveUI = GetComponent<global::Wave>();
 
         // Initialize the wave timer.
         waveCountDown = timeBtwWaves;
@@ -153,6 +155,7 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave(Wave _wave)
     {
+        StartCoroutine(waveUI.ActivateWaveUI());
         state = SpawnState.SPAWNNING; // Start spawning enemy.
 
         // Spawn enemy based on the count of enemy in the wave.
