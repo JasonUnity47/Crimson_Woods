@@ -9,9 +9,12 @@ public class DireBoarChargeState : DireBoarState
     {
     }
 
+
     public override void Enter()
     {
         base.Enter();
+
+        direBoar.CreateDust();
     }
 
     public override void Exit()

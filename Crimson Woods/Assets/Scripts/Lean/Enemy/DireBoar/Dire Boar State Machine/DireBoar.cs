@@ -39,6 +39,7 @@ public class DireBoar : MonoBehaviour
     public float chargeDistance;
     public Vector2 lastTargetPosForCharge;
     [SerializeField] private float chargeSpeed;
+    [SerializeField] private ParticleSystem dust;
     public bool isCharging = false;
     public bool hasCharged = false;
 
@@ -279,6 +280,11 @@ public class DireBoar : MonoBehaviour
         transform.position = Vector2.Lerp((Vector2)transform.position, lastTargetPosForCharge, chargeSpeed * Time.deltaTime);
 
         return;
+    }
+
+    public void CreateDust()
+    {
+        dust.Play();
     }
 
     IEnumerator WaitForCharge()
