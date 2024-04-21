@@ -32,6 +32,10 @@ public class CheckDeletion : MonoBehaviour
     [Header("URL")]
     [SerializeField] private string url = "http://localhost/cwgd/selection.php";
 
+    // Object Reference
+    [Header("Object Reference")]
+    public GameObject deletionPanel;
+
     private void Update()
     {
         if (emailField.text == "" && passwordField.text == "")
@@ -114,6 +118,7 @@ public class CheckDeletion : MonoBehaviour
                                 case "true":
                                     {
                                         isExisted = true;
+                                        ShowPanel();
                                         break;
                                     }
 
@@ -182,6 +187,17 @@ public class CheckDeletion : MonoBehaviour
         username = "";
         email = "";
         password = "";
+
+        return;
+    }
+
+    // Show Panel
+    public void ShowPanel()
+    {
+        if (!deletionPanel.activeSelf)
+        {
+            deletionPanel.SetActive(true);
+        }
 
         return;
     }

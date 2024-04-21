@@ -8,6 +8,11 @@ using UnityEngine.UIElements;
 public class DeleteAccount : MonoBehaviour
 {
     // Declaration
+    // Input Field
+    [Header("Input Field")]
+    [SerializeField] private TMP_InputField emailField;
+    [SerializeField] private TMP_InputField passwordField;
+
     // Message Text
     [Header("Message Text")]
     [SerializeField] private TMP_Text errorSystem;
@@ -18,7 +23,7 @@ public class DeleteAccount : MonoBehaviour
     private string password;
 
     // Script Reference
-    private CheckUpdate checkAccount;
+    private CheckDeletion checkDeletion;
 
     // URL
     [Header("URL")]
@@ -26,7 +31,7 @@ public class DeleteAccount : MonoBehaviour
 
     private void Start()
     {
-        checkAccount = GetComponent<CheckUpdate>();
+        checkDeletion = GetComponent<CheckDeletion>();
     }
 
     IEnumerator SendFrom(string email, string password)
@@ -82,6 +87,20 @@ public class DeleteAccount : MonoBehaviour
         }
     }
 
+    public void GetValue()
+    {
+        if (checkDeletion.isExisted)
+        {
+            email = checkDeletion.email;
+            password = checkDeletion.password;
+
+            emailField.text = email;
+            passwordField.text = password;
+        }
+
+        return;
+    }
+
     public void SubmitForm(string email, string password)
     {
         StartCoroutine(SendFrom(email, password));
@@ -89,21 +108,25 @@ public class DeleteAccount : MonoBehaviour
 
     public void DeleteButton()
     {
-        // If the user click the button then store the input texts.
-        email = checkAccount.email;
-        password = checkAccount.password;
-
-        // If the user has input something and already checked.
-        if (email != "" && password != "" && checkAccount.isExisted)
+        // If input fields are exist.
+        if ( emailField != null && passwordField != null && checkDeletion.isExisted)
         {
-            SubmitForm(email, password);
-        }
+            // If the user click the button then store the input texts.
+            email = emailField.text;
+            password = passwordField.text;
 
-        else
-        {
-            string errorInput = "No inputs detected / Invalid inputs.";
-            Debug.Log(errorInput);
-            errorSystem.text = errorInput;
+            // If the user has input something.
+            if (email != "" && password != "")
+            {
+                SubmitForm(email, password);
+            }
+
+            else
+            {
+                string errorInput = "No inputs detected / Invalid inputs.";
+                Debug.Log(errorInput);
+                errorSystem.text = errorInput;
+            }
         }
     }
 

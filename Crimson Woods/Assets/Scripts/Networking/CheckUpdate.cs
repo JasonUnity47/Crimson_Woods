@@ -33,6 +33,7 @@ public class CheckUpdate : MonoBehaviour
     [SerializeField] private string url = "http://localhost/cwgd/selection.php";
 
     // Object Reference
+    [Header("Object Reference")]
     public GameObject updatePanel;
 
     private void Update()

@@ -27,7 +27,7 @@ public class UpdateAccount : MonoBehaviour
     private string password;
 
     // Script Reference
-    private CheckUpdate checkAccount;
+    private CheckUpdate checkUpdate;
 
     // URL
     [Header("URL")]
@@ -35,7 +35,7 @@ public class UpdateAccount : MonoBehaviour
 
     private void Start()
     {
-        checkAccount = GetComponent<CheckUpdate>();
+        checkUpdate = GetComponent<CheckUpdate>();
     }
 
     private void Update()
@@ -124,12 +124,12 @@ public class UpdateAccount : MonoBehaviour
 
     public void GetValue()
     {
-        if (checkAccount.isExisted)
+        if (checkUpdate.isExisted)
         {
-            userId = int.Parse(checkAccount.userId);
-            username = checkAccount.username;
-            email = checkAccount.email;
-            password = checkAccount.password;
+            userId = int.Parse(checkUpdate.userId);
+            username = checkUpdate.username;
+            email = checkUpdate.email;
+            password = checkUpdate.password;
 
             nameField.text = username;
             emailField.text = email;
