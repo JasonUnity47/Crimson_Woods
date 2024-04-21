@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 
 public class CheckDeletion : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class CheckDeletion : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/codeweb/selection.php";
+    [SerializeField] private string url = "http://localhost/cwgd/selection.php";
 
     private void Update()
     {
@@ -170,5 +171,18 @@ public class CheckDeletion : MonoBehaviour
                 errorSystem.text = errorInput;
             }
         }
+    }
+
+    public void ClearText()
+    {
+        emailField.text = "";
+        passwordField.text = "";
+        errorSystem.text = "";
+
+        username = "";
+        email = "";
+        password = "";
+
+        return;
     }
 }

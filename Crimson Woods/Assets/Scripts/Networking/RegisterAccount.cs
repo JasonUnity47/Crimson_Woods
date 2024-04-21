@@ -27,7 +27,7 @@ public class RegisterAccount : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/codeweb/registration.php";
+    [SerializeField] private string url = "http://localhost/cwgd/registration.php";
 
     private void Update()
     {
@@ -137,5 +137,21 @@ public class RegisterAccount : MonoBehaviour
                 errorSystem.text = errorInput;
             }
         }
+    }
+
+    public void ClearText()
+    {
+        nameField.text = "";
+        emailField.text = "";
+        passwordField.text = "";
+        errorName.text = "";
+        errorEmail.text = "";
+        errorSystem.text = "";
+
+        username = "";
+        email = "";
+        password = "";
+
+        return;
     }
 }

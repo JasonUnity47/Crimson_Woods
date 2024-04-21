@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -131,6 +132,29 @@ public class InputButton : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        return;
+    }
+
+    // Show Panel For Check, Update, and Deletion Panel
+    public void ShowPanel(GameObject panel)
+    {
+        if (!panel.activeSelf)
+        {
+            panel.SetActive(true);
+            TimeStop();
+        }
+
+        return;
+    }
+
+    // Close Panel For Check, Update, and Deletion Panel
+    public void ClosePanel(GameObject panel)
+    {
+        if (panel.activeSelf)
+        {
+            panel.SetActive(false);
+        }
+
         return;
     }
 

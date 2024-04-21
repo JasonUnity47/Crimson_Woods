@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 
 public class CheckUpdate : MonoBehaviour
 {
@@ -29,7 +30,10 @@ public class CheckUpdate : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/codeweb/selection.php";
+    [SerializeField] private string url = "http://localhost/cwgd/selection.php";
+
+    // Object Reference
+    public GameObject updatePanel;
 
     private void Update()
     {
@@ -113,6 +117,7 @@ public class CheckUpdate : MonoBehaviour
                                 case "true":
                                     {
                                         isExisted = true;
+                                        ShowPanel();
                                         break;
                                     }
 
@@ -170,5 +175,29 @@ public class CheckUpdate : MonoBehaviour
                 errorSystem.text = errorInput;
             }
         }
+    }
+
+    public void ClearText()
+    {
+        emailField.text = "";
+        passwordField.text = "";
+        errorSystem.text = "";
+
+        username = "";
+        email = "";
+        password = "";
+
+        return;
+    }
+
+    // Show Panel
+    public void ShowPanel()
+    {
+        if (!updatePanel.activeSelf)
+        {
+            updatePanel.SetActive(true);
+        }
+
+        return;
     }
 }

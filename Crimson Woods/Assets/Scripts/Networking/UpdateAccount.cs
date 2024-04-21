@@ -31,7 +31,7 @@ public class UpdateAccount : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/codeweb/update.php";
+    [SerializeField] private string url = "http://localhost/cwgd/update.php";
 
     private void Start()
     {
@@ -162,5 +162,22 @@ public class UpdateAccount : MonoBehaviour
                 errorSystem.text = errorInput;
             }
         }
+    }
+
+    public void ClearText()
+    {
+        nameField.text = "";
+        emailField.text = "";
+        passwordField.text = "";
+        errorName.text = "";
+        errorEmail.text = "";
+        errorSystem.text = "";
+
+        userId = 0;
+        username = "";
+        email = "";
+        password = "";
+
+        return;
     }
 }

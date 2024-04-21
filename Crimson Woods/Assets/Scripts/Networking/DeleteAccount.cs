@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 
 public class DeleteAccount : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class DeleteAccount : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/codeweb/deletion.php";
+    [SerializeField] private string url = "http://localhost/cwgd/deletion.php";
 
     private void Start()
     {
@@ -104,5 +105,15 @@ public class DeleteAccount : MonoBehaviour
             Debug.Log(errorInput);
             errorSystem.text = errorInput;
         }
+    }
+
+    public void ClearText()
+    {
+        errorSystem.text = "";
+
+        email = "";
+        password = "";
+
+        return;
     }
 }
