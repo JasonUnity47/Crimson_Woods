@@ -177,6 +177,17 @@ public class BulletScript : MonoBehaviour
                 }
             }
 
+            else if (collision.GetComponent<BloodGoblin>() != null)
+            {
+                BloodGoblin bloodGoblinHealth = collision.gameObject.GetComponent<BloodGoblin>();
+
+                // Apply damage to the enemy
+                if (bloodGoblinHealth != null)
+                {
+                    bloodGoblinHealth.TakeDamage(damage);
+                }
+            }
+
             // IF Piercing Arrows is ON THEN can penetrate enemy.
             if (buffContent.onPiercingArrows)
             {
