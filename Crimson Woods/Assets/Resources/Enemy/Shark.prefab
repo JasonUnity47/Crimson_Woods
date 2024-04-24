@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
+  damage: 2.5
   health: 0
   maxHealth: 100
   hurtTime: 0.1

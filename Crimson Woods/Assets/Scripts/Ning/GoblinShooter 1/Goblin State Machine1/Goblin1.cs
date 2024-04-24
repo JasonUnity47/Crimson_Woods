@@ -13,6 +13,10 @@ public class Goblin1 : MonoBehaviour
     private Material matDefault;
     SpriteRenderer SR;
 
+    // Damage
+    [Header("Damage")]
+    public float damage;
+
     // Variable
     [Header("Movement")]
     public bool facingRight = true;
@@ -189,7 +193,7 @@ public class Goblin1 : MonoBehaviour
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(1); // You can adjust the damage value as needed
+                playerHealth.TakeDamage(damage); // You can adjust the damage value as needed
             }
 
 

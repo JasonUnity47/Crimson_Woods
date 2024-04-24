@@ -10,6 +10,10 @@ public class DireBoar : MonoBehaviour
 {
     // Declaration
 
+    // Damage
+    [Header("Damage")]
+    public float damage;
+
     // Variable
     //Movement
     [Header("Movement")]
@@ -329,7 +333,7 @@ public class DireBoar : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(2);
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
     }
 }

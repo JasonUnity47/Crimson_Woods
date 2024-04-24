@@ -5,6 +5,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class SlashMovement : MonoBehaviour
 {
+    // Damage
+    [Header("Damage")]
+    public float damage;
     public float slashSpeed;
     private Rigidbody2D rb;
     private Boss2 boss2;
@@ -34,7 +37,7 @@ public class SlashMovement : MonoBehaviour
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(3f);
+            playerHealth.TakeDamage(damage);
         }
     }
 }

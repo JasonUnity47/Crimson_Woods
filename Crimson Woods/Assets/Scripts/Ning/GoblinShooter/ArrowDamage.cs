@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ArrowDamage : MonoBehaviour
 {
+    // Damage
+    [Header("Damage")]
+    public float damage;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the bullet collides with an object tagged as a wall
@@ -17,7 +21,7 @@ public class ArrowDamage : MonoBehaviour
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(2);
+                playerHealth.TakeDamage(damage);
 
                 Destroy(gameObject);
             }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BloodBullet : MonoBehaviour
 {
+    // Damage
+    [Header("Damage")]
+    public float damage;
     public float velocity = 10;
     Rigidbody2D rb;
 
@@ -29,7 +32,7 @@ public class BloodBullet : MonoBehaviour
             if (collision.GetComponent<PlayerHealth>() == true)
             {
                 PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-                playerHealth.TakeDamage(1);
+                playerHealth.TakeDamage(damage);
                 Destroy(this.gameObject);
             }
         }

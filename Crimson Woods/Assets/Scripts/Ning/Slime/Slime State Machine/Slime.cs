@@ -14,6 +14,10 @@ public class Slime : MonoBehaviour
     private Material matDefault;
     SpriteRenderer SR;
 
+    // Damage
+    [Header("Damage")]
+    public float damage;
+
     // Variable
     [Header("Movement")]
     public bool facingRight = true;
@@ -191,7 +195,7 @@ public class Slime : MonoBehaviour
         {
             // Reduce player's health here
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(1f);
+            playerHealth.TakeDamage(damage);
         }
     }
 }
