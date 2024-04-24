@@ -43,7 +43,7 @@ Transform:
   - {fileID: 1941563573254483630}
   - {fileID: 6064340936911675818}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3288839456189683364
 SpriteRenderer:
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   health: 0
-  maxHealth: 5
+  maxHealth: 100
   hurtTime: 0.1
   isHurt: 0
   isDead: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
     m_Bits: 8
   isShocked: 0
   hasObstacle: 0
-  chargeCD: 1.5
+  chargeCD: 1
   enterChargeTime: 0.5
   chargeDistance: 0.1
   lastTargetPosForCharge: {x: 0, y: 0}
