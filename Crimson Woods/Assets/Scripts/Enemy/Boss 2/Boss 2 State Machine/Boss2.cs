@@ -13,6 +13,10 @@ public class Boss2 : MonoBehaviour
     [Header("Movement")]
     public bool facingRight = true;
 
+    // Damage
+    [Header("Damage")]
+    public float damage;
+
     // Health
     [Header("Health")]
     public float health;
@@ -479,7 +483,7 @@ public class Boss2 : MonoBehaviour
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(2.5f);
+            playerHealth.TakeDamage(damage);
         }
     }
 }

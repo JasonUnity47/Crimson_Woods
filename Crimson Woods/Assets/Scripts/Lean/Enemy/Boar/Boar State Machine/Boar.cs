@@ -11,6 +11,10 @@ public class Boar : MonoBehaviour
     // Declaration
     SpriteRenderer SR;
 
+    // Damage
+    [Header("Damage")]
+    public float damage;
+
     // Variable
     [Header("Movement")]
     public bool facingRight = true;
@@ -165,7 +169,7 @@ public class Boar : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
     }
 

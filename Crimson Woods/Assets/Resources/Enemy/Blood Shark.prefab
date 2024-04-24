@@ -4983,7 +4983,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 796442616533535588, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 796442616533535588, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: m_LocalScale.x
@@ -5038,6 +5038,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 848635981079878968, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 848635981079878968, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: slashCD
       value: 3
       objectReference: {fileID: 0}
@@ -5048,6 +5052,10 @@ PrefabInstance:
     - target: {fileID: 848635981079878968, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: lootCount
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 848635981079878968, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: maxHealth
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 848635981079878968, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: waterSlash
@@ -5099,7 +5107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7976607875529847917, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: maxSpeed
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7976607875529847917, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: endReachedDistance

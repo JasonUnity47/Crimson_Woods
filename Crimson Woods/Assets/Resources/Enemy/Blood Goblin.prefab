@@ -5409,7 +5409,7 @@ MonoBehaviour:
   radius: 0.5
   height: 1
   canMove: 1
-  maxSpeed: 5
+  maxSpeed: 8
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -5478,9 +5478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174f72e90440fd441a7ed9c3b4f22a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   facingRight: 1
   health: 0
-  maxHealth: 5
+  maxHealth: 100
   hurtTime: 0.1
   isHurt: 0
   isDead: 0

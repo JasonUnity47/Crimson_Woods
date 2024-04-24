@@ -9,6 +9,11 @@ using UnityEngine;
 public class BloodGoblin : MonoBehaviour
 {
     // Declaration
+    
+    // Damage
+    [Header("Damage")]
+    public float damage;
+
     // Movement
     [Header("Movement")]
     public bool facingRight = true;
@@ -486,7 +491,7 @@ public class BloodGoblin : MonoBehaviour
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(1f);
+            playerHealth.TakeDamage(damage);
         }
     }
 }

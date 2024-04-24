@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class WeaponThrow : MonoBehaviour
 {
+    // Damage
+    [Header("Damage")]
+    public float damage;
+
     public float throwSpeed;
     public float rotationSpeedFactor = 16.0f;
     private Rigidbody2D rb;
@@ -36,7 +40,7 @@ public class WeaponThrow : MonoBehaviour
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(1);
+            playerHealth.TakeDamage(damage);
         }
     }
 }

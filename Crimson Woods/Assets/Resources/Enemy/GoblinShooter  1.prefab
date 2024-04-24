@@ -42,7 +42,7 @@ Transform:
   m_Children:
   - {fileID: 5160812934808316600}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7349399754535314485
 SpriteRenderer:
@@ -239,7 +239,7 @@ MonoBehaviour:
   radius: 0.5
   height: 1
   canMove: 1
-  maxSpeed: 4
+  maxSpeed: 7
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73cb09fd02aae34d9f2ca25e66e25a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 3
   facingRight: 1
   isHurt: 0
   isDead: 0
@@ -369,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  health: 4
+  health: 8
 --- !u!1 &5545778081085576868
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4fdb387c744d246b53883427c242f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab1: {fileID: 434828222357450032, guid: e4a284d9cba4731438b33d34b7100e48, type: 3}
+  arrowPrefab1: {fileID: 1436358815718796140, guid: 6d0f83a96a08da5438b7ff949dee285d, type: 3}
   arrowSpawnPoint1: {fileID: 5160812934808316600}
   shootForce1: 10
   shootRange1: 20

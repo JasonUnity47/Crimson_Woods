@@ -25,6 +25,10 @@ PrefabInstance:
       value: Blood Slash
       objectReference: {fileID: 0}
     - target: {fileID: 6347467920116518690, guid: bfd7cc0d4632c82498532a91f3d0c778, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347467920116518690, guid: bfd7cc0d4632c82498532a91f3d0c778, type: 3}
       propertyPath: slashSpeed
       value: 80
       objectReference: {fileID: 0}

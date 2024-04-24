@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 963189732933732316, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 963189732933732316, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3695959268285468010, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693083800462710671, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4727655951677186369, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
       propertyPath: m_Name
       value: Blood Boar
@@ -63,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 6600462331954240459, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
       propertyPath: m_Color.g
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394224451059719033, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
+      propertyPath: health
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

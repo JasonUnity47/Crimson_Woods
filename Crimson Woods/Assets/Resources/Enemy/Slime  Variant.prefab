@@ -10,15 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1777322402262262233, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_Color.b
-      value: 0.17697582
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1777322402262262233, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_Color.g
-      value: 0.17697582
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1777322402262262233, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_Color.r
-      value: 0.38679248
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332234683161695766, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
+      propertyPath: maxSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4753258141237861932, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_Name
@@ -26,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8139979126039951690, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8139979126039951690, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -103,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1a2bee9950fe74fac14ce155695ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 3
   facingRight: 1
   isHurt: 0
   isDead: 0
@@ -123,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  health: 4
+  health: 8
 --- !u!70 &7714813756233589932 stripped
 CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 8474994055262639615, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}

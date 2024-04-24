@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7433e7914ddaf40b1d709beecb15c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   facingRight: 1
   isHurt: 0
   isDead: 0
