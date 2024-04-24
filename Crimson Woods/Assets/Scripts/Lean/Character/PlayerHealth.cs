@@ -14,12 +14,13 @@ public class PlayerHealth : MonoBehaviour
 
     public GameObject bow;
 
-    private Animator myAnimator;
-    public bool dead;
+    private Animator myAnimator;    
     private SpriteRenderer mySpriteRender;
-    public Collider2D[] myCollider;
-
     private AddArmor addArmor;
+    
+    public ArmorBar armorBar;
+    public bool dead;
+    public Collider2D[] myCollider;
 
     private void Awake()
     {
@@ -60,6 +61,7 @@ public class PlayerHealth : MonoBehaviour
         {
             // Reduce armor value by 1.
             addArmor.armor--;
+            armorBar.DrawArmorUI();
 
             // Block Effect.
             GameObject blockEffect = Instantiate(addArmor.blockVFX, transform.position, transform.rotation, transform);

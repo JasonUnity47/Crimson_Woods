@@ -15,6 +15,7 @@ public class BuffContent : MonoBehaviour
 
     public HealthHeartBar healthHeartBar;
     public DashBar dashBar;
+    public ArmorBar armorBar;
 
     [Header("Object Reference")]
     private Transform playerPos;
@@ -304,6 +305,7 @@ public class BuffContent : MonoBehaviour
         // Turn on Armored Fortitude.
         // Grants +5 Armor (+1 Armor every 8 seconds).
         onArmoredFortitude = true;
+        armorBar.DrawArmorUI();
 
         return;
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,11 @@ public class AddArmor : MonoBehaviour
 
     private BuffContent buffContent;
 
+    public ArmorBar armorBar;
+
     public GameObject blockVFX;
+
+    public static event Action OnArmoredFortitudeChanged;
 
     private void Start()
     {
@@ -51,6 +56,8 @@ public class AddArmor : MonoBehaviour
         if (timeBtwFrame <= 0)
         {
             armor++;
+            armorBar.DrawArmorUI();
+            OnArmoredFortitudeChanged?.Invoke();
             timeBtwFrame = startTime;
         }
 
