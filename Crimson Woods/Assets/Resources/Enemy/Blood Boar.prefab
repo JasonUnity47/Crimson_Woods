@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 963189732933732316, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 963189732933732316, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.997683
+      value: 2.8354926
       objectReference: {fileID: 0}
     - target: {fileID: 963189732933732316, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.818348
+      value: -13.5724945
       objectReference: {fileID: 0}
     - target: {fileID: 963189732933732316, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
       propertyPath: m_LocalPosition.z
@@ -55,6 +55,14 @@ PrefabInstance:
     - target: {fileID: 4727655951677186369, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
       propertyPath: m_Name
       value: Blood Boar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600462331954240459, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600462331954240459, guid: d709e6603616929419a5bf9eb36fbe43, type: 3}
+      propertyPath: m_Color.g
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
