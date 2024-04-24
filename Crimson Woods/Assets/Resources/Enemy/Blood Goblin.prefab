@@ -5248,7 +5248,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5504,7 +5504,7 @@ MonoBehaviour:
   hasCharged: 0
   rangeArea: {fileID: 4311866167608111252}
   rangeRadius: 20
-  prepareThrowVFX: {fileID: 0}
+  prepareThrowVFX: {fileID: 7449051349086743639, guid: eec027027fac2cf4aaaf519615f4bee4, type: 3}
   enterThrowTime: 1
   isPrepared: 0
   farEnough: 0
@@ -5523,4 +5523,6 @@ MonoBehaviour:
   hasMeeleAttacked: 0
   checkTime: 1
   lootCount: 60
-  col: []
+  col:
+  - {fileID: 1910014437341618103}
+  - {fileID: 5607417090270259186}
