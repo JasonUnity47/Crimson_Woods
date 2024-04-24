@@ -7,6 +7,7 @@ public class ArmorBar : MonoBehaviour
     public GameObject armorPrefab;
     public AddArmor addArmor;
     
+    
     List<ArmorUI> armorIcons = new List<ArmorUI>();
 
     private void OnEnable()
