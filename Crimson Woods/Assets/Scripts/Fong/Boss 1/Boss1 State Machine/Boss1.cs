@@ -64,8 +64,6 @@ public class Boss1 : MonoBehaviour
     public Animator Animator { get; private set; }
     public Rigidbody2D Rb { get; private set; }
 
-    public SpriteRenderer spriteRenderer { get; private set; }
-
     public SpriteRenderer weaponSpriteRender;
 
     // Script Reference
@@ -80,7 +78,6 @@ public class Boss1 : MonoBehaviour
 
         Rb = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         boss1Data = GetComponent<Boss1Data>();
 
@@ -223,8 +220,7 @@ public class Boss1 : MonoBehaviour
         if (aiPath.velocity.x >= 0.01 && !facingRight || aiPath.velocity.x <= -0.01 && facingRight)
         {
             facingRight = !facingRight;
-            spriteRenderer.flipX = !facingRight;
-            weaponSpriteRender.flipX = !facingRight;
+            transform.Rotate(0, 180, 0);
         }
 
         return;
