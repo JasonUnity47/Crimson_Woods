@@ -14577,6 +14577,7 @@ GameObject:
   - component: {fileID: 766339491}
   - component: {fileID: 766339493}
   - component: {fileID: 766339492}
+  - component: {fileID: 766339496}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -14709,6 +14710,23 @@ MonoBehaviour:
   isExisted: 0
   url: http://localhost/cwgd/selection.php
   updatePanel: {fileID: 1342903995}
+--- !u!114 &766339496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766339487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0735d749a7bf4eb41bc5a81c37a47c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emailField: {fileID: 311909257}
+  passwordField: {fileID: 485614075}
+  emailErrorText: {fileID: 2033896424}
+  passwordErrorText: {fileID: 2118657947}
+  url: http://localhost/cwgd/login.php
 --- !u!1 &779612244
 GameObject:
   m_ObjectHideFlags: 0
@@ -25371,9 +25389,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 766339489}
-        m_TargetAssemblyTypeName: InputButton, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 766339496}
+        m_TargetAssemblyTypeName: LoginAccount, Assembly-CSharp
+        m_MethodName: LoginButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27364,7 +27382,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The email is invalid.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -28930,7 +28948,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The email is invalid.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
