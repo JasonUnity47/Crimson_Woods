@@ -479,7 +479,7 @@ public class Boss2 : MonoBehaviour
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(1f);
+            playerHealth.TakeDamage(2.5f);
         }
     }
 }

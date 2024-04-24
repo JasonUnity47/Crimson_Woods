@@ -34,7 +34,7 @@ public class SlashMovement : MonoBehaviour
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(1);
+            playerHealth.TakeDamage(3f);
         }
     }
 }
