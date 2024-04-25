@@ -746,7 +746,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a26c105e9d6590e4ca636c4c7d12f697, type: 2}
   - {fileID: 11400000, guid: a6bb49a70c15d6b46ac7d2c3b3e7bb2e, type: 2}
   - {fileID: 11400000, guid: 8f31a722a01fed74f8db612db34d2dd8, type: 2}
-  - {fileID: 11400000, guid: 60a95713da58edd4eaa8bc300053c67f, type: 2}
   slider:
   - {fileID: 1240606875}
   - {fileID: 1856770557}

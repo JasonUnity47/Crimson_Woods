@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class LoginAccount : MonoBehaviour
 {
@@ -76,6 +77,7 @@ public class LoginAccount : MonoBehaviour
                     // Handle successful login
                     Debug.Log("Login successful!");
                     // You can navigate to another scene or update the UI here
+                    SceneManager.LoadScene(1);
                 }
                 else
                 {
