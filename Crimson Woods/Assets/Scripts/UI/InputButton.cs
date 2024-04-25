@@ -125,7 +125,7 @@ public class InputButton : MonoBehaviour
     // Restart Game
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         TimeResume();
         return;
     }
