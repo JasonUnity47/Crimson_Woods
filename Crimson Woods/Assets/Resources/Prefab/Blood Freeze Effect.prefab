@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1442141373815033441, guid: 9953f77eda0cc5643b14941c13254ec5, type: 3}
       propertyPath: m_Name
-      value: Blood Freeze Effect Variant
+      value: Blood Freeze Effect
       objectReference: {fileID: 0}
     - target: {fileID: 4289741051345685674, guid: 9953f77eda0cc5643b14941c13254ec5, type: 3}
       propertyPath: m_Color.b
@@ -67,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 4289741051345685674, guid: 9953f77eda0cc5643b14941c13254ec5, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289741051345685674, guid: 9953f77eda0cc5643b14941c13254ec5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

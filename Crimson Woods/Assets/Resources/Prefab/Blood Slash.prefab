@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.5660378
       objectReference: {fileID: 0}
+    - target: {fileID: 301001934810537721, guid: bfd7cc0d4632c82498532a91f3d0c778, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2682278926956559626, guid: bfd7cc0d4632c82498532a91f3d0c778, type: 3}
       propertyPath: m_Name
       value: Blood Slash

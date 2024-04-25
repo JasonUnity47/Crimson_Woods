@@ -5103,7 +5103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3288839456189683364, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: m_SortingOrder
-      value: 15
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7976607875529847917, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: maxSpeed

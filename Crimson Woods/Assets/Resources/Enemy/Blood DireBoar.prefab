@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 267546279308485062, guid: b43ec2eb481031d4f96b33c85cad9f48, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 348945171097746275, guid: b43ec2eb481031d4f96b33c85cad9f48, type: 3}
       propertyPath: health
       value: 8
