@@ -19,8 +19,7 @@ public class AddArmor : MonoBehaviour
     public ArmorBar armorBar;
 
     public GameObject blockVFX;
-
-    public static event Action OnArmoredFortitudeChanged;
+    
 
     private void Start()
     {
@@ -56,8 +55,7 @@ public class AddArmor : MonoBehaviour
         if (timeBtwFrame <= 0)
         {
             armor++;
-            armorBar.DrawArmorUI();
-            OnArmoredFortitudeChanged?.Invoke();
+            armorBar.DrawArmorUI();           
             timeBtwFrame = startTime;
         }
 

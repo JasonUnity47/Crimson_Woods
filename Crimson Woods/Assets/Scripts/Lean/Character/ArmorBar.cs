@@ -6,18 +6,19 @@ public class ArmorBar : MonoBehaviour
 {
     public GameObject armorPrefab;
     public AddArmor addArmor;
-    
-    
+    public PlayerHealth playerHealth;
+
+
     List<ArmorUI> armorIcons = new List<ArmorUI>();
 
     private void OnEnable()
     {
-        AddArmor.OnArmoredFortitudeChanged += UpdateArmorUI;
+        PlayerHealth.OnArmoredFortitudeChanged += UpdateArmorUI;
     }
 
     private void OnDisable()
     {
-        AddArmor.OnArmoredFortitudeChanged -= UpdateArmorUI;
+        PlayerHealth.OnArmoredFortitudeChanged -= UpdateArmorUI;
     }
 
     public void Start()

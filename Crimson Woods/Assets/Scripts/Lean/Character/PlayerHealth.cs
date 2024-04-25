@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public static event Action OnPlayerDamaged;
-    public static event Action OnPlayerDied;  
+    public static event Action OnPlayerDied;
+    public static event Action OnArmoredFortitudeChanged;
     public float health, maxHealth;
     [SerializeField] BuffContent buffContent;
     [SerializeField] private int numberOfFlashes;
@@ -62,6 +63,7 @@ public class PlayerHealth : MonoBehaviour
             // Reduce armor value by 1.
             addArmor.armor--;
             armorBar.DrawArmorUI();
+            OnArmoredFortitudeChanged?.Invoke();
 
             // Block Effect.
             GameObject blockEffect = Instantiate(addArmor.blockVFX, transform.position, transform.rotation, transform);
