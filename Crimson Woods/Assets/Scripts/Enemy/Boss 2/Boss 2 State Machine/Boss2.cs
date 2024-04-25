@@ -81,6 +81,8 @@ public class Boss2 : MonoBehaviour
 
     public Collider2D[] col;
 
+    private SpriteRenderer spriteRenderer;
+
     // State Machine
     public Boss2StateMachine boss2StateMachine { get; private set; }
 
@@ -117,6 +119,7 @@ public class Boss2 : MonoBehaviour
 
         Anim = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         lootBag = GetComponent<LootBag>();
         aiPath = GetComponent<AIPath>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -205,6 +208,8 @@ public class Boss2 : MonoBehaviour
             health = 0;
             aiPath.isStopped = true;
             aiPath.maxSpeed = 0;
+
+            spriteRenderer.sortingOrder = 9;
 
             // If the enemy is dead then change to Dead State.
             boss2StateMachine.ChangeState(DeadState);

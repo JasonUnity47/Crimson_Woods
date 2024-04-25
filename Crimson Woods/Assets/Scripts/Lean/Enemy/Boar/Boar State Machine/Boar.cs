@@ -32,6 +32,8 @@ public class Boar : MonoBehaviour
 
     public Collider2D[] col;
 
+    private SpriteRenderer spriteRenderer;
+
     // State Machine
     public BoarStateMachine boarStateMachine { get; private set; }
 
@@ -78,6 +80,8 @@ public class Boar : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
 
         Anim = GetComponent<Animator>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         boarStateMachine.InitializeState(IdleState);
     }
@@ -127,6 +131,8 @@ public class Boar : MonoBehaviour
             boarStats.health = 0;
             aiPath.isStopped = true;
             aiPath.maxSpeed = 0;
+
+            spriteRenderer.sortingOrder = 9;
 
             boarStateMachine.ChangeState(DeadState);
         }

@@ -63,6 +63,8 @@ public class DireBoar : MonoBehaviour
 
     public Collider2D[] col;
 
+    private SpriteRenderer spriteRenderer;
+
     // State Machine
     public DireBoarStateMachine direBoarStateMachine { get; private set; }
 
@@ -93,6 +95,7 @@ public class DireBoar : MonoBehaviour
         buffContent = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<BuffContent>();        
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         lootBag = GetComponent<LootBag>();
         aiPath = GetComponent<AIPath>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -176,6 +179,8 @@ public class DireBoar : MonoBehaviour
             health = 0;            
             aiPath.isStopped = true;
             aiPath.maxSpeed = 0;
+
+            spriteRenderer.sortingOrder = 9;
 
             // If the enemy is dead then change to Dead State.
             direBoarStateMachine.ChangeState(DeadState);

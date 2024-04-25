@@ -35,6 +35,8 @@ public class Goblin : MonoBehaviour
 
     public Collider2D[] col;
 
+    private SpriteRenderer spriteRenderer;
+
     // State Machine
     public GoblinStateMachine goblinStateMachine { get; private set; }
 
@@ -86,6 +88,7 @@ public class Goblin : MonoBehaviour
 
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         goblinStateMachine.InitializeState(IdleState);
     }
@@ -134,6 +137,8 @@ public class Goblin : MonoBehaviour
             aiPath.isStopped = true;
             aiPath.maxSpeed = 0;
             goblinStats.health = 0;
+
+            spriteRenderer.sortingOrder = 9;
 
             goblinStateMachine.ChangeState(DeadState);
         }

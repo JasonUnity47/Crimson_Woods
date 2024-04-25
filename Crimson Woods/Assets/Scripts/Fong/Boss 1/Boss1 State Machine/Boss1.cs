@@ -64,6 +64,8 @@ public class Boss1 : MonoBehaviour
     public Animator Animator { get; private set; }
     public Rigidbody2D Rb { get; private set; }
 
+    private SpriteRenderer spriteRenderer;
+
     public SpriteRenderer weaponSpriteRender;
 
     // Script Reference
@@ -78,6 +80,7 @@ public class Boss1 : MonoBehaviour
 
         Rb = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         boss1Data = GetComponent<Boss1Data>();
 
@@ -159,6 +162,8 @@ public class Boss1 : MonoBehaviour
             health = 0;
             aiPath.isStopped = true;
             aiPath.maxSpeed = 0;
+
+            spriteRenderer.sortingOrder = 9;
 
             // If the enemy is dead then change to Dead State.
             StateMachine.ChangeState(DeadState);

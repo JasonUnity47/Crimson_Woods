@@ -89,6 +89,8 @@ public class BloodGoblin : MonoBehaviour
 
     public Collider2D[] col;
 
+    private SpriteRenderer spriteRenderer;
+
     // State Machine
     public BloodGoblinStateMachine bloodGoblinStateMachine { get; private set; }
 
@@ -123,6 +125,7 @@ public class BloodGoblin : MonoBehaviour
 
         Anim = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         lootBag = GetComponent<LootBag>();
         aiPath = GetComponent<AIPath>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -213,6 +216,8 @@ public class BloodGoblin : MonoBehaviour
             health = 0;
             aiPath.isStopped = true;
             aiPath.maxSpeed = 0;
+
+            spriteRenderer.sortingOrder = 9;
 
             // If the enemy is dead then change to Dead State.
             bloodGoblinStateMachine.ChangeState(DeadState);

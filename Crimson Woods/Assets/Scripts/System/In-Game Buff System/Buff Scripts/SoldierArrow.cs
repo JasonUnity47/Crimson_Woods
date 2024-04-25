@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class SoldierArrow : MonoBehaviour
 {
+    // Damage
+    [Header("Damage")]
+    public int damage;
+
     public float velocity = 10;
     Rigidbody2D rb;
 
@@ -37,7 +41,7 @@ public class SoldierArrow : MonoBehaviour
             if (collision.GetComponent<Boar>() == true)
             {
                 Boar boar = collision.GetComponent<Boar>();
-                boar.TakeDamage(1);
+                boar.TakeDamage(damage);
                 Destroy(this.gameObject);
             }
 
@@ -45,7 +49,7 @@ public class SoldierArrow : MonoBehaviour
             else if (collision.GetComponent<DireBoar>() == true)
             {
                 DireBoar direBoar = collision.GetComponent<DireBoar>();
-                direBoar.TakeDamage(1);
+                direBoar.TakeDamage(damage);
                 Destroy(this.gameObject);
             }
             
@@ -53,7 +57,15 @@ public class SoldierArrow : MonoBehaviour
             else if (collision.GetComponent<Goblin>() == true)
             {
                 Goblin goblin = collision.GetComponent<Goblin>();
-                goblin.TakeDamage(1);
+                goblin.TakeDamage(damage);
+                Destroy(this.gameObject);
+            }
+
+            // Blood Goblin
+            else if (collision.GetComponent<Goblin>() == true)
+            {
+                Goblin1 bloodGoblin = collision.GetComponent<Goblin1>();
+                bloodGoblin.TakeDamage(damage);
                 Destroy(this.gameObject);
             }
 
@@ -61,22 +73,39 @@ public class SoldierArrow : MonoBehaviour
             else if (collision.GetComponent<Slime>() == true)
             {
                 Slime slime = collision.GetComponent<Slime>();
-                slime.TakeDamage(1);
+                slime.TakeDamage(damage);
+                Destroy(this.gameObject);
+            }
+
+            // Blood Slime
+            else if (collision.GetComponent<Slime>() == true)
+            {
+                Slime1 bloodSlime = collision.GetComponent<Slime1>();
+                bloodSlime.TakeDamage(damage);
                 Destroy(this.gameObject);
             }
 
             // Boss 1
             else if (collision.GetComponent<Boss1Data>() == true)
             {
-                Boss1Data boss1Stats = collision.GetComponent<Boss1Data>();
-                boss1Stats.health--;
+                Boss1 boss1 = collision.GetComponent<Boss1>();
+                boss1.TakeDamage(damage);
+                Destroy(this.gameObject);
+            }
+
+            // Blood Boss 1
+            else if (collision.GetComponent<Boss1Data>() == true)
+            {
+                BloodGoblin bloodBoss = collision.GetComponent<BloodGoblin>();
+                bloodBoss.TakeDamage(damage);
+                Destroy(this.gameObject);
             }
 
             // Boss 2
             else if (collision.GetComponent<Boss2>() == true)
             {
                 Boss2 boss2 = collision.GetComponent<Boss2>();
-                boss2.TakeDamage(1);
+                boss2.TakeDamage(damage);
                 Destroy(this.gameObject);
             }
         }

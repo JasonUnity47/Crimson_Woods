@@ -36,6 +36,8 @@ public class Slime1 : MonoBehaviour
 
     public Collider2D[] col;
 
+    private SpriteRenderer spriteRenderer;
+
     // State Machine
     public SlimeStateMachine1 slimeStateMachine1 { get; private set; }
 
@@ -88,6 +90,7 @@ public class Slime1 : MonoBehaviour
 
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         slimeStateMachine1.InitializeState(IdleState);
     }
@@ -135,6 +138,8 @@ public class Slime1 : MonoBehaviour
             slimeStats1.health = 0;
             aiPath.isStopped = true;
             aiPath.maxSpeed = 0;
+
+            spriteRenderer.sortingOrder = 9;
 
             GameObject explosion = (GameObject)Instantiate(explosionRef);
             explosion.transform.position = new Vector3(transform.position.x, transform.position.y + .3f, transform.position.z);

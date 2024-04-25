@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7443750103281857767}
   - component: {fileID: 3502682053804520018}
   - component: {fileID: 1260922260674936780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RotatePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 5727299108111825974}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3502682053804520018
 MonoBehaviour:
@@ -49,7 +49,7 @@ MonoBehaviour:
   bullet: {fileID: 6449249302247949279, guid: f9d41a8e1ab356548bab04fe96d90137, type: 3}
   bulletTransform: {fileID: 5727299108111825974}
   canFire: 1
-  timeBetweenFiring: 0.1
+  timeBetweenFiring: 1
 --- !u!212 &1260922260674936780
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 5727299108111825974}
   - component: {fileID: 6553736121894219087}
   - component: {fileID: 9196283287643506867}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: e44209b0917d902458800b73130429ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
