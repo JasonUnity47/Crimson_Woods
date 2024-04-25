@@ -13,7 +13,7 @@ public class ArrowDamage : MonoBehaviour
         // Check if the bullet collides with an object tagged as a wall
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
         if (collision != null && collision.gameObject.CompareTag("Player"))

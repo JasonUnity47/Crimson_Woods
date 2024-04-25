@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7617043220872346837}
   - component: {fileID: 8833907316032119424}
   - component: {fileID: 71705841834238636}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: arrowPrefab
-  m_TagString: Arrow
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4135542396619138817}
   - component: {fileID: 6546528580765057072}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
