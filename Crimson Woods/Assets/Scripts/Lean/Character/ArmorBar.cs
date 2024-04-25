@@ -7,6 +7,7 @@ public class ArmorBar : MonoBehaviour
     public GameObject armorPrefab;
     public AddArmor addArmor;
     public PlayerHealth playerHealth;
+    private bool isActive = false;
 
 
     List<ArmorUI> armorIcons = new List<ArmorUI>();
@@ -23,7 +24,14 @@ public class ArmorBar : MonoBehaviour
 
     public void Start()
     {
-        DrawArmorUI();
+        gameObject.SetActive(false);
+    }
+
+    public void ActivateArmorBar()
+    {
+        isActive = true;
+        gameObject.SetActive(true); // Activate the ArmorBar GameObject
+        DrawArmorUI(); // Draw the Armor UI
     }
 
     public void DrawArmorUI()

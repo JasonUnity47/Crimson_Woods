@@ -304,8 +304,8 @@ public class BuffContent : MonoBehaviour
     {
         // Turn on Armored Fortitude.
         // Grants +5 Armor (+1 Armor every 8 seconds).
-        onArmoredFortitude = true;       
-        armorBar.DrawArmorUI();
+        onArmoredFortitude = true;
+        armorBar.ActivateArmorBar();
 
         return;
     }
