@@ -118,6 +118,15 @@ public class InputButton : MonoBehaviour
     public void BackMain()
     {
         SceneManager.LoadScene(0);
+        TimeResume();
+        return;
+    }
+
+    // Restart Game
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+        TimeResume();
         return;
     }
 
@@ -125,6 +134,7 @@ public class InputButton : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+        TimeResume();
         return;
     }
 
