@@ -70,3 +70,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Crimson Woods/Assets/Fungus/Integrations/Spine/Fungus-Spine.unitypackage.meta
+Crimson Woods/Assets/Fungus/Integrations/Playmaker/Fungus-PlayMaker.unitypackage.meta
+Crimson Woods/Assets/Fungus/EditorResources/FungusEditorResources.asset.meta
+Crimson Woods/Assets/Fungus/EditorResources/FungusEditorResources.asset
