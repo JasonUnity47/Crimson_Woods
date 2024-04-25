@@ -62,7 +62,7 @@ public class SoldierArrow : MonoBehaviour
             }
 
             // Blood Goblin
-            else if (collision.GetComponent<Goblin>() == true)
+            else if (collision.GetComponent<Goblin1>() == true)
             {
                 Goblin1 bloodGoblin = collision.GetComponent<Goblin1>();
                 bloodGoblin.TakeDamage(damage);
@@ -78,7 +78,7 @@ public class SoldierArrow : MonoBehaviour
             }
 
             // Blood Slime
-            else if (collision.GetComponent<Slime>() == true)
+            else if (collision.GetComponent<Slime1>() == true)
             {
                 Slime1 bloodSlime = collision.GetComponent<Slime1>();
                 bloodSlime.TakeDamage(damage);
@@ -86,7 +86,7 @@ public class SoldierArrow : MonoBehaviour
             }
 
             // Boss 1
-            else if (collision.GetComponent<Boss1Data>() == true)
+            else if (collision.GetComponent<Boss1>() == true)
             {
                 Boss1 boss1 = collision.GetComponent<Boss1>();
                 boss1.TakeDamage(damage);
@@ -94,7 +94,7 @@ public class SoldierArrow : MonoBehaviour
             }
 
             // Blood Boss 1
-            else if (collision.GetComponent<Boss1Data>() == true)
+            else if (collision.GetComponent<BloodGoblin>() == true)
             {
                 BloodGoblin bloodBoss = collision.GetComponent<BloodGoblin>();
                 bloodBoss.TakeDamage(damage);
