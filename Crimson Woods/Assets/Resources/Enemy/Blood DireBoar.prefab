@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: damage
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7467602717611600347, guid: b43ec2eb481031d4f96b33c85cad9f48, type: 3}
+      propertyPath: lootCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8697253495269778509, guid: b43ec2eb481031d4f96b33c85cad9f48, type: 3}
       propertyPath: m_Name
       value: Blood DireBoar

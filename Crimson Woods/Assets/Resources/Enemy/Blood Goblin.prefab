@@ -5523,7 +5523,7 @@ MonoBehaviour:
   isMeeleAttack: 0
   hasMeeleAttacked: 0
   checkTime: 1
-  lootCount: 60
+  lootCount: 50
   col:
   - {fileID: 1910014437341618103}
   - {fileID: 5607417090270259186}

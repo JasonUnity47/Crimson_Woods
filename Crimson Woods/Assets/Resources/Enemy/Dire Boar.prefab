@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 8825603967020496472}
   - component: {fileID: 5679743139815697551}
   m_Layer: 7
-  m_Name: DireBoar
+  m_Name: Dire Boar
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   isCharging: 0
   hasCharged: 0
   checkTime: 0
-  lootCount: 1
+  lootCount: 2
   col:
   - {fileID: 1048305890282051546}
   - {fileID: 7425762112295415853}

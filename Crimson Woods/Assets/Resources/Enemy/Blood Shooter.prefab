@@ -19,10 +19,10 @@ GameObject:
   - component: {fileID: 6680841169509856484}
   - component: {fileID: 4000534567297262296}
   - component: {fileID: 3739388269088220415}
-  - component: {fileID: 6207981380999281259}
-  - component: {fileID: -6112045315124555736}
+  - component: {fileID: 9004800048028222388}
+  - component: {fileID: -5864835123881847872}
   m_Layer: 7
-  m_Name: 'GoblinShooter '
+  m_Name: Blood Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ Transform:
   m_Children:
   - {fileID: 5160812934808316600}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7349399754535314485
 SpriteRenderer:
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 11
   m_Sprite: {fileID: -1235644201, guid: 72793d79e4cae9849b0e0f3809bdf30b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   radius: 0.5
   height: 1
   canMove: 1
-  maxSpeed: 4
+  maxSpeed: 7
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -337,7 +337,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.033506155, y: -0.7024025}
   m_Size: {x: 0.53296137, y: 0.59519506}
   m_Direction: 0
---- !u!114 &6207981380999281259
+--- !u!114 &9004800048028222388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,18 +346,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1254507577964125753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55a6108fd48fc47409875dfbba95cf8d, type: 3}
+  m_Script: {fileID: 11500000, guid: c73cb09fd02aae34d9f2ca25e66e25a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 3
   facingRight: 1
   isHurt: 0
   isDead: 0
-  lootCount: 1
+  lootCount: 5
   col:
   - {fileID: 2561673464966806480}
   - {fileID: 3739388269088220415}
---- !u!114 &-6112045315124555736
+--- !u!114 &-5864835123881847872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,11 +366,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1254507577964125753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e75829aa3f2c64cbc3b241883c0100, type: 3}
+  m_Script: {fileID: 11500000, guid: 34e420531066bbe4c89d5f5c8cebcf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  health: 3
+  health: 8
 --- !u!1 &5545778081085576868
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,9 +382,9 @@ GameObject:
   - component: {fileID: 5160812934808316600}
   - component: {fileID: 5803326808272046298}
   - component: {fileID: 3220791972593199117}
-  - component: {fileID: 3560306660346986110}
+  - component: {fileID: 1249960452522014383}
   m_Layer: 0
-  m_Name: Bow
+  m_Name: BowRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,7 +447,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e3ccdcfb11db4e54ba221904e0a4edab, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -478,7 +478,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3560306660346986110
+--- !u!114 &1249960452522014383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -487,14 +487,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5545778081085576868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d2344e327b5a944828879ab0383a09, type: 3}
+  m_Script: {fileID: 11500000, guid: ba4fdb387c744d246b53883427c242f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 434828222357450032, guid: e4a284d9cba4731438b33d34b7100e48, type: 3}
-  arrowSpawnPoint: {fileID: 5160812934808316600}
-  shootForce: 10
-  shootRange: 20
-  bowAnimator: {fileID: 3220791972593199117}
-  cooldownDuration: 5
-  arrowLifetime: 4
-  arrowSpeed: 20
+  arrowPrefab1: {fileID: 1436358815718796140, guid: 6d0f83a96a08da5438b7ff949dee285d, type: 3}
+  arrowSpawnPoint1: {fileID: 5160812934808316600}
+  shootForce1: 10
+  shootRange1: 20
+  bowAnimator1: {fileID: 3220791972593199117}
+  cooldownDuration1: 5
+  arrowLifetime1: 4
+  arrowSpeed1: 20

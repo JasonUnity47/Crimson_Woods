@@ -174,7 +174,7 @@ MonoBehaviour:
   facingRight: 1
   isHurt: 0
   isDead: 0
-  lootCount: 1
+  lootCount: 3
   col:
   - {fileID: 6079729873645592382}
   - {fileID: 8474994055262639615}

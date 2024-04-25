@@ -374,7 +374,7 @@ MonoBehaviour:
   isSlashing: 0
   hasSlashed: 0
   checkTime: 1
-  lootCount: 30
+  lootCount: 40
   col:
   - {fileID: 3811819058294983266}
   - {fileID: 5969783797965639522}
