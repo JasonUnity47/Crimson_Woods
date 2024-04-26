@@ -330,6 +330,9 @@ public class BuffContent : MonoBehaviour
                 GameObject bloodEffect = Instantiate(bloodVFX, playerPos.position, playerPos.rotation, playerPos);
                 if (playerHealth.health < playerHealth.maxHealth)
                 {
+                    // Play sound effect.
+                    FindObjectOfType<AudioManager>().Play("Suck Blood");
+
                     playerHealth.health++;
                     healthHeartBar.DrawHearts();
                 }

@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,15 +21,27 @@ public class EndGame : MonoBehaviour
     private CurrencySystem currencySystem;
     private Timer timer;
 
+    private bool finish = false;
+
+    private float startTime = 1f;
+    private float timeBtwFrame;
+
     private void Start()
     {
         waveSpawner = GetComponent<WaveSpawner>();
         currencySystem = GetComponent<CurrencySystem>();
         timer = GetComponent<Timer>();
+
+        timeBtwFrame = startTime;
     }
 
     private void Update()
     {
+        if (waveSpawner.isEnd)
+        {
+            CheckLoot();
+        }
+
         if (!waveSpawner.isEnd && playerHealth.dead && !once)
         {
             DisplayAmount();
@@ -42,7 +55,7 @@ public class EndGame : MonoBehaviour
             StartCoroutine(WaitResult());
         }
 
-        if (waveSpawner.isEnd && !playerHealth.dead && !once)
+        if (!once && finish)
         {
             DisplayAmount();
             DisplayTime();
@@ -54,6 +67,15 @@ public class EndGame : MonoBehaviour
 
             StartCoroutine(WaitResult());
         }
+    }
+
+    void CheckLoot()
+    {
+        if (GameObject.FindGameObjectWithTag("Coin") == null)
+        {
+            finish = true;
+        }
+        return;
     }
 
     void DisplayAmount()
