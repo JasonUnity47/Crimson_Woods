@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class UpgradeManager : MonoBehaviour
 {
     // URL of the PHP script
-    private string phpURL = "http://yourwebsite.com/shop.php";
+    private string phpURL = "http://localhost/cwgd/upgrade.php";
 
     // Function to upgrade dashCD
     public void UpgradeDashCD()

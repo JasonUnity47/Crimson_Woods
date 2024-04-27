@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 
 public class ShopManager : MonoBehaviour
 {
+    public int userId; // Add userId variable
     public int coins;
     public TMP_Text coinUI;
     public ShopItemSO[] shopItemSO;
@@ -22,7 +23,10 @@ public class ShopManager : MonoBehaviour
         {
             shopPanelsGO[i].SetActive(true);
         }
-        
+
+        // Retrieve user data from the database
+        StartCoroutine(GetUserData());
+
         coinUI.text = "Bloods: " + coins.ToString();
         LoadPanels();
         CheckPurchaseable();
@@ -34,10 +38,45 @@ public class ShopManager : MonoBehaviour
         //}
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator GetUserData()
     {
-        
+        string url = "http://localhost/cwgd/shop.php?userId=" + userId; // Include userId parameter in the URL
+        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                string userDataJson = www.downloadHandler.text;
+                Debug.Log("User Data JSON: " + userDataJson);
+
+                // Parse the JSON data to extract user's data
+                UserShopData userData = JsonUtility.FromJson<UserShopData>(userDataJson);
+
+                if (userData != null)
+                {
+                    // Update progresses of the ability panels
+                    shopItemSO[0].progress = userData.dashCD;
+                    shopItemSO[1].progress = userData.fireRate;
+                    shopItemSO[2].progress = userData.health;
+                    shopItemSO[3].progress = userData.moveSpeed;
+
+                    // Update slider values with retrieved data
+                    for (int i = 0; i < slider.Length; i++)
+                    {
+                        slider[i].value = shopItemSO[i].progress;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Invalid user data format.");
+                }
+            }
+        }
     }
 
     public void AddCoins()
