@@ -5,14 +5,16 @@ using UnityEngine.Networking;
 
 public class UpgradeManager : MonoBehaviour
 {
+    public int userId;// temporary user id
+
     // URL of the PHP script
-    private string phpURL = "http://yourwebsite.com/shop.php";
+    private string phpURL = "http://localhost/cwgd/upgrade.php";
 
     // Function to upgrade dashCD
     public void UpgradeDashCD()
     {
         // Retrieve userId from PlayerPrefs
-        int userId = PlayerPrefs.GetInt("userId");
+        //int userId = PlayerPrefs.GetInt("userId");
 
         // Send request to upgrade dashCD
         StartCoroutine(Upgrade(userId, "upgradeDashCD"));
@@ -22,7 +24,7 @@ public class UpgradeManager : MonoBehaviour
     public void UpgradeFireRate()
     {
         // Retrieve userId from PlayerPrefs
-        int userId = PlayerPrefs.GetInt("userId");
+        //int userId = PlayerPrefs.GetInt("userId");
 
         // Send request to upgrade fireRate
         StartCoroutine(Upgrade(userId, "upgradeFireRate"));
@@ -32,7 +34,7 @@ public class UpgradeManager : MonoBehaviour
     public void UpgradeHealth()
     {
         // Retrieve userId from PlayerPrefs
-        int userId = PlayerPrefs.GetInt("userId");
+        //int userId = PlayerPrefs.GetInt("userId");
 
         // Send request to upgrade health
         StartCoroutine(Upgrade(userId, "upgradeHealth"));
@@ -42,7 +44,7 @@ public class UpgradeManager : MonoBehaviour
     public void UpgradeMoveSpeed()
     {
         // Retrieve userId from PlayerPrefs
-        int userId = PlayerPrefs.GetInt("userId");
+        //int userId = PlayerPrefs.GetInt("userId");
 
         // Send request to upgrade moveSpeed
         StartCoroutine(Upgrade(userId, "upgradeMoveSpeed"));

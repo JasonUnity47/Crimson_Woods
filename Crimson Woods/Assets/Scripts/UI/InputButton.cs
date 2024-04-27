@@ -116,7 +116,6 @@ public class InputButton : MonoBehaviour
 
     public void ShopPanel(GameObject shop)
     {
-        Debug.Log("ok");
         if (!shop.activeSelf)
         {
             shop.SetActive(true);
