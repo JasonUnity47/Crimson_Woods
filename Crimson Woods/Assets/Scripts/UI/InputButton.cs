@@ -114,6 +114,29 @@ public class InputButton : MonoBehaviour
         return;
     }
 
+    public void ShopPanel(GameObject shop)
+    {
+        Debug.Log("ok");
+        if (!shop.activeSelf)
+        {
+            shop.SetActive(true);
+            TimeResume();
+        }
+
+        return;
+    }
+
+    public void LB(GameObject LB)
+    {
+        if (!LB.activeSelf)
+        {
+            LB.SetActive(true);
+            TimeResume();
+        }
+
+        return;
+    }
+
     // Back to Main
     public void BackMain()
     {
