@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TrailRenderer myTrailRenderer;
     [SerializeField] private float iFramesDuration;
     [SerializeField] private int numberOfFlashes;
+    [SerializeField] private ParticleSystem dust;
 
     public int maxDashes = 3;
     public float dashRestoreTime = 10f;
@@ -131,6 +132,7 @@ public class PlayerController : MonoBehaviour
             isDashing = true;
             moveSpeed *= dashSpeed;
             myTrailRenderer.emitting = true;
+            CreateDust();
 
             // Decrease the dash count
             dashCount--;
@@ -181,6 +183,11 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
         }
         Physics2D.IgnoreLayerCollision(6, 7, false);
+    }
+
+    public void CreateDust()
+    {
+        dust.Play();
     }
 }
 
