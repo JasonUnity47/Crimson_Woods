@@ -23,11 +23,17 @@ public class PlayerHealth : MonoBehaviour
     public bool dead;
     public Collider2D[] myCollider;
 
+    public AudioSource myAudio;
+    public AudioClip CharacterDieSFX;
+    public AudioClip CharacterHurtSFX;
+    public AudioClip ArmorBreak;
+
     private void Awake()
     {
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
         addArmor = GetComponent<AddArmor>();
+        myAudio = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -69,6 +75,7 @@ public class PlayerHealth : MonoBehaviour
 
             // Reduce armor value by 1.
             addArmor.armor--;
+            myAudio.PlayOneShot(ArmorBreak);
             armorBar.DrawArmorUI();
             OnArmoredFortitudeChanged?.Invoke();
 
@@ -79,6 +86,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         health -= amount;
+        myAudio.PlayOneShot(CharacterHurtSFX);
         health = Mathf.Max(0, health);
         OnPlayerDamaged?.Invoke();
         myAnimator.SetTrigger("HurtTrigger");
@@ -86,6 +94,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (health == 0 && !dead)
         {
+            myAudio.PlayOneShot(CharacterDieSFX);
             OnPlayerDied?.Invoke();
             myAnimator.SetTrigger("DeadTrigger");            
             GetComponent<PlayerController>().enabled = false;

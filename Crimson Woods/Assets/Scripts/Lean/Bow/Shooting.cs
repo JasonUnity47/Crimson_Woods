@@ -11,10 +11,14 @@ public class Shooting : MonoBehaviour
     public bool canFire;
     private float timer;
     public float timeBetweenFiring;
+    public AudioSource myAudio;
+    public AudioClip AttackSFX;
+
     // Start is called before the first frame update
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        myAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,8 +44,10 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetMouseButton(0) && canFire)
         {
-            canFire = false;
+           
+            canFire = false;           
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            myAudio.PlayOneShot(AttackSFX);
         }
     }
 }

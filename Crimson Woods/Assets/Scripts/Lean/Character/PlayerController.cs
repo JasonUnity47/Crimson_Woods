@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     public static event Action OnDashCountChanged;
     public float startingMoveSpeed;
 
+    public AudioSource myAudio;   
+    public AudioClip DashSFX;
+
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -45,6 +48,8 @@ public class PlayerController : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
         dashCount = maxDashes;
+        myAudio = GetComponent<AudioSource>();
+
 
         //startTime = dashRestoreTime;
         //timeBtwFrame = startTime;
@@ -66,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        PlayerInput();
+        PlayerInput();       
 
         //startTime = dashRestoreTime;
 
@@ -89,16 +94,17 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayerInput()
-    {
+    {        
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
 
         myAnimator.SetFloat("moveX", movement.x);
         myAnimator.SetFloat("moveY", movement.y);
+       
     }
 
     private void Move()
-    {
-        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
+    {      
+        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));       
     }
 
     private void AdjustPlayerFacingDirection()
@@ -128,6 +134,7 @@ public class PlayerController : MonoBehaviour
 
             // Decrease the dash count
             dashCount--;
+            myAudio.PlayOneShot(DashSFX);
 
             // Invoke the event to notify subscribers (such as the DashUI script) that the dash count has changed
             OnDashCountChanged?.Invoke();
