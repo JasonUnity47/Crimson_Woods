@@ -114,6 +114,14 @@ public class InputButton : MonoBehaviour
         return;
     }
 
+    // Cutscene 1
+    public void SwitchCut1()
+    {
+        SceneManager.LoadScene(2);
+        TimeResume();
+        return;
+    }
+
     public void ShopPanel(GameObject shop)
     {
         if (!shop.activeSelf)
