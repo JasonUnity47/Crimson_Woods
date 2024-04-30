@@ -18,8 +18,13 @@ public class LittleShark : MonoBehaviour
 
     private Boss2 boss2;
 
+    public AudioSource myAudio;
+    public AudioClip Boss2FireBallSFX;
+
     private void Start()
     {
+        myAudio = GetComponent<AudioSource>();
+
         boss2 = GetComponentInParent<Boss2>();
 
         attackCD = attackTime;
@@ -67,6 +72,7 @@ public class LittleShark : MonoBehaviour
 
     void fire()
     {
+        myAudio.PlayOneShot(Boss2FireBallSFX);
         GameObject new_bullet = Instantiate(arrow, transform.position, Quaternion.identity);
         //rotate the bullet as the gameobject
         new_bullet.transform.right = transform.right.normalized;

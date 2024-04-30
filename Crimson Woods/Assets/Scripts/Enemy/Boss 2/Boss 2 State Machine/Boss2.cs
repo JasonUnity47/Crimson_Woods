@@ -113,8 +113,17 @@ public class Boss2 : MonoBehaviour
 
     public BuffContent buffContent { get; private set; }
 
+    public AudioSource myAudio;
+    public AudioClip Boss2HurtSFX;
+    public AudioClip Boss2DieSFX;
+    public AudioClip Boss2ChargeSFX;
+    public AudioClip Boss2PowerChargeSFX;
+    public AudioClip Boss2SlashSFX;
+
     private void Awake()
     {
+        myAudio = GetComponent<AudioSource>();
+
         boss2StateMachine = new Boss2StateMachine();
 
         Anim = GetComponent<Animator>();
@@ -186,6 +195,8 @@ public class Boss2 : MonoBehaviour
     {
         if (health <= 0 && !isDead)
         {
+            myAudio.PlayOneShot(Boss2DieSFX);
+
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)
             {
@@ -242,6 +253,8 @@ public class Boss2 : MonoBehaviour
         // If the enemy has not damaged before then take the damage.
         if (!isHurt)
         {
+            myAudio.PlayOneShot(Boss2HurtSFX);
+
             health -= damageValue;
 
 
@@ -443,6 +456,7 @@ public class Boss2 : MonoBehaviour
 
     public void PrepareCharge()
     {
+        myAudio.PlayOneShot(Boss2ChargeSFX);
         // Allow enemy states can use the functions from the boss2.
         StartCoroutine(WaitForCharge());
 
@@ -451,6 +465,7 @@ public class Boss2 : MonoBehaviour
 
     public void PrepareSlash()
     {
+        myAudio.PlayOneShot(Boss2PowerChargeSFX);
         // Allow enemy states can use the functions from the boss2.
         StartCoroutine(WaitForSlash());
 
@@ -467,6 +482,7 @@ public class Boss2 : MonoBehaviour
 
     public void FinishSlash()
     {
+        myAudio.PlayOneShot(Boss2SlashSFX);
         // Allow enemy states can use the functions from the boss2.
         StartCoroutine(SlashCD());
 
