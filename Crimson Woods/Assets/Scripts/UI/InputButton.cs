@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class InputButton : MonoBehaviour
 {
+
     // Back
     public void BackStep(GameObject panel)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (panel.activeSelf)
         {
             panel.SetActive(false);
@@ -21,6 +24,8 @@ public class InputButton : MonoBehaviour
     // Login
     public void ShowLogin(GameObject login)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!login.activeSelf)
         {
             login.SetActive(true);
@@ -33,6 +38,8 @@ public class InputButton : MonoBehaviour
     // Registration
     public void ShowRegistration(GameObject reg)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!reg.activeSelf)
         {
             reg.SetActive(true);
@@ -45,6 +52,8 @@ public class InputButton : MonoBehaviour
     // Settings
     public void ShowSettings(GameObject settings)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!settings.activeSelf)
         {
             settings.SetActive(true);
@@ -57,6 +66,8 @@ public class InputButton : MonoBehaviour
     // Control
     public void ShowControl(GameObject control)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!control.activeSelf)
         {
             control.SetActive(true);
@@ -69,6 +80,8 @@ public class InputButton : MonoBehaviour
     // Quit
     public void ShowQuit(GameObject quit)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!quit.activeSelf)
         {
             quit.SetActive(true);
@@ -81,6 +94,8 @@ public class InputButton : MonoBehaviour
     // Credit
     public void ShowCredit(GameObject credit)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!credit.activeSelf)
         {
             credit.SetActive(true);
@@ -93,6 +108,8 @@ public class InputButton : MonoBehaviour
     // In-Game Settings
     public void ShowInGame(GameObject inGame)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!inGame.activeSelf)
         {
             inGame.SetActive(true);
@@ -105,6 +122,8 @@ public class InputButton : MonoBehaviour
     // Resume Game
     public void ResumeGame(GameObject inGame)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (inGame.activeSelf)
         {
             inGame.SetActive(false);
@@ -117,6 +136,7 @@ public class InputButton : MonoBehaviour
     // Cutscene 1
     public void SwitchCut1()
     {
+
         SceneManager.LoadScene(2);
         TimeResume();
         return;
@@ -124,6 +144,8 @@ public class InputButton : MonoBehaviour
 
     public void ShopPanel(GameObject shop)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!shop.activeSelf)
         {
             shop.SetActive(true);
@@ -135,6 +157,8 @@ public class InputButton : MonoBehaviour
 
     public void LB(GameObject LB)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!LB.activeSelf)
         {
             LB.SetActive(true);
@@ -147,6 +171,8 @@ public class InputButton : MonoBehaviour
     // Back to Main
     public void BackMain()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         SceneManager.LoadScene(0);
         TimeResume();
         return;
@@ -155,6 +181,8 @@ public class InputButton : MonoBehaviour
     // Restart Game
     public void RestartGame()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         SceneManager.LoadScene(2);
         TimeResume();
         return;
@@ -163,6 +191,8 @@ public class InputButton : MonoBehaviour
     // Start
     public void StartGame()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         SceneManager.LoadScene(1);
         TimeResume();
         return;
@@ -171,6 +201,8 @@ public class InputButton : MonoBehaviour
     // Quit
     public void QuitGame()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         Application.Quit();
         return;
     }
@@ -178,6 +210,8 @@ public class InputButton : MonoBehaviour
     // Show Panel For Check, Update, and Deletion Panel
     public void ShowPanel(GameObject panel)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (!panel.activeSelf)
         {
             panel.SetActive(true);
@@ -190,6 +224,8 @@ public class InputButton : MonoBehaviour
     // Close Panel For Check, Update, and Deletion Panel
     public void ClosePanel(GameObject panel)
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
         if (panel.activeSelf)
         {
             panel.SetActive(false);
