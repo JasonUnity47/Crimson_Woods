@@ -13,10 +13,7 @@ public class VolumeControl : MonoBehaviour
 
     void Start()
     {
-        if (audioSources.Count > 0)
-        {
-            volumeSlider.value = audioSources[0].volume;
-        }
+        
 
         // Add a listener for when the slider value changes
         volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
