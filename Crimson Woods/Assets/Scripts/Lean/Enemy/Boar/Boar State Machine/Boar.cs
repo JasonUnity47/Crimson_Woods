@@ -55,8 +55,14 @@ public class Boar : MonoBehaviour
 
     public BuffContent buffContent { get; private set; }
 
+    public AudioSource myAudio;
+    public AudioClip BoarHurtSFX;
+    public AudioClip BoarDieSFX;
+
     private void Awake()
     {
+        myAudio = GetComponent<AudioSource>();
+
         boarStateMachine = new BoarStateMachine();
 
         lootBag = GetComponent<LootBag>();
@@ -108,6 +114,7 @@ public class Boar : MonoBehaviour
     {
         if (boarStats.health <= 0)
         {
+            myAudio.PlayOneShot(BoarDieSFX);
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)
             {
@@ -152,6 +159,8 @@ public class Boar : MonoBehaviour
 
         if (!isHurt)
         {
+            myAudio.PlayOneShot(BoarHurtSFX);
+
             boarStats.health -= damageValue;
 
             Anim.SetTrigger("HurtTrigger");

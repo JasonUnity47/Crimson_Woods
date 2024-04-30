@@ -33,8 +33,13 @@ public class ItemDrop : MonoBehaviour
     private float alpha;
     private bool isEnd = false;
 
+    public AudioSource myAudio;
+    public AudioClip BloodDropSFX;
+    public AudioClip FoodDropSFX;
+
     private void Awake()
     {
+        myAudio = GetComponent<AudioSource>();
         // Set the off variable with random value between -4 and 4.
         off = new Vector3(Random.Range(-4, 4), off.y, off.z);
         off = new Vector3(off.x, Random.Range(-4, 4), off.z);
@@ -44,7 +49,7 @@ public class ItemDrop : MonoBehaviour
     {
         currencySystem = GameObject.FindWithTag("Game Manager").GetComponent<CurrencySystem>();
         player = GameObject.FindGameObjectWithTag("Player");
-        healthHeartBar = GameObject.FindAnyObjectByType<HealthHeartBar>();
+        healthHeartBar = GameObject.FindObjectOfType<HealthHeartBar>();
 
         itemRb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -128,23 +133,38 @@ public class ItemDrop : MonoBehaviour
         // If the item collides with the player and the item is a coin then increase the currency by 1 and destroy the item.
         if (collision.CompareTag("Player") && this.gameObject.CompareTag("Coin"))
         {
-            // Increase certain amount of currency.
-            int randomNumber = Random.Range(1, 7); // 1 - 6
-            currencySystem.bloodCount += randomNumber;
-            Destroy(this.gameObject);
+            StartCoroutine(PlayAudioAndDestroy(BloodDropSFX));
         }
 
         // Else if the item collides with the player and the item is a food then increase the health by 1 and destroy the item.
         else if (collision.CompareTag("Player") && this.gameObject.CompareTag("Food"))
         {
-            //Increase 1 hp for player health if not at maxHealth.
+            StartCoroutine(PlayAudioAndDestroy(FoodDropSFX));
+        }
+    }
+
+    IEnumerator PlayAudioAndDestroy(AudioClip clip)
+    {
+        // Play the audio clip
+        myAudio.PlayOneShot(clip);
+
+        // Wait for a short delay before destroying the game object
+        yield return new WaitForSeconds(0.2f);
+
+        // Destroy the game object
+        Destroy(this.gameObject);
+
+        // If it's food, increase player health
+        if (this.gameObject.CompareTag("Food"))
+        {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth.health < playerHealth.maxHealth)
             {
                 playerHealth.health++;
                 healthHeartBar.DrawHearts();
             }
-            Destroy(this.gameObject);
         }
     }
+
 }
+

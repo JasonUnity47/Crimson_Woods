@@ -88,8 +88,15 @@ public class DireBoar : MonoBehaviour
     // Game Manager
     public BuffContent buffContent { get; private set; }
 
+    public AudioSource myAudio;
+    public AudioClip DireBoarHurtSFX;
+    public AudioClip DireBoarAngrySFX;
+    public AudioClip DireBoarDieSFX;
+
     private void Awake()
     {
+        myAudio = GetComponent<AudioSource>();
+
         direBoarStateMachine = new DireBoarStateMachine();
 
         buffContent = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<BuffContent>();        
@@ -151,9 +158,12 @@ public class DireBoar : MonoBehaviour
     }
 
     public void CheckDead()
-    {
+    {       
+
         if (health <= 0 && !isDead)
         {
+            myAudio.PlayOneShot(DireBoarDieSFX);
+
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)
             {
@@ -211,6 +221,8 @@ public class DireBoar : MonoBehaviour
 
         if (!isHurt)
         {
+            myAudio.PlayOneShot(DireBoarHurtSFX);
+
             health -= damageValue;
 
             Anim.SetTrigger("HurtTrigger");
@@ -248,6 +260,7 @@ public class DireBoar : MonoBehaviour
 
     public void PrepareCharge()
     {
+        myAudio.PlayOneShot(DireBoarAngrySFX);
         // Allow enemy states can use the functions from the boss2.
         StartCoroutine(WaitForCharge());
 
