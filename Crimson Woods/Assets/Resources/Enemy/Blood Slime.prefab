@@ -34,15 +34,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8139979126039951690, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8139979126039951690, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.49
+      value: -1.7039034
       objectReference: {fileID: 0}
     - target: {fileID: 8139979126039951690, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1
+      value: -10.506567
       objectReference: {fileID: 0}
     - target: {fileID: 8139979126039951690, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -94,6 +94,11 @@ CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6079729873645592382, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
   m_PrefabInstance: {fileID: 2201622553953546579}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &6607351853229429125 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4989913124336427222, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
+  m_PrefabInstance: {fileID: 2201622553953546579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6880175405745368959 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4753258141237861932, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
@@ -119,6 +124,9 @@ MonoBehaviour:
   col:
   - {fileID: 5391431180238876269}
   - {fileID: 7714813756233589932}
+  myAudio: {fileID: 6607351853229429125}
+  Slime1HurtSFX: {fileID: 8300000, guid: e2d79801c42fbd24bae2bd02fe24c693, type: 3}
+  Slime1DieSFX: {fileID: 8300000, guid: a9ef8f7b6c2357245851f824f51511c3, type: 3}
 --- !u!114 &7592469509710584212
 MonoBehaviour:
   m_ObjectHideFlags: 0

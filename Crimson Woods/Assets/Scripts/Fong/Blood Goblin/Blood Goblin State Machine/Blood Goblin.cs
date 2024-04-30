@@ -119,8 +119,18 @@ public class BloodGoblin : MonoBehaviour
 
     public BuffContent buffContent { get; private set; }
 
+    public AudioSource myAudio;
+    public AudioClip BloodBoss1HurtSFX;
+    public AudioClip BloodBoss1DieSFX;
+    public AudioClip BloodBoss1ChargeSFX;
+    public AudioClip BloodBoss1EarthquakeSFX;
+    public AudioClip BloodBoss1AxeChargeSFX;
+    public AudioClip BloodBoss1AxeThrowSFX;
+
     private void Awake()
     {
+        myAudio = GetComponent<AudioSource>();
+
         bloodGoblinStateMachine = new BloodGoblinStateMachine();
 
         Anim = GetComponent<Animator>();
@@ -139,6 +149,7 @@ public class BloodGoblin : MonoBehaviour
         PrepareState = new BloodGoblinPrepareState(this, bloodGoblinStateMachine, "prepare");
         RangeState = new BloodGoblinRangeState(this, bloodGoblinStateMachine, "throw");
         DeadState = new BloodGoblinDeadState(this, bloodGoblinStateMachine, "dead");
+
     }
 
     // Start is called before the first frame update
@@ -193,6 +204,8 @@ public class BloodGoblin : MonoBehaviour
     {
         if (health <= 0 && !isDead)
         {
+            myAudio.PlayOneShot(BloodBoss1DieSFX);
+
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)
             {
@@ -250,6 +263,8 @@ public class BloodGoblin : MonoBehaviour
         // If the enemy has not damaged before then take the damage.
         if (!isHurt)
         {
+            myAudio.PlayOneShot(BloodBoss1HurtSFX);
+
             health -= damageValue;
 
 
@@ -362,7 +377,7 @@ public class BloodGoblin : MonoBehaviour
     }
 
     IEnumerator ThrowTime()
-    {
+    {       
         // Wait for certain seconds for the slash attack animation.
         yield return new WaitForSeconds(0.4f);
 
@@ -427,6 +442,8 @@ public class BloodGoblin : MonoBehaviour
 
     public void PrepareCharge()
     {
+        myAudio.PlayOneShot(BloodBoss1ChargeSFX);
+
         // Allow enemy states can use the functions from the BloodGoblin.
         StartCoroutine(WaitForCharge());
 
@@ -435,6 +452,7 @@ public class BloodGoblin : MonoBehaviour
 
     public void PrepareThrow()
     {
+        myAudio.PlayOneShot(BloodBoss1AxeChargeSFX);
         // Allow enemy states can use the functions from the BloodGoblin.
         StartCoroutine(WaitForThrow());
 
@@ -451,6 +469,7 @@ public class BloodGoblin : MonoBehaviour
 
     public void FinishThrow()
     {
+        myAudio.PlayOneShot(BloodBoss1AxeThrowSFX);
         // Allow enemy states can use the functions from the BloodGoblin.
         StartCoroutine(ThrowCD());
 
@@ -460,6 +479,8 @@ public class BloodGoblin : MonoBehaviour
     public void IsMeeleAttacking()
     {
         StartCoroutine(MeeleAttacking());
+
+        myAudio.PlayOneShot(BloodBoss1EarthquakeSFX);
 
         return;
     }

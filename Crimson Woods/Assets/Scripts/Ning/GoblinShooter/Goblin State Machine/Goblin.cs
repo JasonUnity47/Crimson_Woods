@@ -59,8 +59,15 @@ public class Goblin : MonoBehaviour
 
     public BuffContent buffContent { get; private set; }
 
+    public AudioSource myAudio;
+    public AudioClip GoblinHurtSFX;
+    public AudioClip GoblinDieSFX;
+    
+
     private void Awake()
     {
+        myAudio = GetComponent<AudioSource>();
+
         goblinStateMachine = new GoblinStateMachine();
 
         lootBag = GetComponent<LootBag>();
@@ -115,6 +122,8 @@ public class Goblin : MonoBehaviour
     {
         if (goblinStats.health <= 0)
         {
+            myAudio.PlayOneShot(GoblinDieSFX);
+
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)
             {
@@ -158,6 +167,8 @@ public class Goblin : MonoBehaviour
 
         if (!isHurt)
         {
+            myAudio.PlayOneShot(GoblinHurtSFX);
+
             goblinStats.health -= damageValue;
 
             SR.material = matWhite;

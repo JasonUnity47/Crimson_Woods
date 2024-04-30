@@ -19,8 +19,12 @@ public class GoblinBow : MonoBehaviour
     private Transform player; // Reference to the player object
     private bool canShoot = true; // Flag to indicate if the goblin can shoot
 
+    public AudioSource myAudio;
+    public AudioClip GoblinShootSFX;
+
     private void Start()
     {
+        myAudio = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player").transform; // Assuming the player has the tag "Player"
         goblin = GetComponentInParent<Goblin>();
     }
@@ -48,6 +52,8 @@ public class GoblinBow : MonoBehaviour
 
     private void Shoot()
     {
+        myAudio.PlayOneShot(GoblinShootSFX);
+
         // Trigger animation to transition to pulling bow animation
         bowAnimator.SetTrigger("PullBow");
 

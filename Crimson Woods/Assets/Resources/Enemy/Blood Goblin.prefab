@@ -5215,6 +5215,7 @@ GameObject:
   - component: {fileID: 573058760839563622}
   - component: {fileID: 3330832712306299916}
   - component: {fileID: 5716285812719560865}
+  - component: {fileID: 2045264139826456261}
   m_Layer: 7
   m_Name: Blood Goblin
   m_TagString: Enemy
@@ -5241,7 +5242,7 @@ Transform:
   - {fileID: 1175960722514087677}
   - {fileID: 8510695239500810351}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4238921016809187154
 SpriteRenderer:
@@ -5610,3 +5611,106 @@ MonoBehaviour:
   col:
   - {fileID: 1910014437341618103}
   - {fileID: 5607417090270259186}
+  myAudio: {fileID: 2045264139826456261}
+  BloodBoss1HurtSFX: {fileID: 8300000, guid: 764730e88122bbf46b50a2b5958a42c1, type: 3}
+  BloodBoss1DieSFX: {fileID: 8300000, guid: 340a03efa6af123429ab5b1405a378f9, type: 3}
+  BloodBoss1ChargeSFX: {fileID: 8300000, guid: 2cbfdb3b932a66c478b8fb397ae7429f, type: 3}
+  BloodBoss1EarthquakeSFX: {fileID: 8300000, guid: 030dd0957c8a0c348a218abb7736a7c4, type: 3}
+  BloodBoss1AxeChargeSFX: {fileID: 8300000, guid: 0208555da6d5fd7409ff323a5148e6cf, type: 3}
+  BloodBoss1AxeThrowSFX: {fileID: 8300000, guid: 25880b9f9dd3c994984049d21160354d, type: 3}
+--- !u!82 &2045264139826456261
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7232912005747362098}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6f6316c2190d28448a44066f50f6b936, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

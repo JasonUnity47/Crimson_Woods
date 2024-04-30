@@ -76,8 +76,19 @@ public class Boss1 : MonoBehaviour
     public Transform playerPos { get; private set; }
     public BuffContent buffContent { get; private set; }
 
+    public AudioSource myAudio;
+    public AudioClip Boss1HurtSFX;
+    public AudioClip Boss1DieSFX;
+    public AudioClip Boss1ChargeSFX;
+    public AudioClip Boss1EarthquakeSFX;
+    
+    
+
+
     private void Awake()
     {
+        myAudio = GetComponent<AudioSource>();
+
         StateMachine = new Boss1StateMachine();
 
         Rb = GetComponent<Rigidbody2D>();
@@ -150,6 +161,8 @@ public class Boss1 : MonoBehaviour
     {
         if (health <= 0 && !isDead)
         {
+            myAudio.PlayOneShot(Boss1DieSFX);
+
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)
             {
@@ -207,6 +220,8 @@ public class Boss1 : MonoBehaviour
         // If the enemy has not damaged before then take the damage.
         if (!isHurt)
         {
+            myAudio.PlayOneShot(Boss1HurtSFX);
+
             health -= damageValue;
 
             Animator.SetTrigger("hurt");
@@ -245,6 +260,8 @@ public class Boss1 : MonoBehaviour
 
     public void PrepareCharge()
     {
+        myAudio.PlayOneShot(Boss1ChargeSFX);
+
         StartCoroutine(WaitForCharge());
 
         return;
@@ -260,6 +277,8 @@ public class Boss1 : MonoBehaviour
     public void IsMeeleAttacking()
     {
         StartCoroutine(MeeleAttacking());
+
+        myAudio.PlayOneShot(Boss1EarthquakeSFX);
 
         return;
     }

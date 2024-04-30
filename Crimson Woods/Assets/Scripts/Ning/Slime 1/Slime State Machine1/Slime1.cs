@@ -60,8 +60,14 @@ public class Slime1 : MonoBehaviour
 
     public BuffContent buffContent { get; private set; }
 
+    public AudioSource myAudio;
+    public AudioClip Slime1HurtSFX;
+    public AudioClip Slime1DieSFX;
+
     private void Awake()
     {
+        myAudio = GetComponent<AudioSource>();
+
         slimeStateMachine1 = new SlimeStateMachine1();
 
         lootBag = GetComponent<LootBag>();
@@ -116,6 +122,8 @@ public class Slime1 : MonoBehaviour
     {
         if (slimeStats1.health <= 0)
         {
+            myAudio.PlayOneShot(Slime1DieSFX);
+
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)
             {
@@ -162,6 +170,8 @@ public class Slime1 : MonoBehaviour
 
         if (!isHurt)
         {
+            myAudio.PlayOneShot(Slime1HurtSFX);
+
             slimeStats1.health -= damageValue;
 
             SR.material = matWhite;
