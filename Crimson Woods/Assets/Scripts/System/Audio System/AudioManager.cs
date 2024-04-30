@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
+
+    // Reference to the volume slider
+    public Slider volumeSlider;
 
     private void Awake()
     {
@@ -32,6 +36,17 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+
+        // Attach the OnVolumeChanged method to the slider's onValueChanged event
+        if (volumeSlider != null)
+        {
+            volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
+        }
+
+        // Load the saved volume value and set it as the initial slider value
+        float savedVolume = SaveSystem.LoadVolume();
+        volumeSlider.value = savedVolume;
+        OnVolumeChanged(savedVolume);
     }
 
     public void Play(string name)
@@ -46,6 +61,18 @@ public class AudioManager : MonoBehaviour
         return;
     }
 
+    // This method is called whenever the slider value changes
+    void OnVolumeChanged(float volume)
+    {
+        // Update the volume of all audio sources in the sounds array
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = volume;
+        }
+
+        // Save the current volume setting
+        SaveSystem.SaveVolume(volume);
+    }
     // Using below code to play the specific sound you want.
     // FindObjectOfType<AudioManager>().Play("Sound Name");
 }
