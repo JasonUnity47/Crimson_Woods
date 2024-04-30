@@ -47,7 +47,7 @@ public class LoginAccount : MonoBehaviour
         }
     }
 
-    // Coroutine to handle the login request
+    // Coroutine to handle login request
     IEnumerator Login(string email, string password)
     {
         // Create a form to send the data
@@ -64,47 +64,82 @@ public class LoginAccount : MonoBehaviour
             // Check the result of the request
             if (www.result == UnityWebRequest.Result.Success)
             {
-                // Process the server response
-                string responseText = www.downloadHandler.text;
-
-                // Clear any previous error messages
+                // Clear previous error messages
                 emailErrorText.text = "";
                 passwordErrorText.text = "";
 
-                // Check the response for success or error messages
-                if (responseText.Contains("Login successful"))
+                // Process the server response
+                ProcessServerResponse(www.downloadHandler.text);
+            }
+            else
+            {
+                // Display error message if the request failed
+                Debug.Log("Failed to connect to the server: " + www.error);
+            }
+        }
+    }
+
+    // Process the server response
+    void ProcessServerResponse(string responseText)
+    {
+        // Log the server response for debugging
+        Debug.Log("Server Response: " + responseText);
+
+        try
+        {
+            // Parse the JSON response
+            UserResponse response = JsonUtility.FromJson<UserResponse>(responseText);
+
+            // Check if the response is valid
+            if (response != null)
+            {
+                if (response.status == "success")
                 {
+                    // Save userId to PlayerPrefs
+                    PlayerPrefs.SetInt("userId", response.userId);
+                    Debug.Log($"Saved userId in PlayerPrefs: {response.userId}");
                     // Handle successful login
                     Debug.Log("Login successful!");
-                    // You can navigate to another scene or update the UI here
                     SceneManager.LoadScene(1);
                 }
                 else
                 {
-                    // Split the response to separate error messages
-                    string[] responseLines = responseText.Split(';', System.StringSplitOptions.RemoveEmptyEntries);
-
-                    // Process each line for errors
-                    foreach (string line in responseLines)
-                    {
-                        if (line.Contains("Invalid email") || line.Contains("Email not found"))
-                        {
-                            // Display email error
-                            emailErrorText.text = line;
-                        }
-                        else if (line.Contains("Incorrect password"))
-                        {
-                            // Display password error
-                            passwordErrorText.text = line;
-                        }
-                    }
+                    // Handle server response with errors
+                    DisplayErrorMessages(response);
                 }
             }
             else
             {
-                // Display an error message if the request failed
-                Debug.Log("Failed to connect to the server: " + www.error);
+                Debug.Log("Invalid JSON response.");
             }
         }
+        catch (System.Exception ex)
+        {
+            Debug.Log("JSON parse error: " + ex.Message);
+        }
+    }
+
+    // Display error messages from server response
+    void DisplayErrorMessages(UserResponse response)
+    {
+        if (!string.IsNullOrEmpty(response.emailError))
+        {
+            emailErrorText.text = response.emailError;
+        }
+        if (!string.IsNullOrEmpty(response.passwordError))
+        {
+            passwordErrorText.text = response.passwordError;
+        }
+    }
+
+    // Define the UserResponse class to match server JSON response
+    [System.Serializable]
+    public class UserResponse
+    {
+        public string status;
+        public string message;
+        public int userId;
+        public string emailError;
+        public string passwordError;
     }
 }
