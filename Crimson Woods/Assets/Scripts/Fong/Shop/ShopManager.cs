@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 
 public class ShopManager : MonoBehaviour
 {
+    
     public int userId; // Add userId variable
 
 
@@ -23,6 +24,9 @@ public class ShopManager : MonoBehaviour
     {
         // Retrieve userId from PlayerPrefs
         userId = PlayerPrefs.GetInt("userId", 0);
+
+     
+
         for (int i = 0; i < shopItemSO.Length; i++)
         {
             shopPanelsGO[i].SetActive(true);
@@ -103,11 +107,12 @@ public class ShopManager : MonoBehaviour
         int cost = shopItemSO[btnNo].baseCost; // Get the cost of the ability
         if (coins >= cost && shopItemSO[btnNo].progress < 5)
         {
-            coins = coins - shopItemSO[btnNo].baseCost;
+            coins -= cost;
             if (shopItemSO[btnNo].progress < 5)
             {
                 shopItemSO[btnNo].progress++;
                 slider[btnNo].value = shopItemSO[btnNo].progress;
+                
             }
             LoadPanels();
             coinUI.text = "Bloods: " + coins.ToString();

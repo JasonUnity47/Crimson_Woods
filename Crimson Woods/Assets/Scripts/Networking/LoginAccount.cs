@@ -74,7 +74,7 @@ public class LoginAccount : MonoBehaviour
             else
             {
                 // Display error message if the request failed
-                Debug.Log("Failed to connect to the server: " + www.error);
+                passwordErrorText.text = "Failed to connect to the server.";
             }
         }
     }
@@ -82,9 +82,6 @@ public class LoginAccount : MonoBehaviour
     // Process the server response
     void ProcessServerResponse(string responseText)
     {
-        // Log the server response for debugging
-        Debug.Log("Server Response: " + responseText);
-
         try
         {
             // Parse the JSON response
@@ -97,38 +94,44 @@ public class LoginAccount : MonoBehaviour
                 {
                     // Save userId to PlayerPrefs
                     PlayerPrefs.SetInt("userId", response.userId);
-                    Debug.Log($"Saved userId in PlayerPrefs: {response.userId}");
+
                     // Handle successful login
-                    Debug.Log("Login successful!");
                     SceneManager.LoadScene(1);
                 }
                 else
                 {
-                    // Handle server response with errors
+                    // Handle errors in the server response
                     DisplayErrorMessages(response);
                 }
             }
             else
             {
-                Debug.Log("Invalid JSON response.");
+                passwordErrorText.text = "Invalid server response.";
             }
         }
-        catch (System.Exception ex)
+        catch (System.Exception)
         {
-            Debug.Log("JSON parse error: " + ex.Message);
+            passwordErrorText.text = "JSON parse error.";
         }
     }
 
-    // Display error messages from server response
     void DisplayErrorMessages(UserResponse response)
     {
-        if (!string.IsNullOrEmpty(response.emailError))
+        // Display email error message if present
+        if (!string.IsNullOrEmpty(response.message))
         {
-            emailErrorText.text = response.emailError;
-        }
-        if (!string.IsNullOrEmpty(response.passwordError))
-        {
-            passwordErrorText.text = response.passwordError;
+            if (response.message == "Invalid email." || response.message == "Email not found.")
+            {
+                emailErrorText.text = response.message;
+            }
+            else if (response.message == "Password is required." || response.message == "Incorrect password.")
+            {
+                passwordErrorText.text = response.message;
+            }
+            else
+            {
+                passwordErrorText.text = "Unexpected server response: " + response.message;
+            }
         }
     }
 

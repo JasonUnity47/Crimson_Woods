@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class VolumeControl : MonoBehaviour
 {
     public Slider volumeSlider;
-    //public AudioSource audioSource; // Reference to the AudioSource component you want to control the volume of
+    public AudioSource audioSource; // Reference to the AudioSource component you want to control the volume of
 
     void Start()
     {
@@ -15,7 +15,7 @@ public class VolumeControl : MonoBehaviour
         // Set the initial value of the slider to match the saved volume
         volumeSlider.value = savedVolume;
         // Set the volume of the audio source to match the saved volume
-        //audioSource.volume = savedVolume;
+        audioSource.volume = savedVolume;
 
         // Add a listener for when the slider value changes
         volumeSlider.onValueChanged.AddListener(delegate { OnVolumeChanged(); });
@@ -25,7 +25,7 @@ public class VolumeControl : MonoBehaviour
     void OnVolumeChanged()
     {
         // Update the volume of the audio source to match the slider value
-        //audioSource.volume = volumeSlider.value;
+        audioSource.volume = volumeSlider.value;
         // Save the current volume setting
         SaveSystem.SaveVolume(volumeSlider.value);
     }

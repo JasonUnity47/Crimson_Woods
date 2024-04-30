@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class CurrencySystem : MonoBehaviour
 {
@@ -22,25 +23,57 @@ public class CurrencySystem : MonoBehaviour
         SaveBloodSave();
     }
 
-    // Function to save fodSave
+    
     private void SaveBloodSave()
     {
-        SaveSystem.SaveBloodSave(bloodSave);
+        bloodSave += bloodCount;
+        StartCoroutine(SaveBloodsToServer());
     }
 
-    // Function to load fodSave
     private void LoadBloodSave()
     {
-        bloodSave = SaveSystem.LoadBloodSave();
+        StartCoroutine(LoadBloodsFromServer());
     }
 
-    public void bloodCurrency()
+
+
+    IEnumerator SaveBloodsToServer()
     {
-        bloodSave += bloodCount;
+        // Create form with userId and bloods
+        WWWForm form = new WWWForm();
+        form.AddField("userId", PlayerPrefs.GetInt("userId"));
+        form.AddField("bloods", bloodSave);
 
-        // Saving bloodSave
-        SaveSystem.SaveBloodSave(bloodSave);
+        // Send request to PHP script
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/cwgd/save_bloods.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(www.error);
+            }
+        }
     }
 
+    IEnumerator LoadBloodsFromServer()
+    {
+        // URL with userId parameter
+        string url = $"http://localhost/cwgd/load_bloods.php?userId={PlayerPrefs.GetInt("userId")}";
 
+        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                int bloods = int.Parse(www.downloadHandler.text);
+                bloodSave = bloods;
+            }
+            else
+            {
+                Debug.LogError(www.error);
+            }
+        }
+    }
 }
