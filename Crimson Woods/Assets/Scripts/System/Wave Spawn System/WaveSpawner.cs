@@ -8,7 +8,7 @@ public class WaveSpawner : MonoBehaviour
     private global::Wave waveUI;
 
     // Class (What is Wave?)
-    [System.Serializable] // In order to see and acess the class member in the Inspector.
+    [System.Serializable] // In order to see and access the class member in the Inspector.
     public class Wave
     {
         public string name;
@@ -37,8 +37,13 @@ public class WaveSpawner : MonoBehaviour
     // Script Reference
     private BuffSystem buffSystem;
 
+    public AudioSource myAudio;
+    public AudioClip Boss1FightSFX;
+    public AudioClip Boss2FightSFX;
+
     private void Start()
     {
+        myAudio = GetComponent<AudioSource>();
         // Error Check
         if (spawnPos.Length == 0)
         {
@@ -158,6 +163,29 @@ public class WaveSpawner : MonoBehaviour
         StartCoroutine(waveUI.ActivateWaveUI());
         state = SpawnState.SPAWNNING; // Start spawning enemy.
 
+        // Play boss audio clip if it's a boss wave
+        if ((nextWave == 4 || nextWave == 10) && myAudio != null)
+        {
+            myAudio.PlayOneShot(Boss1FightSFX);
+        }
+        // Stop playing Boss1FightSFX after wave 5 and wave 11
+        if ((nextWave == 5 || nextWave == 11) && myAudio != null)
+        {
+            myAudio.Stop();
+        }
+
+        if ((nextWave == 5 || nextWave == 11) && myAudio != null)
+        {
+            myAudio.PlayOneShot(Boss2FightSFX);
+        }
+
+
+        // Stop playing Boss2FightSFX after wave 12
+        if (nextWave > 5 && nextWave != 10 && nextWave != 11 && myAudio != null)
+        {
+            myAudio.Stop();
+        }
+
         // Spawn enemy based on the count of enemy in the wave.
         for (int i = 0; i < _wave.count; i++)
         {
@@ -167,7 +195,10 @@ public class WaveSpawner : MonoBehaviour
         }
 
         state = SpawnState.WAITING; // Waiting players to finish the current wave.
+        
 
         yield break;
     }
+
+
 }
