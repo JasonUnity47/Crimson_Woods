@@ -33,8 +33,9 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer mySpriteRender;
     private Collider2D myCollider;
     private bool facingLeft = false;
-    
 
+    // Buff
+    private BuffContent buffContent;
 
 
     // Testing
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
         dashCount = maxDashes;
         myAudio = GetComponent<AudioSource>();
 
+        buffContent = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<BuffContent>();
 
         //startTime = dashRestoreTime;
         //timeBtwFrame = startTime;
@@ -134,8 +136,33 @@ public class PlayerController : MonoBehaviour
             myTrailRenderer.emitting = true;
             CreateDust();
 
-            // Decrease the dash count
-            dashCount--;
+            if (buffContent.onEtherealDash)
+            {
+                int randomNumber = UnityEngine.Random.Range(0, 101);
+
+                if (randomNumber <= buffContent.dashChance)
+                {
+                    // Play cost dash sound.
+                    FindObjectOfType<AudioManager>().Play("Cost Dash");
+
+                    GameObject costEffect = Instantiate(buffContent.costVFX, transform.position, transform.rotation, transform);
+
+                    Destroy(costEffect, 0.6f);
+                }
+
+                else
+                {
+                    // Decrease the dash count
+                    dashCount--;
+                }
+            }
+
+            else
+            {
+                // Decrease the dash count
+                dashCount--;
+            }
+
             myAudio.PlayOneShot(DashSFX);
 
             // Invoke the event to notify subscribers (such as the DashUI script) that the dash count has changed

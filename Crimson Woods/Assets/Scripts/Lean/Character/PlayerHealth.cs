@@ -70,9 +70,6 @@ public class PlayerHealth : MonoBehaviour
         // If Armored Fortitude Buff is on and armor is more than 0 then can block damage.
         if (buffContent.onArmoredFortitude && addArmor.armor > 0)
         {
-            // Play sound effect.
-            FindObjectOfType<AudioManager>().Play("Shield Block");
-
             // Reduce armor value by 1.
             addArmor.armor--;
             myAudio.PlayOneShot(ArmorBreak);

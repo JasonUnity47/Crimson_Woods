@@ -20,7 +20,7 @@ public class BuffContent : MonoBehaviour
     [Header("Object Reference")]
     private Transform playerPos;
     public GameObject bowAvatar;
-    [SerializeField] private GameObject costVFX;
+    public GameObject costVFX;
     public GameObject evadeVFX;
     [SerializeField] private GameObject bloodVFX;
 
@@ -45,7 +45,7 @@ public class BuffContent : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private float dashReduction = 1 - (30 / 100f);
     [SerializeField] private int dashIncrement = 1;
-    [SerializeField] private int dashChance = 25;
+    public int dashChance = 25;
     public int dodgeChance = 25;
     [SerializeField] private int healthIncrement = 2;
     private float moveSpeedIncrement;
@@ -58,14 +58,6 @@ public class BuffContent : MonoBehaviour
         playerHealth = GameObject.FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
         shooting = GameObject.FindAnyObjectByType<Shooting>().GetComponent<Shooting>();
         playerPos = GameObject.FindWithTag("Player").GetComponent<Transform>();
-    }
-
-    private void Update()
-    {
-        if (onEtherealDash)
-        {
-            CostDash();
-        }
     }
 
     public void DisplayBuff()
@@ -216,34 +208,11 @@ public class BuffContent : MonoBehaviour
         return;
     }
 
-    void CostDash()
-    {
-        // 25% chance for dash to not consume charges (Increase back the dash count if the dash count decrease by 1).
-        if (!playerController.isDashing)
-        {
-            canCheck = true;
-        }
-
-        if (playerController.isDashing && canCheck)
-        {
-            canCheck = false;
-
-            int randomNumber = Random.Range(0, 101);
-            Debug.Log(randomNumber);
-
-            if (randomNumber <= dashChance)
-            {
-                GameObject costEffect = Instantiate(costVFX, playerPos.position, playerPos.rotation, playerPos);
-                playerController.dashCount++;
-                Destroy(costEffect, 0.6f);
-            }
-        }
-
-        return;
-    }
-
     void BowAvatars()
     {
+        // Play spawn sound.
+        FindObjectOfType<AudioManager>().Play("Bow Show");
+
         // Summons two bow avatars to engage enemies.
         Vector2 leftPlayer = playerPos.position + new Vector3(-2.1f, 0, 0);
 

@@ -84,6 +84,9 @@ public class AutoAttack : MonoBehaviour
 
     void fire()
     {
+        // Play shoot sound.
+        FindObjectOfType<AudioManager>().Play("Bow Shoot");
+
         GameObject new_bullet = Instantiate(arrow, transform.position, Quaternion.identity);
         //rotate the bullet as the gameobject
         new_bullet.transform.right = transform.right.normalized;
