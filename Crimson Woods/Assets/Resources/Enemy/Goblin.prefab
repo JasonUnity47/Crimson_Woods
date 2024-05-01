@@ -47,7 +47,7 @@ Transform:
   - {fileID: 1922256324083759155}
   - {fileID: 3133712373200726242}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2606492515133807508
 SpriteRenderer:
@@ -381,6 +381,7 @@ MonoBehaviour:
   hasMeeleAttacked: 0
   checkTime: 1
   lootCount: 30
+  selfLight: {fileID: 8262940554988725298}
   col:
   - {fileID: 15223572812444409}
   - {fileID: 9048714910695025431}

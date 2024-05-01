@@ -28,6 +28,10 @@ public class Goblin : MonoBehaviour
     [Header("Loot")]
     public int lootCount;
 
+    // Light
+    [Header("Light")]
+    [SerializeField] private GameObject selfLight;
+
     // Component
     public Animator Anim { get; private set; }
 
@@ -123,6 +127,9 @@ public class Goblin : MonoBehaviour
         if (goblinStats.health <= 0)
         {
             myAudio.PlayOneShot(GoblinDieSFX);
+
+            // Hide the self light if the enemy is dead.
+            selfLight.SetActive(false);
 
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)

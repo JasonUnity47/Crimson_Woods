@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8139979126039951690, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8139979126039951690, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -94,6 +94,11 @@ CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6079729873645592382, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
   m_PrefabInstance: {fileID: 2201622553953546579}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5426109251120717533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6179173508176768910, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
+  m_PrefabInstance: {fileID: 2201622553953546579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &6607351853229429125 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4989913124336427222, guid: 04bd57935796a4d40891bce37de44e4e, type: 3}
@@ -121,6 +126,7 @@ MonoBehaviour:
   isHurt: 0
   isDead: 0
   lootCount: 4
+  selfLight: {fileID: 5426109251120717533}
   col:
   - {fileID: 5391431180238876269}
   - {fileID: 7714813756233589932}

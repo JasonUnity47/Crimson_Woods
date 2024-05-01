@@ -50,6 +50,10 @@ public class Boss1 : MonoBehaviour
     [Header("Loot")]
     public int lootCount;
 
+    // Light
+    [Header("Light")]
+    [SerializeField] private GameObject selfLight;
+
     public Collider2D[] col;
 
     public Boss1StateMachine StateMachine { get; private set; }
@@ -162,6 +166,9 @@ public class Boss1 : MonoBehaviour
         if (health <= 0 && !isDead)
         {
             myAudio.PlayOneShot(Boss1DieSFX);
+
+            // Hide the self light if the enemy is dead.
+            selfLight.SetActive(false);
 
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)

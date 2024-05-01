@@ -44,7 +44,7 @@ Transform:
   - {fileID: 5160812934808316600}
   - {fileID: 7039206334169559583}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7349399754535314485
 SpriteRenderer:
@@ -356,6 +356,7 @@ MonoBehaviour:
   isHurt: 0
   isDead: 0
   lootCount: 4
+  selfLight: {fileID: 2959515067408374837}
   col:
   - {fileID: 2561673464966806480}
   - {fileID: 3739388269088220415}

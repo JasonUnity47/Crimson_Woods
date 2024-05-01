@@ -29,6 +29,10 @@ public class Slime1 : MonoBehaviour
     [Header("Loot")]
     public int lootCount;
 
+    // Light
+    [Header("Light")]
+    [SerializeField] private GameObject selfLight;
+
     // Component
     public Animator Anim { get; private set; }
 
@@ -123,6 +127,9 @@ public class Slime1 : MonoBehaviour
         if (slimeStats1.health <= 0)
         {
             myAudio.PlayOneShot(Slime1DieSFX);
+
+            // Hide the self light if the enemy is dead.
+            selfLight.SetActive(false);
 
             // If the Vampiric Essence buff is activated then player can have a chance to restore health.
             if (buffContent.onVampiricEssence)
