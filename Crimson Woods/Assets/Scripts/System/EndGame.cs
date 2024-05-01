@@ -26,8 +26,14 @@ public class EndGame : MonoBehaviour
     private float startTime = 1f;
     private float timeBtwFrame;
 
+    public AudioSource myAudio;
+    public AudioClip WinGameSFX;
+    public AudioClip LoseGameSFX;
+
     private void Start()
     {
+        myAudio = GetComponent<AudioSource>();
+
         waveSpawner = GetComponent<WaveSpawner>();
         currencySystem = GetComponent<CurrencySystem>();
         timer = GetComponent<Timer>();
@@ -38,12 +44,13 @@ public class EndGame : MonoBehaviour
     private void Update()
     {
         if (waveSpawner.isEnd)
-        {
+        {            
             CheckLoot();
         }
 
         if (!waveSpawner.isEnd && playerHealth.dead && !once)
-        {
+        {           
+
             DisplayAmount();
             DisplayTime();
 
@@ -53,10 +60,13 @@ public class EndGame : MonoBehaviour
             }
 
             StartCoroutine(WaitResult());
+
+            myAudio.PlayOneShot(LoseGameSFX);
         }
 
         if (!once && finish)
-        {
+        {            
+
             DisplayAmount();
             DisplayTime();
 
@@ -66,6 +76,8 @@ public class EndGame : MonoBehaviour
             }
 
             StartCoroutine(WaitResult());
+
+            myAudio.PlayOneShot(WinGameSFX);
         }
     }
 
@@ -94,10 +106,10 @@ public class EndGame : MonoBehaviour
         // Trigger once only.
         once = true;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);      
 
-        // Freeze the game.
-        Time.timeScale = 0;
+            // Freeze the game.
+            Time.timeScale = 0;
 
         if (!resultPanel.activeSelf)
         {
