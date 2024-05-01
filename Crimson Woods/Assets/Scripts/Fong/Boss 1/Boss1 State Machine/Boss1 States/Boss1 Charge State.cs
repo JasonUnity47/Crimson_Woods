@@ -12,6 +12,8 @@ public class Boss1ChargeState : Boss1State
     public override void Enter()
     {
         base.Enter();
+
+        boss1.CreateDust();
     }
 
     public override void Exit()

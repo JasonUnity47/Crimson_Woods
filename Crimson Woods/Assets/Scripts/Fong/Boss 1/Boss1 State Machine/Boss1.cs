@@ -31,6 +31,7 @@ public class Boss1 : MonoBehaviour
     public float chargeDistance;
     public Vector2 lastTargetPosForCharge;
     [SerializeField] private float chargeSpeed;
+    [SerializeField] private ParticleSystem dust;
     public bool isCharging = false;
     public bool hasCharged = false;
 
@@ -309,6 +310,11 @@ public class Boss1 : MonoBehaviour
     {
         // Check if player is in area
         isMeeleAttack = Physics2D.OverlapCircle(meeleArea.position, meeleRadius, whatIsPlayer);
+    }
+
+    public void CreateDust()
+    {
+        dust.Play();
     }
 
     IEnumerator WaitForCharge()
