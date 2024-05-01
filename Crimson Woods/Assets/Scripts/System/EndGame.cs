@@ -61,6 +61,7 @@ public class EndGame : MonoBehaviour
 
             StartCoroutine(WaitResult());
 
+            myAudio.Stop();
             myAudio.PlayOneShot(LoseGameSFX);
         }
 
@@ -77,6 +78,7 @@ public class EndGame : MonoBehaviour
 
             StartCoroutine(WaitResult());
 
+            myAudio.Stop();
             myAudio.PlayOneShot(WinGameSFX);
         }
     }

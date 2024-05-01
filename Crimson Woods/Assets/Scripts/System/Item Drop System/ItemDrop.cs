@@ -134,12 +134,22 @@ public class ItemDrop : MonoBehaviour
         if (collision.CompareTag("Player") && this.gameObject.CompareTag("Coin"))
         {
             StartCoroutine(PlayAudioAndDestroy(BloodDropSFX));
+
+            int randomNumber = Random.Range(1, 7); // 1 - 6
+            currencySystem.bloodCount += randomNumber;
         }
 
         // Else if the item collides with the player and the item is a food then increase the health by 1 and destroy the item.
         else if (collision.CompareTag("Player") && this.gameObject.CompareTag("Food"))
         {
             StartCoroutine(PlayAudioAndDestroy(FoodDropSFX));
+
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth.health < playerHealth.maxHealth)
+            {
+                playerHealth.health++;
+                healthHeartBar.DrawHearts();
+            }
         }
     }
 
@@ -153,17 +163,7 @@ public class ItemDrop : MonoBehaviour
 
         // Destroy the game object
         Destroy(this.gameObject);
-
-        // If it's food, increase player health
-        if (this.gameObject.CompareTag("Food"))
-        {
-            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-            if (playerHealth.health < playerHealth.maxHealth)
-            {
-                playerHealth.health++;
-                healthHeartBar.DrawHearts();
-            }
-        }
+               
     }
 
 }
