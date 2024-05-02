@@ -45,9 +45,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Click
+    clip: {fileID: 8300000, guid: c5d515756a7a0df408d77ed98a4fb823, type: 3}
+    volume: 1
+    pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Dodge Attack
+    clip: {fileID: 8300000, guid: a3d9fd47d7fbbe145adb11ac942e9492, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Suck Blood
+    clip: {fileID: 8300000, guid: d7898edddb78c8e44a333808d784bdb5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bow Show
+    clip: {fileID: 8300000, guid: 82f148c1801b006478025c97e0b3a3dc, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bow Shoot
+    clip: {fileID: 8300000, guid: 452fe4177482a8f44a81b89be4d5f608, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Cost Dash
+    clip: {fileID: 8300000, guid: 1c386643ae260b341b6f5ff6f4d3910f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  volumeSlider: {fileID: 0}
+  soundOnButton: {fileID: 0}
+  soundOffButton: {fileID: 0}

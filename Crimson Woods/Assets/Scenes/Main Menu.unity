@@ -21096,22 +21096,6 @@ PrefabInstance:
       propertyPath: soundOffButton
       value: 
       objectReference: {fileID: 731299016}
-    - target: {fileID: 8261297796214008693, guid: 7ebed31841efb0044ad0bfd00e8a640f, type: 3}
-      propertyPath: sounds.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: c5d515756a7a0df408d77ed98a4fb823, type: 3}
-    - target: {fileID: 8261297796214008693, guid: 7ebed31841efb0044ad0bfd00e8a640f, type: 3}
-      propertyPath: sounds.Array.data[0].name
-      value: Click
-      objectReference: {fileID: 0}
-    - target: {fileID: 8261297796214008693, guid: 7ebed31841efb0044ad0bfd00e8a640f, type: 3}
-      propertyPath: sounds.Array.data[0].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8261297796214008693, guid: 7ebed31841efb0044ad0bfd00e8a640f, type: 3}
-      propertyPath: sounds.Array.data[0].volume
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
