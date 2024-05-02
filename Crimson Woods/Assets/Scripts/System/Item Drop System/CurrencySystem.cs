@@ -17,6 +17,11 @@ public class CurrencySystem : MonoBehaviour
         LoadBloodSave();
     }
 
+    public void ButtonSave()
+    {
+        SaveBloodSave();
+    }
+
     private void OnApplicationQuit()
     {
         // Save fodSave when application quits

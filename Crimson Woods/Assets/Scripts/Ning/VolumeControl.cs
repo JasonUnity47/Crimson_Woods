@@ -2,50 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class VolumeControl : MonoBehaviour
 {
-    public Slider volumeSlider;
-    // List of audio sources you want to control
-    public List<AudioSource> audioSources;
-
-    
+    public AudioMixer audioMixer; // Reference to the audio mixer
+    public Slider volumeSlider; // Reference to the slider
+    public bool mute;
+    // Initialize the slider value to match the current volume level
+    private float currentVolume;
 
     void Start()
     {
+        audioMixer.GetFloat("MyExposedParam", out currentVolume);
         
-
-        // Add a listener for when the slider value changes
-        volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
-
-        // Load the saved volume value
-        float savedVolume = SaveSystem.LoadVolume();
-        
-
-        // Set the initial value of the slider to match the saved volume
-        volumeSlider.value = savedVolume;
-
-        // Set the volume of all audio sources to match the saved volume
-        OnVolumeChanged(savedVolume);
-
-       
     }
 
-    public void OnVolumeChanged(float value)
+    private void Update()
     {
-        foreach (var audioSource in audioSources)
+        currentVolume = volumeSlider.value;
+
+        if (mute == false)
         {
-            audioSource.volume = value; // Directly set the volume
+            audioMixer.SetFloat("MyExposedParam", Mathf.Log10(currentVolume) * 10);
         }
-
-       
-        // Save the current volume setting
-        SaveSystem.SaveVolume(value);
-
-       
+        else
+        {
+            audioMixer.SetFloat("MyExposedParam", Mathf.Log10(0.00000001f) * 10);
+        }
     }
 
-    
+    public void MuteMixer()
+    {
+        mute = !mute;
+    }
 
-    
+    // Function to update the master volume based on the slider value
+    public void SetVolume(float value)
+    {
+        audioMixer.SetFloat("MyExposedParam", Mathf.Log10(value) * 10);
+    }
 }
+
+
