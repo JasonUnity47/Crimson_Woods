@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: MovingSpeed
   description: Increase speed of player moving
-  baseCost: 2500
-  progress: 2
+  baseCost: 500
+  progress: 0

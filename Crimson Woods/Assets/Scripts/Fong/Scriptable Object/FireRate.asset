@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: FireRate
   description: Increase the frequency of player's projectiles
-  baseCost: 1500
-  progress: 1
+  baseCost: 500
+  progress: 0

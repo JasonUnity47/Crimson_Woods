@@ -34,9 +34,6 @@ public class ShopManager : MonoBehaviour
 
         // Retrieve user data from the database
         StartCoroutine(GetUserData());
-
-        LoadPanels();
-        CheckPurchaseable();
     }
 
     IEnumerator GetUserData()
@@ -67,6 +64,7 @@ public class ShopManager : MonoBehaviour
                     shopItemSO[3].progress = userData.moveSpeed;
                     coins = userData.bloods;
                     coinUI.text = "Bloods: " + coins.ToString();
+                    LoadPanels();
                     CheckPurchaseable();
 
 
