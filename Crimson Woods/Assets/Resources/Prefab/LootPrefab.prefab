@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 8536286493351631424}
   - component: {fileID: 638097978202147136}
   - component: {fileID: -448803019536163504}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LootPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

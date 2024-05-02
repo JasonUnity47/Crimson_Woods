@@ -164,10 +164,17 @@ public class WaveSpawner : MonoBehaviour
         StartCoroutine(waveUI.ActivateWaveUI());
         state = SpawnState.SPAWNNING; // Start spawning enemy.
 
+        // Stop playing Boss2FightSFX after wave 6 and 12
+        if (nextWave == 6 && myAudio != null)
+        {
+            myAudio.Stop();
+        }
+
         // Start playing EnemyFightSFX if not already playing
         if (!myAudio.isPlaying && myAudio != null)
         {
-            myAudio.PlayOneShot(EnemyFightSFX);
+            myAudio.clip = EnemyFightSFX;
+            myAudio.Play();
         }
 
         // Stop playing EnemyFightSFX after wave 5, 6, 11, and 12
@@ -179,7 +186,8 @@ public class WaveSpawner : MonoBehaviour
         // Play boss audio clip if it's a boss wave
         if ((nextWave == 4 || nextWave == 10) && myAudio != null)
         {
-            myAudio.PlayOneShot(Boss1FightSFX);
+            myAudio.clip = Boss1FightSFX;
+            myAudio.Play();
         }
         // Stop playing Boss1FightSFX after wave 5 and wave 11
         if ((nextWave == 5 || nextWave == 11) && myAudio != null)
@@ -190,14 +198,8 @@ public class WaveSpawner : MonoBehaviour
         // Play Boss2FightSFX for waves 5 and 11
         if ((nextWave == 5 || nextWave == 11) && myAudio != null)
         {
-            myAudio.PlayOneShot(Boss2FightSFX);
-        }
-
-
-        // Stop playing Boss2FightSFX after wave 12
-        if (nextWave == 6 && nextWave != 10 && nextWave != 11 && myAudio != null)
-        {
-            myAudio.Stop();
+            myAudio.clip = Boss2FightSFX;
+            myAudio.Play();
         }
 
 
