@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5529170608082263803}
   - component: {fileID: 1632972179644175590}
   - component: {fileID: 6347467920116518690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Water Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}

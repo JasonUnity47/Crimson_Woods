@@ -50,13 +50,16 @@ public class AutoAttack : MonoBehaviour
 
         foreach (Collider2D enemy in enemies)
         {
-            // Use sqrMagnitude is for performance issue.
-            distanceToEnemy = (enemy.transform.position - this.transform.position).sqrMagnitude; // Calculate the distance between this object and each enemy to find the closest enemy.
-
-            if (distanceToEnemy < distanceToClosestEnemy)
+            if (enemy.tag == "Enemy")
             {
-                distanceToClosestEnemy = distanceToEnemy;
-                closestEnemy = enemy.gameObject;
+                // Use sqrMagnitude is for performance issue.
+                distanceToEnemy = (enemy.transform.position - this.transform.position).sqrMagnitude; // Calculate the distance between this object and each enemy to find the closest enemy.
+
+                if (distanceToEnemy < distanceToClosestEnemy)
+                {
+                    distanceToClosestEnemy = distanceToEnemy;
+                    closestEnemy = enemy.gameObject;
+                }
             }
         }
 

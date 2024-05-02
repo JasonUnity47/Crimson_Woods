@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6236725245603797213}
   - component: {fileID: 6801046078771655921}
   - component: {fileID: 7449601396481917382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blood Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
