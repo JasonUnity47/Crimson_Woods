@@ -183,7 +183,7 @@ public class InputButton : MonoBehaviour
     {
         // Play ui sound.
         FindObjectOfType<AudioManager>().Play("Click");
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
         TimeResume();
         return;
     }
