@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6236725245603797213}
   - component: {fileID: 6801046078771655921}
   - component: {fileID: 7449601396481917382}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Blood Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 4945642215798891056}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7634826337281799553
 SpriteRenderer:
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4945642215798891056}
   - component: {fileID: 2918685501044848883}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

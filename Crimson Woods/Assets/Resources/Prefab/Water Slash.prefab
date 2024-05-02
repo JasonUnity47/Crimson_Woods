@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 795135319043460836}
   - component: {fileID: 3340637408216214140}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5529170608082263803}
   - component: {fileID: 1632972179644175590}
   - component: {fileID: 6347467920116518690}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Water Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ Transform:
   m_Children:
   - {fileID: 795135319043460836}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &301001934810537721
 SpriteRenderer:

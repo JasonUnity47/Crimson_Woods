@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7404253475606405366}
   - component: {fileID: 6531596083654188848}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1947845450515734694}
   - component: {fileID: 7386493597689529054}
   - component: {fileID: -2838929351246597407}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: WeaponThrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ Transform:
   m_Children:
   - {fileID: 7404253475606405366}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4211181054763999109
 SpriteRenderer:
