@@ -9,8 +9,8 @@ public class Timer : MonoBehaviour
     // Declaration
     public float rawTime;
 
-    private float seconds;
-    private float minutes;
+    public float seconds;
+    public float minutes;
 
     public string secondAmount;
     public string minuteAmount;
