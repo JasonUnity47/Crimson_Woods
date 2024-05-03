@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8886263229172582321}
-  - component: {fileID: 3389990041165004194}
   m_Layer: 0
   m_Name: Collect Area
   m_TagString: Untagged
@@ -32,41 +31,6 @@ Transform:
   m_Father: {fileID: 5110972617702127097}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &3389990041165004194
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462835374879475406}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
 --- !u!1 &2687141181979654912
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +47,7 @@ GameObject:
   - component: {fileID: 8536286493351631424}
   - component: {fileID: 638097978202147136}
   - component: {fileID: -448803019536163504}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: LootPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +68,7 @@ Transform:
   m_Children:
   - {fileID: 8886263229172582321}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5755732783831153697
 SpriteRenderer:

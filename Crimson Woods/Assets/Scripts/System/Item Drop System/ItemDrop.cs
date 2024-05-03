@@ -37,6 +37,8 @@ public class ItemDrop : MonoBehaviour
     public AudioClip BloodDropSFX;
     public AudioClip FoodDropSFX;
 
+    private bool isCollected = false;
+
     private void Awake()
     {
         myAudio = GetComponent<AudioSource>();
@@ -131,8 +133,10 @@ public class ItemDrop : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // If the item collides with the player and the item is a coin then increase the currency by 1 and destroy the item.
-        if (collision.CompareTag("Player") && this.gameObject.CompareTag("Coin"))
+        if (collision.CompareTag("Player") && this.gameObject.CompareTag("Coin") && !isCollected)
         {
+            isCollected = true;
+
             StartCoroutine(PlayAudioAndDestroy(BloodDropSFX));
 
             int randomNumber = Random.Range(1, 7); // 1 - 6
@@ -140,8 +144,10 @@ public class ItemDrop : MonoBehaviour
         }
 
         // Else if the item collides with the player and the item is a food then increase the health by 1 and destroy the item.
-        else if (collision.CompareTag("Player") && this.gameObject.CompareTag("Food"))
+        else if (collision.CompareTag("Player") && this.gameObject.CompareTag("Food") && !isCollected)
         {
+            isCollected = true;
+
             StartCoroutine(PlayAudioAndDestroy(FoodDropSFX));
 
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
