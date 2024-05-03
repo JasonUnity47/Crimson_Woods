@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class InsertTime : MonoBehaviour
+public class RecordTime : MonoBehaviour
 {
     // Store Variable
     [Header("Store Variable")]
@@ -24,6 +24,11 @@ public class InsertTime : MonoBehaviour
     {
         timer = GameObject.FindWithTag("Game Manager").GetComponent<Timer>();
         waveSpawner = GameObject.FindWithTag("Game Manager").GetComponent<WaveSpawner>();
+    }
+
+    private void Update()
+    {
+        timeSpent = Mathf.FloorToInt(timer.rawTime);
     }
 
     IEnumerator SendFrom(int userId, int timeSpent)
@@ -84,12 +89,8 @@ public class InsertTime : MonoBehaviour
         if (waveSpawner.isEnd)
         {
             userId = PlayerPrefs.GetInt("userId");
-            timeSpent = Mathf.FloorToInt(timer.rawTime % 60);
 
-            if (!userId.IsUnityNull() && !timeSpent.IsUnityNull())
-            {
-                SubmitForm(userId, timeSpent);
-            }
+            SubmitForm(userId, timeSpent);
         }
     }
 }

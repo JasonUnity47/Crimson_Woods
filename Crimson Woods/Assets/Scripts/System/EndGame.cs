@@ -23,9 +23,6 @@ public class EndGame : MonoBehaviour
 
     private bool finish = false;
 
-    private float startTime = 1f;
-    private float timeBtwFrame;
-
     public AudioSource myAudio;
     public AudioClip WinGameSFX;
     public AudioClip LoseGameSFX;
@@ -37,12 +34,15 @@ public class EndGame : MonoBehaviour
         waveSpawner = GetComponent<WaveSpawner>();
         currencySystem = GetComponent<CurrencySystem>();
         timer = GetComponent<Timer>();
-
-        timeBtwFrame = startTime;
     }
 
     private void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            DisplayTime();
+        }
+
         if (waveSpawner.isEnd)
         {            
             CheckLoot();
