@@ -9,7 +9,7 @@ public class SceneChanger : MonoBehaviour
     void Start()
     {
         // Start the coroutine to change scene after 32 seconds
-        StartCoroutine(ChangeSceneAfterDelay(32f));
+        StartCoroutine(ChangeSceneAfterDelay(42f));
     }
 
     IEnumerator ChangeSceneAfterDelay(float delay)
