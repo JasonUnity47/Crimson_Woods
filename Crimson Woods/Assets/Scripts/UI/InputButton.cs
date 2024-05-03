@@ -207,6 +207,32 @@ public class InputButton : MonoBehaviour
         return;
     }
 
+    // Function to change to the next scene
+    public void ChangeToNextScene()
+    {
+        // Get the current scene index
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Calculate the next scene index
+        int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+
+        // Load the next scene
+        SceneManager.LoadScene(nextSceneIndex);
+    }
+
+    // Function to change to the previous scene
+    public void ChangeToPreviousScene()
+    {
+        // Get the current scene index
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Calculate the previous scene index
+        int previousSceneIndex = (currentSceneIndex - 1) % SceneManager.sceneCountInBuildSettings;
+
+        // Load the previous scene
+        SceneManager.LoadScene(previousSceneIndex);
+    }
+
     // Show Panel For Check, Update, and Deletion Panel
     public void ShowPanel(GameObject panel)
     {
