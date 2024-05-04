@@ -15,7 +15,7 @@ public class VolumeControl : MonoBehaviour
     void Start()
     {
         audioMixer.GetFloat("MyExposedParam", out currentVolume);
-        
+        volumeSlider.value = volumeSlider.maxValue/2;
     }
 
     private void Update()
