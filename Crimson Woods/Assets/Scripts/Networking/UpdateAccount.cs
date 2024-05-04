@@ -81,6 +81,7 @@ public class UpdateAccount : MonoBehaviour
             {
                 // Failed to send data to the server.
                 Debug.Log("Form submission failed: " + www.error);
+                yield break;
             }
 
             else

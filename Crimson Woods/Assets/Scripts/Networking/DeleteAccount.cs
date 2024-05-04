@@ -19,6 +19,7 @@ public class DeleteAccount : MonoBehaviour
 
     // Store Variable
     [Header("Store Variable")]
+    private int userId;
     private string email;
     private string password;
 
@@ -42,6 +43,7 @@ public class DeleteAccount : MonoBehaviour
         // The form is empty which means no fields.
 
         // AddField(string fieldName (PHP), string value);
+        form.AddField("userId", userId);
         form.AddField("email", email);
         form.AddField("password", password);
 
@@ -91,6 +93,7 @@ public class DeleteAccount : MonoBehaviour
     {
         if (checkDeletion.isExisted)
         {
+            userId = int.Parse(checkDeletion.userId);
             email = checkDeletion.email;
             password = checkDeletion.password;
 
