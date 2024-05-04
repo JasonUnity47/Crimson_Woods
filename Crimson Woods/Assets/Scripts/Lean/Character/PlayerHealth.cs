@@ -34,11 +34,12 @@ public class PlayerHealth : MonoBehaviour
         mySpriteRender = GetComponent<SpriteRenderer>();
         addArmor = GetComponent<AddArmor>();
         myAudio = GetComponent<AudioSource>();
+
     }
 
     private void Start()
     {
-        health = maxHealth;
+        
     }
 
     private void OnParticleCollision(GameObject other)
