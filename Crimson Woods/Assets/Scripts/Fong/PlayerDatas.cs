@@ -9,6 +9,7 @@ public class PlayerDatas : MonoBehaviour
     private PlayerController playerController;
     private Shooting shooting;
     private PlayerHealth playerHealth;
+    private HealthHeartBar healthHeartBar;
 
     float[] dashCD = { 1f, 0.95f, 0.9f, 0.85f, 0.8f, 0.75f };
     float[] fireRate = { 1f, 0.95f, 0.9f, 0.85f, 0.8f, 0.75f };
@@ -23,6 +24,7 @@ public class PlayerDatas : MonoBehaviour
         playerController = GameObject.FindAnyObjectByType<PlayerController>().GetComponent<PlayerController>();
         shooting = GameObject.FindAnyObjectByType<Shooting>().GetComponent<Shooting>();
         playerHealth = GameObject.FindAnyObjectByType<PlayerHealth>().GetComponent<PlayerHealth>();
+        healthHeartBar = GameObject.FindAnyObjectByType<HealthHeartBar>().GetComponent<HealthHeartBar>();
 
         StartCoroutine(GetPlayerData());
     }
@@ -58,6 +60,8 @@ public class PlayerDatas : MonoBehaviour
                     shooting.timeBetweenFiring *= fireRate[playerData.fireRate];
                     playerHealth.maxHealth += health[playerData.health];
                     playerController.moveSpeed *= moveSpeed[playerData.moveSpeed];
+                    playerHealth.health = playerHealth.maxHealth;
+                    healthHeartBar.DrawHearts();
 
                 }
                 else
