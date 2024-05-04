@@ -38,7 +38,7 @@ public class ShopManager : MonoBehaviour
 
     IEnumerator GetUserData()
     {
-        string url = "http://localhost/cwgd/shop.php?userId=" + userId; // Include userId parameter in the URL
+        string url = "https://jasonunity47.000webhostapp.com/shop.php?userId=" + userId; // Include userId parameter in the URL
         using (UnityWebRequest www = UnityWebRequest.Get(url))
         {
             yield return www.SendWebRequest();
@@ -162,7 +162,7 @@ public class ShopManager : MonoBehaviour
 
 
     // URL of the PHP script to update 
-    private string phpURL = "http://localhost/cwgd/upgrade.php";
+    private string phpURL = "https://jasonunity47.000webhostapp.com/upgrade.php";
     private IEnumerator Upgrade(int userId, string action, int cost)
     {
         // Create form with userId and action

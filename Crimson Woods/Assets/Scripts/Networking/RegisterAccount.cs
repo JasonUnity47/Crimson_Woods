@@ -27,7 +27,7 @@ public class RegisterAccount : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/cwgd/registration.php";
+    [SerializeField] private string url = "https://jasonunity47.000webhostapp.com/registration.php";
 
     private void Update()
     {

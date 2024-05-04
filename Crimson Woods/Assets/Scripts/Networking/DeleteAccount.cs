@@ -27,7 +27,7 @@ public class DeleteAccount : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/cwgd/deletion.php";
+    [SerializeField] private string url = "https://jasonunity47.000webhostapp.com/deletion.php";
 
     private void Start()
     {

@@ -30,7 +30,7 @@ public class CheckUpdate : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/cwgd/selection.php";
+    [SerializeField] private string url = "https://jasonunity47.000webhostapp.com/update.php";
 
     // Object Reference
     [Header("Object Reference")]

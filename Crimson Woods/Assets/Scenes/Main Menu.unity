@@ -14632,7 +14632,7 @@ MonoBehaviour:
   emailField: {fileID: 228217009}
   passwordField: {fileID: 974147696}
   errorSystem: {fileID: 896268881}
-  url: http://localhost/cwgd/deletion.php
+  url: https://jasonunity47.000webhostapp.com/deletion.php
 --- !u!114 &766339492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14651,7 +14651,7 @@ MonoBehaviour:
   errorSystem: {fileID: 387615043}
   errorName: {fileID: 2094118118}
   errorEmail: {fileID: 239150523}
-  url: http://localhost/cwgd/update.php
+  url: https://jasonunity47.000webhostapp.com/update.php
 --- !u!114 &766339493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14670,7 +14670,7 @@ MonoBehaviour:
   errorSystem: {fileID: 77492679}
   errorName: {fileID: 951857067}
   errorEmail: {fileID: 1442744804}
-  url: http://localhost/cwgd/registration.php
+  url: https://jasonunity47.000webhostapp.com/registration.php
 --- !u!114 &766339494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14691,7 +14691,7 @@ MonoBehaviour:
   email: 
   password: 
   isExisted: 0
-  url: http://localhost/cwgd/selection.php
+  url: https://jasonunity47.000webhostapp.com/selection.php
   deletionPanel: {fileID: 835858532}
 --- !u!114 &766339495
 MonoBehaviour:
@@ -14713,7 +14713,7 @@ MonoBehaviour:
   email: 
   password: 
   isExisted: 0
-  url: http://localhost/cwgd/selection.php
+  url: https://jasonunity47.000webhostapp.com/update.php
   updatePanel: {fileID: 1342903995}
 --- !u!114 &766339496
 MonoBehaviour:
@@ -14731,7 +14731,7 @@ MonoBehaviour:
   passwordField: {fileID: 485614075}
   emailErrorText: {fileID: 2033896424}
   passwordErrorText: {fileID: 2118657947}
-  url: http://localhost/cwgd/login.php
+  url: https://jasonunity47.000webhostapp.com/login.php
 --- !u!114 &766339497
 MonoBehaviour:
   m_ObjectHideFlags: 0

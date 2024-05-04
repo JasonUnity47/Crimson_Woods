@@ -18,7 +18,7 @@ public class RecordTime : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/cwgd/insert_time.php";
+    [SerializeField] private string url = "https://jasonunity47.000webhostapp.com/insert_time.php";
 
     private void Start()
     {

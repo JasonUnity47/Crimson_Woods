@@ -31,7 +31,7 @@ public class UpdateAccount : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/cwgd/update.php";
+    [SerializeField] private string url = "https://jasonunity47.000webhostapp.com/update.php";
 
     private void Start()
     {

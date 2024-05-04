@@ -50,7 +50,7 @@ public class CurrencySystem : MonoBehaviour
         form.AddField("bloods", bloodSave);
 
         // Send request to PHP script
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/cwgd/save_bloods.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://jasonunity47.000webhostapp.com/save_bloods.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -64,7 +64,7 @@ public class CurrencySystem : MonoBehaviour
     IEnumerator LoadBloodsFromServer()
     {
         // URL with userId parameter
-        string url = $"http://localhost/cwgd/load_bloods.php?userId={PlayerPrefs.GetInt("userId")}";
+        string url = $"https://jasonunity47.000webhostapp.com/load_bloods.php?userId={PlayerPrefs.GetInt("userId")}";
 
         using (UnityWebRequest www = UnityWebRequest.Get(url))
         {

@@ -18,7 +18,7 @@ public class LoginAccount : MonoBehaviour
 
     // URL
     [Header("URL")]
-    [SerializeField] private string url = "http://localhost/cwgd/login.php";
+    [SerializeField] private string url = "https://jasonunity47.000webhostapp.com/login.php";
 
     // Method to handle the login button click event
     public void LoginButton()

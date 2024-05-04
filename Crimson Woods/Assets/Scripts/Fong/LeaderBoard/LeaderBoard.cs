@@ -9,7 +9,7 @@ public class LeaderBoard : MonoBehaviour
     public TMP_Text[] timeSpent;
 
     // URL of the PHP script to retrieve leaderboard data
-    private string phpURL = "http://localhost/cwgd/leaderboard.php";
+    private string phpURL = "https://jasonunity47.000webhostapp.com/leaderboard.php";
 
     // Start is called before the first frame update
     void Start()

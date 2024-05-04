@@ -35,7 +35,7 @@ public class PlayerDatas : MonoBehaviour
 
     IEnumerator GetPlayerData()
     {
-        string url = "http://localhost/cwgd/shop.php?userId=" + userId; // Include userId parameter in the URL
+        string url = "https://jasonunity47.000webhostapp.com/shop.php?userId=" + userId; // Include userId parameter in the URL
         // Get player data from the server
         using (UnityWebRequest www = UnityWebRequest.Get(url))
         {
