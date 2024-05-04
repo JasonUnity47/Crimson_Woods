@@ -133,7 +133,10 @@ public class PlayerController : MonoBehaviour
         {
             isDashing = true;
             moveSpeed *= dashSpeed;
-            myTrailRenderer.emitting = true;
+            if (myTrailRenderer != null)
+            {
+                myTrailRenderer.emitting = true;
+            }
             CreateDust();
 
             if (buffContent.onEtherealDash)
@@ -215,6 +218,11 @@ public class PlayerController : MonoBehaviour
     public void CreateDust()
     {
         dust.Play();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
     }
 }
 
