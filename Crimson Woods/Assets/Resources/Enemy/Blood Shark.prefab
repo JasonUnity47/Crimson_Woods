@@ -5085,6 +5085,18 @@ PrefabInstance:
       propertyPath: prepareSlashVFX
       value: 
       objectReference: {fileID: 1916788646682580524, guid: 3157a556f6f71824b802aa7ee121c33b, type: 3}
+    - target: {fileID: 1518824134438068543, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518824134438068543, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518824134438068543, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2565559039941498371, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: m_Name
       value: Blood Shark
@@ -5107,7 +5119,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5137,6 +5157,46 @@ PrefabInstance:
       propertyPath: endReachedDistance
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: slashCD
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: lootCount
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: maxHealth
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: waterSlash
+      value: 
+      objectReference: {fileID: 6481035897699762305, guid: 353cbb105a4a9ee4e9b6bcc111b1b1c4, type: 3}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: chargeSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: rangeRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: freezeEffect
+      value: 
+      objectReference: {fileID: 5153027496196473966, guid: 44863d1d8d0d333418936409f74321d0, type: 3}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: rangeToSlash
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629625915030892827, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: prepareSlashVFX
+      value: 
+      objectReference: {fileID: 1916788646682580524, guid: 3157a556f6f71824b802aa7ee121c33b, type: 3}
     - target: {fileID: 8862186286279567467, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.15
@@ -5203,6 +5263,10 @@ PrefabInstance:
       propertyPath: myAudio
       value: 
       objectReference: {fileID: 6144529512329041421}
+    - target: {fileID: 3190191479409019274, guid: 70e63db27460f814d89395cd7eb19179, type: 3}
+      propertyPath: attackTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3190191479409019274, guid: 70e63db27460f814d89395cd7eb19179, type: 3}
       propertyPath: Boss2FireBallSFX
       value: 
@@ -5381,6 +5445,10 @@ PrefabInstance:
       propertyPath: myAudio
       value: 
       objectReference: {fileID: 679489403727723814}
+    - target: {fileID: 3190191479409019274, guid: 70e63db27460f814d89395cd7eb19179, type: 3}
+      propertyPath: attackTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3190191479409019274, guid: 70e63db27460f814d89395cd7eb19179, type: 3}
       propertyPath: Boss2FireBallSFX
       value: 
