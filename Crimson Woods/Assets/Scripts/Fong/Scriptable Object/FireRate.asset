@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4b45ad83c92c949861fe22c69c215a, type: 3}
   m_Name: FireRate
   m_EditorClassIdentifier: 
-  title: FireRate
+  title: Fire Rate
   description: Increase the frequency of player's projectiles
-  baseCost: 500
-  progress: 0
+  baseCost: 1500
+  progress: 1
