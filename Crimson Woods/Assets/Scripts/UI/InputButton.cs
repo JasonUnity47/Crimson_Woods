@@ -266,6 +266,15 @@ public class InputButton : MonoBehaviour
         return;
     }
 
+    public void EndGame()
+    {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
+        SceneManager.LoadScene(4);
+        TimeResume();
+        return;
+    }
+
     // Freeze Time
     void TimeStop()
     {
