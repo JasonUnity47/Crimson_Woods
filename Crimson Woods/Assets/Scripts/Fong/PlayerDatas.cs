@@ -54,7 +54,6 @@ public class PlayerDatas : MonoBehaviour
 
                 if (playerData != null)
                 {
-                    Debug.Log(playerData.health);
                     // Assign player data to PlayerController
                     playerController.dashRestoreTime *= dashCD[playerData.dashCD];
                     shooting.timeBetweenFiring *= fireRate[playerData.fireRate];

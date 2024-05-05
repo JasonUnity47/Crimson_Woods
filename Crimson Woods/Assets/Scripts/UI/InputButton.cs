@@ -210,6 +210,9 @@ public class InputButton : MonoBehaviour
     // Function to change to the next scene
     public void ChangeToNextScene()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
+
         // Get the current scene index
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
@@ -223,6 +226,9 @@ public class InputButton : MonoBehaviour
     // Function to change to the previous scene
     public void ChangeToPreviousScene()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
+
         // Get the current scene index
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 

@@ -22,16 +22,13 @@ public class Boss1State
 
     public virtual void Enter()
     {
-        DoCheck();
         boss1.Animator.SetBool(animBoolName, true);
         startTime = Time.time;
-        Debug.Log(animBoolName);
     }
 
     public virtual void Exit()
     {
         boss1.Animator.SetBool(animBoolName, false);
-        Debug.Log("Exit " + animBoolName);
     }
 
     public virtual void LogicUpdate()
@@ -41,14 +38,5 @@ public class Boss1State
 
     public virtual void PhysicsUpdate()
     {
-        DoCheck();
     }
-
-    public virtual void DoCheck()
-    {
-        
-    }
-
-
-
 }

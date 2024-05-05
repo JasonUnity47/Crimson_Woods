@@ -19,7 +19,6 @@ public class BloodGoblinState
     public virtual void Enter()
     {
         bloodGoblin.Anim.SetBool(animName, true);
-        Debug.Log("Enter " + animName);
     }
 
     public virtual void LogicalUpdate()
@@ -33,6 +32,5 @@ public class BloodGoblinState
     public virtual void Exit()
     {
         bloodGoblin.Anim.SetBool(animName, false);
-        //Debug.Log("Exit " + animName);
     }
 }

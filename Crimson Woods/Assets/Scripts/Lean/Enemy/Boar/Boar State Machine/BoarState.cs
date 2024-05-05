@@ -20,7 +20,6 @@ public class BoarState
     public virtual void Enter()
     {
         boar.Anim.SetBool(animName, true);
-        Debug.Log("Enter " + animName);
     }
 
     public virtual void LogicalUpdate()
@@ -36,6 +35,5 @@ public class BoarState
     public virtual void Exit()
     {
         boar.Anim.SetBool(animName, false);
-        Debug.Log("Exit " + animName);
     }
 }

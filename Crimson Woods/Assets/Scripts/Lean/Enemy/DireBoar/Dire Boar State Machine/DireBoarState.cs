@@ -18,7 +18,6 @@ public class DireBoarState
     public virtual void Enter()
     {
         direBoar.Anim.SetBool(animName, true);
-        Debug.Log("Enter " + animName);
     }
 
     public virtual void LogicalUpdate()
@@ -34,6 +33,5 @@ public class DireBoarState
     public virtual void Exit()
     {
         direBoar.Anim.SetBool(animName, false);
-        Debug.Log("Exit " + animName);
     }
 }
