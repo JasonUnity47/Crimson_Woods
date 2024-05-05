@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7534914787884121883}
+  m_Father: {fileID: 5633329640707086084}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &635061171225689546
@@ -175,7 +175,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7534914787884121883}
+  m_Father: {fileID: 5633329640707086084}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &4623522896795515236
@@ -5105,6 +5105,30 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1002.58154
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 381.629
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309901997457068438, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_Name
+      value: Blood Shark
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917911554528535502, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917911554528535502, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7976607875529847917, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       propertyPath: maxSpeed
       value: 8
@@ -5148,23 +5172,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 796442616533535588, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5679541464995143024}
-    - targetCorrespondingSourceObject: {fileID: 796442616533535588, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2028549862108691789}
-    - targetCorrespondingSourceObject: {fileID: 796442616533535588, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3962376491562577317}
-    - targetCorrespondingSourceObject: {fileID: 796442616533535588, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2531869817753356169}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
---- !u!4 &7534914787884121883 stripped
+--- !u!4 &5633329640707086084 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 796442616533535588, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3292542763259339643, guid: 2a33adcf4c2ac9c45a61bc106c553c67, type: 3}
   m_PrefabInstance: {fileID: 7177872786644104319}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7408273528187208019
@@ -5173,7 +5197,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7534914787884121883}
+    m_TransformParent: {fileID: 5633329640707086084}
     m_Modifications:
     - target: {fileID: 3190191479409019274, guid: 70e63db27460f814d89395cd7eb19179, type: 3}
       propertyPath: myAudio
@@ -5351,7 +5375,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7534914787884121883}
+    m_TransformParent: {fileID: 5633329640707086084}
     m_Modifications:
     - target: {fileID: 3190191479409019274, guid: 70e63db27460f814d89395cd7eb19179, type: 3}
       propertyPath: myAudio
