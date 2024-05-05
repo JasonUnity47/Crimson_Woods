@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class InputButton : MonoBehaviour
 {
+    private WaveSpawner waveSpawner;
+
+    private void Start()
+    {
+        waveSpawner = GetComponent<WaveSpawner>();
+    }
 
     // Back
     public void BackStep(GameObject panel)
@@ -268,11 +274,23 @@ public class InputButton : MonoBehaviour
 
     public void EndGame()
     {
-        // Play ui sound.
-        FindObjectOfType<AudioManager>().Play("Click");
-        SceneManager.LoadScene(4);
-        TimeResume();
-        return;
+        if (waveSpawner.isEnd)
+        {
+            // Play ui sound.
+            FindObjectOfType<AudioManager>().Play("Click");
+            SceneManager.LoadScene(4);
+            TimeResume();
+            return;
+        }
+
+        else
+        {
+            // Play ui sound.
+            FindObjectOfType<AudioManager>().Play("Click");
+            SceneManager.LoadScene(1);
+            TimeResume();
+            return;
+        }
     }
 
     // Freeze Time
