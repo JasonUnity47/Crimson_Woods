@@ -44,7 +44,7 @@ Transform:
   - {fileID: 5160812934808316600}
   - {fileID: 3792532567001130379}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7349399754535314485
 SpriteRenderer:
@@ -678,11 +678,11 @@ MonoBehaviour:
   arrowPrefab1: {fileID: 1436358815718796140, guid: 6d0f83a96a08da5438b7ff949dee285d, type: 3}
   arrowSpawnPoint1: {fileID: 5160812934808316600}
   shootForce1: 10
-  shootRange1: 20
+  shootRange1: 10
   bowAnimator1: {fileID: 3220791972593199117}
-  cooldownDuration1: 5
+  cooldownDuration1: 6
   arrowLifetime1: 4
-  arrowSpeed1: 20
+  arrowSpeed1: 10
   myAudio: {fileID: 6834856310929377514}
   Goblin1ShootSFX: {fileID: 8300000, guid: 5b0a88996b7db9a40955ef3783e3702f, type: 3}
 --- !u!82 &6834856310929377514

@@ -208,7 +208,7 @@ public class WaveSpawner : MonoBehaviour
         {
             // Spawn enemy.
             SpawnEnemy(_wave.enemy);
-            yield return new WaitForSeconds(1f / _wave.rate); // Waiting for the next spawn.
+            yield return new WaitForSeconds(_wave.rate); // Waiting for the next spawn.
         }
 
         state = SpawnState.WAITING; // Waiting players to finish the current wave.
