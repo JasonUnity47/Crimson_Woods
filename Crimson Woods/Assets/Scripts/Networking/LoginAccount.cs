@@ -23,6 +23,7 @@ public class LoginAccount : MonoBehaviour
     // Method to handle the login button click event
     public void LoginButton()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
         // Collect input data from the input fields
         string email = emailField.text;
         string password = passwordField.text;
