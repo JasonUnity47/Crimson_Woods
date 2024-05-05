@@ -156,6 +156,9 @@ public class CheckUpdate : MonoBehaviour
 
     public void CheckButton()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
+
         // If input fields are exist.
         if (emailField != null && passwordField != null)
         {
@@ -194,6 +197,9 @@ public class CheckUpdate : MonoBehaviour
     // Show Panel
     public void ShowPanel()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
+
         if (!updatePanel.activeSelf)
         {
             updatePanel.SetActive(true);

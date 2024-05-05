@@ -111,6 +111,9 @@ public class DeleteAccount : MonoBehaviour
 
     public void DeleteButton()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
+
         // If input fields are exist.
         if ( emailField != null && passwordField != null && checkDeletion.isExisted)
         {

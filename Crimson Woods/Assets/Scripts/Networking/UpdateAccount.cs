@@ -142,6 +142,9 @@ public class UpdateAccount : MonoBehaviour
 
     public void SubmitButton()
     {
+        // Play ui sound.
+        FindObjectOfType<AudioManager>().Play("Click");
+
         // If input fields are exist.
         if (nameField != null && emailField != null && passwordField != null)
         {
