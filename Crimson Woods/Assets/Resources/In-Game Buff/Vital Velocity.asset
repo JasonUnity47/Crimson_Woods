@@ -15,4 +15,4 @@ MonoBehaviour:
   buffId: 0
   buffSprite: {fileID: 21300000, guid: 3924ea465a9ff7946b098d2c9bdba25a, type: 3}
   buffName: Vital Velocity
-  buffDescription: Increases health by 2 and movement speed by 20%.
+  buffDescription: Increases health by 2 and movement speed by 10%.

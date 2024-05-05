@@ -227,8 +227,8 @@ public class BuffContent : MonoBehaviour
 
     void VitalVelocity()
     {
-        // Increases health by 2 and movement speed by 20%.
-        moveSpeedIncrement = playerController.moveSpeed * (20 / 100f);
+        // Increases health by 2 and movement speed by 10%.
+        moveSpeedIncrement = playerController.moveSpeed * (10 / 100f);
 
         playerHealth.maxHealth += healthIncrement;
         playerController.moveSpeed += moveSpeedIncrement;
@@ -240,9 +240,9 @@ public class BuffContent : MonoBehaviour
 
     void BlitzSurge()
     {
-        // Increases attack speed and movement speed by 20%.
-        atkSpeedIncrement = shooting.timeBetweenFiring * (20 / 100f);
-        moveSpeedIncrement = playerController.moveSpeed * (20 / 100f);
+        // Increases attack speed and movement speed by 10%.
+        atkSpeedIncrement = shooting.timeBetweenFiring * (10 / 100f);
+        moveSpeedIncrement = playerController.moveSpeed * (10 / 100f);
 
         shooting.timeBetweenFiring -= atkSpeedIncrement;
         playerController.moveSpeed += moveSpeedIncrement;
@@ -272,7 +272,7 @@ public class BuffContent : MonoBehaviour
     void ArmoredFortitude()
     {
         // Turn on Armored Fortitude.
-        // Grants +5 Armor (+1 Armor every 8 seconds).
+        // Grants +3 Armor (+1 Armor every 15 seconds).
         onArmoredFortitude = true;
         armorBar.ActivateArmorBar();
 

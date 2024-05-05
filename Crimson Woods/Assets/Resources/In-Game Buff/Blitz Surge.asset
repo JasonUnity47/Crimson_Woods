@@ -15,4 +15,4 @@ MonoBehaviour:
   buffId: 1
   buffSprite: {fileID: 21300000, guid: 63e7aba8b5ad2754c92e1372b93efefb, type: 3}
   buffName: Blitz Surge
-  buffDescription: Increases attack speed and movement speed by 20%.
+  buffDescription: Increases attack speed and movement speed by 10%.
